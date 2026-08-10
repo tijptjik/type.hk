@@ -1,0 +1,44 @@
+{
+  "name": "type-hk",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run i18n:build && vite",
+    "build": "bun run i18n:build && vite build && bun run cf-typegen",
+    "capture-preview": "bun run scripts/capture-preview.ts",
+    "cf-typegen": "wrangler types --env-interface Env",
+    "i18n:build": "paraglide-js compile --project ./project.inlang",
+    "check": "bun run i18n:build && bun run cf-typegen && svelte-check --tsconfig ./tsconfig.json",
+    "format": "biome format --write .",
+    "lint": "biome check .",
+    "preview": "vite preview",
+    "preview:worker": "bun run build && wrangler dev",
+    "deploy": "bun run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@fontsource/monaspace-argon": "^5.3.0",
+    "@fontsource/monaspace-krypton": "^5.3.0",
+    "@fontsource/monaspace-xenon": "^5.3.0",
+    "@iconify-json/proicons": "^1.2.20",
+    "@iconify-json/selfhst": "^1.2.15",
+    "@iconify-json/simple-icons": "^1.2.93",
+    "@iconify/svelte": "^5.2.2",
+    "@inlang/paraglide-js": "2.23.1",
+    "@lucide/svelte": "^1.31.0",
+    "bits-ui": "^2.18.1",
+    "svelte": "^5.56.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.7",
+    "@sveltejs/vite-plugin-svelte": "^7.2.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.1.2",
+    "playwright": "^1.62.1",
+    "svelte-check": "^4.7.4",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^6.0.2",
+    "vite": "^8.2.0",
+    "wrangler": "^4.119.0"
+  }
+}
