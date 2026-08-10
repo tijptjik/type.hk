@@ -1,0 +1,108 @@
+@import "@fontsource/monaspace-argon/400.css";
+@import "@fontsource/monaspace-argon/500.css";
+@import "@fontsource/monaspace-argon/600.css";
+@import "@fontsource/monaspace-xenon/500.css";
+@import "@fontsource/monaspace-xenon/600.css";
+@import "@fontsource/monaspace-xenon/700.css";
+@import "@fontsource/monaspace-krypton/400.css";
+@import "@fontsource/monaspace-krypton/500.css";
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-link: var(--link);
+  --color-border: var(--border);
+  --color-project-copy: var(--project-copy);
+  --color-project-detail: var(--project-detail);
+  --color-project-accent: var(--project-accent);
+  --color-project-divider: var(--project-divider);
+  --color-project-hover: var(--project-hover);
+  --color-project-badge-border: var(--project-badge-border);
+  --color-project-badge-background: var(--project-badge-background);
+  --color-project-badge-copy: var(--project-badge-copy);
+  --font-sans:
+    "Monaspace Argon", "Noto Sans CJK TC", "PingFang HK", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "Monaspace Krypton", "Noto Sans Mono CJK TC", monospace;
+  --font-display: "Monaspace Xenon", "Noto Sans CJK TC", "PingFang HK", monospace;
+}
+
+:root {
+  color-scheme: dark;
+  font-size: 18px;
+  background: #191724;
+  color: #e5e5e5;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  background: #f5f5f7;
+  color: #26233a;
+}
+
+.site-shell {
+  --background: #191724;
+  --surface: #1f1d2e;
+  --foreground: #e5e5e5;
+  --muted: #9ccfd8;
+  --link: #ff53a6;
+  --border: #555169;
+  --project-copy: #f7f7fb;
+  --project-detail: #dfe5e8;
+  --project-accent: #ff53a6;
+  --project-divider: color-mix(in srgb, var(--border) 42%, transparent);
+  --project-hover: color-mix(in srgb, var(--surface) 72%, var(--project-accent));
+  --project-badge-border: color-mix(in srgb, var(--project-accent) 72%, var(--border));
+  --project-badge-background: color-mix(
+    in srgb,
+    var(--project-accent) 12%,
+    var(--surface)
+  );
+  --project-badge-copy: var(--project-accent);
+}
+
+.site-shell[data-theme="light"] {
+  --background: #f5f5f7;
+  --surface: #ecebef;
+  --foreground: #26233a;
+  --muted: #31748f;
+  --link: #d75959;
+  --border: #6e6a86;
+  --project-copy: #26233a;
+  --project-detail: #4e6875;
+  --project-accent: #c14173;
+  --project-divider: color-mix(in srgb, var(--border) 52%, transparent);
+  --project-hover: color-mix(in srgb, var(--surface) 72%, var(--project-accent));
+  --project-badge-border: color-mix(in srgb, var(--project-accent) 72%, var(--border));
+  --project-badge-background: color-mix(
+    in srgb,
+    var(--project-accent) 12%,
+    var(--surface)
+  );
+  --project-badge-copy: var(--project-accent);
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+  margin: 0;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(a, button):focus-visible {
+  outline: 2px solid #d75959;
+  outline-offset: 3px;
+}
