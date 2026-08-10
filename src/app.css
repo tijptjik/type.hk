@@ -35,12 +35,24 @@
   font-size: 18px;
   background: #191724;
   color: #e5e5e5;
+  --background: #191724;
+  --surface: #1f1d2e;
+  --foreground: #e5e5e5;
+  --muted: #9ccfd8;
+  --link: #ff53a6;
+  --border: #555169;
 }
 
 :root[data-theme="light"] {
   color-scheme: light;
   background: #f5f5f7;
   color: #26233a;
+  --background: #f5f5f7;
+  --surface: #ecebef;
+  --foreground: #26233a;
+  --muted: #31748f;
+  --link: #d75959;
+  --border: #6e6a86;
 }
 
 .site-shell {
@@ -92,6 +104,12 @@ body,
   margin: 0;
 }
 
+html {
+  /* Reserve the native scrollbar's space on every route so content does not
+     shift when a page becomes scrollable. */
+  scrollbar-gutter: stable;
+}
+
 button,
 select {
   font: inherit;
@@ -102,7 +120,6 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-:where(a, button):focus-visible {
-  outline: 2px solid #d75959;
-  outline-offset: 3px;
+:where(a, button):focus {
+  outline: none;
 }
