@@ -4,8 +4,8 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "bun run i18n:build && vite",
-    "build": "bun run i18n:build && vite build && bun run cf-typegen",
+    "dev": "vite",
+    "build": "vite build && bun run cf-typegen",
     "capture-preview": "bun run scripts/capture-preview.ts",
     "cf-typegen": "wrangler types --env-interface Env",
     "i18n:build": "paraglide-js compile --project ./project.inlang",
