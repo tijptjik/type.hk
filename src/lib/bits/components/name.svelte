@@ -116,14 +116,14 @@ onMount(() => {
 </script>
 
 <h1
-  class="flex justify-center font-display text-[var(--profile-name-size)] font-[650] leading-none tracking-[-.035em]"
+  class="flex justify-center font-display font-[650] leading-none tracking-[-.035em]"
   id="profile-name"
-  style={`--rolling-slot-count: ${slotCount}`}
+  style={`--rolling-slot-count: ${slotCount}; font-size: var(--profile-name-size)`}
 >
   <span class="sr-only">{announcedText}</span>
   <span
     aria-hidden="true"
-    class="inline-flex max-w-full py-[.14em] max-[40rem]:text-[.9em]"
+    class="inline-flex max-w-full py-[.14em] max-[40rem]:text-[.9em] max-[360px]:text-[.8em]"
   >
     {#each reels as reel, index}
       <span
