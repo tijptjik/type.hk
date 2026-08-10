@@ -12,7 +12,7 @@ addCollection(simpleIcons)
 
 <script lang="ts">
 import { ExternalLink } from '@lucide/svelte'
-import Icon from '@iconify/svelte/dist/OfflineIcon.svelte'
+import Icon from '@iconify/svelte/offline'
 
 let { name, size = 22 }: { name: string; size?: number } = $props()
 </script>

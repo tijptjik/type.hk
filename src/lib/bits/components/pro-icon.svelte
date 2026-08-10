@@ -7,7 +7,7 @@ addCollection(proicons)
 </script>
 
 <script lang="ts">
-import Icon from '@iconify/svelte/dist/OfflineIcon.svelte'
+import Icon from '@iconify/svelte/offline'
 
 let { name, size = 22 }: { name: string; size?: number } = $props()
 </script>
