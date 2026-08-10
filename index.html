@@ -31,6 +31,13 @@
       (!savedTheme && window.matchMedia('(prefers-color-scheme: light)').matches)
     document.documentElement.dataset.theme = useLightTheme ? 'light' : 'dark'
     </script>
+    <!-- Cloudflare Web Analytics -->
+    <script
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "f567149bcba54db89f46842d97425099"}'
+    ></script>
+    <!-- End Cloudflare Web Analytics -->
   </head>
   <body>
     <div id="app"></div>
