@@ -8,6 +8,12 @@
     "directory": "./dist",
     "not_found_handling": "single-page-application"
   },
+  "routes": [
+    {
+      "pattern": "type.hk/*",
+      "zone_id": "bd5c5900001411ea1036620c4bb3d754"
+    }
+  ],
   "observability": {
     "enabled": true
   }
