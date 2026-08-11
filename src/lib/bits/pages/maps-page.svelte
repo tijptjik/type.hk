@@ -1,5 +1,5 @@
 <script lang="ts">
-import { tick } from 'svelte'
+import { onMount, tick } from 'svelte'
 import { Maximize2, X } from '@lucide/svelte'
 import FaviconLinkIcon from '$lib/bits/components/favicon-link-icon.svelte'
 import { formatMapDate, type MapShowcase } from '$lib/content/maps'
@@ -20,6 +20,56 @@ let activeShowcase = $state<MapShowcase | null>(null)
 let transitioningShowcase = $state<MapShowcase | null>(null)
 let opener = $state<HTMLButtonElement | null>(null)
 let closeButton = $state<HTMLButtonElement | null>(null)
+let expandedMap = $state<HTMLDialogElement | null>(null)
+let viewportResizeFrame: number | null = null
+
+function syncExpandedMapViewport() {
+  if (!expandedMap) return
+
+  const viewport = window.visualViewport
+  expandedMap.style.setProperty(
+    '--map-viewport-width',
+    `${viewport?.width ?? window.innerWidth}px`,
+  )
+  expandedMap.style.setProperty(
+    '--map-viewport-height',
+    `${viewport?.height ?? window.innerHeight}px`,
+  )
+}
+
+function scheduleExpandedMapViewportSync() {
+  if (viewportResizeFrame !== null) cancelAnimationFrame(viewportResizeFrame)
+
+  viewportResizeFrame = requestAnimationFrame(() => {
+    viewportResizeFrame = null
+    syncExpandedMapViewport()
+  })
+}
+
+$effect(() => {
+  if (!expandedMap) return
+
+  // Sync when the dialog is first rendered, then let the viewport events keep
+  // the iframe's containing block current while the device rotates.
+  syncExpandedMapViewport()
+  scheduleExpandedMapViewportSync()
+})
+
+onMount(() => {
+  const handleViewportResize = () => scheduleExpandedMapViewportSync()
+  const visualViewport = window.visualViewport
+
+  window.addEventListener('resize', handleViewportResize)
+  window.addEventListener('orientationchange', handleViewportResize)
+  visualViewport?.addEventListener('resize', handleViewportResize)
+
+  return () => {
+    window.removeEventListener('resize', handleViewportResize)
+    window.removeEventListener('orientationchange', handleViewportResize)
+    visualViewport?.removeEventListener('resize', handleViewportResize)
+    if (viewportResizeFrame !== null) cancelAnimationFrame(viewportResizeFrame)
+  }
+})
 
 async function setActiveShowcase(showcase: MapShowcase | null) {
   const transitionDocument = document as ViewTransitionDocument
@@ -60,7 +110,6 @@ async function closeShowcase() {
 function handleKeydown(event: KeyboardEvent) {
   if (event.key === 'Escape') void closeShowcase()
 }
-
 </script>
 
 <svelte:window onkeydown={handleKeydown} />
@@ -74,6 +123,7 @@ function handleKeydown(event: KeyboardEvent) {
       <dialog
         aria-label={activeShowcase.title}
         aria-modal="true"
+        bind:this={expandedMap}
         class="map-expanded"
         open
         style="view-transition-name: map-showcase-stage"
@@ -230,12 +280,17 @@ function handleKeydown(event: KeyboardEvent) {
 }
 
 .map-expanded {
+  --map-viewport-width: 100vw;
+  --map-viewport-height: 100dvh;
   position: fixed;
   z-index: 21;
   top: 50%;
   left: 50%;
   width: auto;
-  height: min(calc(100dvh - 6rem), calc((100vw - clamp(2rem, 5.5vw, 5.5rem)) * 0.6));
+  height: min(
+    calc(var(--map-viewport-height) - 6rem),
+    calc((var(--map-viewport-width) - clamp(2rem, 5.5vw, 5.5rem)) * 0.6)
+  );
   margin: 0;
   aspect-ratio: 1200 / 720;
   overflow: hidden;
