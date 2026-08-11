@@ -82,12 +82,12 @@ export const socialLinks: Link[] = [
   { label: 'GitHub', href: 'https://github.type.hk', icon: 'simple-icons:github' },
   {
     label: 'Instagram',
-    href: 'https://www.instagram.com/7ijp7jik/',
+    href: 'https://ig.type.hk/',
     icon: 'simple-icons:instagram',
   },
   {
     label: 'Reddit',
-    href: 'https://www.reddit.com/user/tijptjik/',
+    href: 'http://reddit.type.hk/',
     icon: 'simple-icons:reddit',
   },
   {
