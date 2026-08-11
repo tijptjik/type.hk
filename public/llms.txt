@@ -1,0 +1,31 @@
+# Mart van de Ven
+
+> Mart van de Ven (tijptjik) is a cyberspace native, independent technologist, and geospatial creative based in Hong Kong. This page indexes his current projects and selected interactive maps.
+
+## Projects
+
+- [HYPE](https://hype.hk) — A mapping platform for Hong Kong's cultural heritage and contemporary events.
+  - [HKGhostSigns](https://hype.hk?project=hkghostsigns) — Mapping Hong Kong's defunct and faded signs, in collaboration with Billy Potts and Ben Marans.
+  - [Neon Signs](https://hype.hk?project=neonsigns) — Mapping Hong Kong's remaining neon signs, in collaboration with Wai Sir.
+  - [Breadline](https://breadline.hk) — A just-in-time food recovery mapping project with Daisy Tam and HKFoodWorks.
+- [山水 | SaanSeoi](https://saanseoi.hk) — A grassroots initiative dedicated to elevating Hong Kong's digital commons with curiosity, collective capacity, and care.
+  - [Data](https://saanseoi.hk/data) — Datasets and APIs for Hong Kong mapping projects.
+  - [Sources](https://saanseoi.hk/sources) — Datasets sourced and enriched from HK Government, Overture, and civil society.
+  - [Basemaps](https://viewer.saanseoi.hk) — Free vector tiles and map styles for Hong Kong, Macau, and the Greater Bay Area.
+  - [Guides](https://saanseoi.hk/how-to/create-a-map) — Guides for creating maps with SaanSeoi data.
+
+## Maps
+
+- [A Romantic's Atlas of Hong Kong](https://romanticatlas.hype.hk/?noSplash=true&noMusic=true) — An interactive atlas of Hong Kong.
+- [HK Ghost Signs](https://hype.hk?project=hkghostsigns) — A map of Hong Kong's defunct and faded signs.
+- [Hong Kong Tramways](https://tramways.hype.hk) — An interactive map of Hong Kong's tramways.
+- [Breadline](https://breadline.hk) — A map for just-in-time food recovery in Hong Kong.
+
+## Links
+
+- [Homepage](https://type.hk)
+- [Projects](https://type.hk/projects)
+- [GitHub](https://github.type.hk)
+- [Instagram](https://ig.type.hk)
+- [LinkedIn](https://linkedin.type.hk)
+- [Contact card](https://type.hk/contact.vcf)
