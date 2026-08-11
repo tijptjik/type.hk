@@ -3,6 +3,7 @@ import { onMount } from 'svelte'
 
 type Origin = { x: number; y: number }
 type PulseDetail = { origin: Origin; target: Origin }
+type ResetDetail = { started: boolean }
 type PulseTarget = {
   distance: number
   element: HTMLElement
@@ -37,6 +38,8 @@ const vortexDuration = 3_000
 const pulseDelay = 9_300
 const pulseDuration = 5_100
 const pulseDamping = 1.8
+const resetFadeOutDuration = 300
+const resetFadeInDuration = 500
 const containedPulseWaves = [
   { delay: 0, duration: 5_500, offset: 20, peakOpacity: 0.22, contract: false },
   { delay: 2_600, duration: 4_800, offset: 34, peakOpacity: 0.3, contract: false },
@@ -50,11 +53,15 @@ let animationFrame = 0
 let gatheringStartedAt = 0
 let isAbsorbing = false
 let isGathering = false
+let isResetting = false
 let hasPreparedParticles = false
 let particles: AbsorptionParticle[] = []
 let pulseFrame = 0
 let pulseGeneration = 0
 let pulseHitTimers: number[] = []
+let resetTimer = 0
+let resetGeneration = 0
+let absorptionCleanupTimer = 0
 let breakElapsed = Number.POSITIVE_INFINITY
 let gatheringSources: HTMLElement[] = []
 let vortexOrigin: Origin | null = null
@@ -70,7 +77,7 @@ onMount(() => {
   const observer = new MutationObserver(() => {
     if (document.documentElement.classList.contains('absorption-gathering')) {
       startGathering()
-    } else if (!isAbsorbing) {
+    } else if (!isAbsorbing && !isResetting) {
       stopGathering()
     }
   })
@@ -89,10 +96,18 @@ onMount(() => {
     createPulse(detail)
   }
   document.addEventListener('absorption-pulse', handlePulse)
+  const handleReset = (event: Event) => {
+    if (!(event instanceof CustomEvent)) return
+
+    const detail = event.detail as ResetDetail
+    resetAbsorption(Boolean(detail?.started))
+  }
+  document.addEventListener('absorption-reset', handleReset)
 
   return () => {
     observer.disconnect()
     document.removeEventListener('absorption-pulse', handlePulse)
+    document.removeEventListener('absorption-reset', handleReset)
     stopGathering()
   }
 })
@@ -251,6 +266,85 @@ function cancelPulse() {
   document.querySelectorAll<HTMLElement>('.absorption-pulse-hit').forEach(element => {
     element.classList.remove('absorption-pulse-hit')
   })
+}
+
+function cancelAbsorptionCleanup() {
+  if (!absorptionCleanupTimer) return
+
+  clearTimeout(absorptionCleanupTimer)
+  absorptionCleanupTimer = 0
+}
+
+function resetAbsorption(started: boolean) {
+  if (!started && !isAbsorbing) {
+    const sources = [...gatheringSources]
+    stopGathering()
+    document.dispatchEvent(new Event('rolling-name-resume'))
+
+    if (sources.length === 0) return
+
+    isResetting = true
+    const generation = ++resetGeneration
+    for (const source of sources) {
+      source.classList.remove('absorption-reset-black')
+      source.classList.add('absorption-reset-in')
+    }
+    resetTimer = window.setTimeout(() => {
+      if (generation !== resetGeneration) return
+
+      resetTimer = 0
+      for (const source of sources) source.classList.remove('absorption-reset-in')
+      isResetting = false
+    }, resetFadeInDuration)
+    return
+  }
+
+  if (isResetting) return
+
+  isResetting = true
+  const generation = ++resetGeneration
+  cancelAnimationFrame(animationFrame)
+  animationFrame = 0
+  cancelAbsorptionCleanup()
+  cancelPulse()
+  document.documentElement.classList.remove('absorption-gathering')
+
+  const sources = [...gatheringSources]
+  const resetElements = [...sources, ...particles.map(particle => particle.element)]
+  for (const element of resetElements) {
+    element.classList.remove('absorption-reset-in')
+    element.classList.add('absorption-reset-black')
+  }
+
+  resetTimer = window.setTimeout(() => {
+    if (generation !== resetGeneration) return
+
+    resetTimer = 0
+    absorptionLayer.replaceChildren()
+    restoreSources()
+    document.dispatchEvent(new Event('rolling-name-resume'))
+
+    for (const source of sources) {
+      source.classList.remove('absorption-reset-black')
+      source.classList.add('absorption-reset-in')
+    }
+
+    resetTimer = window.setTimeout(() => {
+      if (generation !== resetGeneration) return
+
+      resetTimer = 0
+      for (const source of sources) source.classList.remove('absorption-reset-in')
+      particles = []
+      gatheringSources = []
+      hasPreparedParticles = false
+      breakElapsed = Number.POSITIVE_INFINITY
+      sourceImpactElapsed.clear()
+      vortexOrigin = null
+      isGathering = false
+      isAbsorbing = false
+      isResetting = false
+    }, resetFadeInDuration)
+  }, resetFadeOutDuration)
 }
 
 function smoothstep(value: number) {
@@ -557,6 +651,14 @@ function animateGathering(now: number) {
 function stopGathering() {
   cancelAnimationFrame(animationFrame)
   animationFrame = 0
+  cancelAbsorptionCleanup()
+  if (resetTimer) {
+    clearTimeout(resetTimer)
+    resetTimer = 0
+  }
+  resetGeneration += 1
+  isResetting = false
+  isAbsorbing = false
   isGathering = false
   particles = []
   gatheringSources = []
@@ -660,7 +762,8 @@ function absorbPage(portalOrigin: Origin) {
       return
     }
 
-    window.setTimeout(() => {
+    absorptionCleanupTimer = window.setTimeout(() => {
+      absorptionCleanupTimer = 0
       absorptionLayer.replaceChildren()
       document.documentElement.classList.remove('absorption-gathering')
     }, 340)
@@ -727,6 +830,36 @@ function absorbPage(portalOrigin: Origin) {
 :global(.absorption-pulse-hit:not(#profile-name)) {
   animation: absorption-component-fritz 460ms steps(5, end) both;
   will-change: filter, opacity;
+}
+
+:global(.absorption-reset-black) {
+  animation: absorption-reset-to-black 300ms ease both;
+  will-change: filter;
+}
+
+:global(.absorption-reset-in) {
+  animation: absorption-reset-fade-in 500ms ease-in both;
+  will-change: opacity;
+}
+
+@keyframes absorption-reset-to-black {
+  from {
+    filter: none;
+  }
+
+  to {
+    filter: brightness(0);
+  }
+}
+
+@keyframes absorption-reset-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes absorption-component-fritz {

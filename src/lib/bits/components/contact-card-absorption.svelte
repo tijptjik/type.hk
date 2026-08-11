@@ -65,7 +65,11 @@ $effect(() => {
   }, 30_000)
 
   return () => {
-    if (!hasAbsorbed) document.dispatchEvent(new Event('rolling-name-resume'))
+    document.dispatchEvent(
+      new CustomEvent('absorption-reset', {
+        detail: { started: hasAbsorbed },
+      }),
+    )
     clearAbsorbTimers()
     absorptionStartedAt = 0
   }

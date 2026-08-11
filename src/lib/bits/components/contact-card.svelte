@@ -70,6 +70,11 @@ function revealAnimation(event: MouseEvent) {
   event.preventDefault()
   isQrCodeVisible = false
 }
+
+function resetFromQr(event: MouseEvent) {
+  revealAnimation(event)
+  if (!event.defaultPrevented) closeCard()
+}
 </script>
 
 <svelte:window onkeydown={closeCardWithEscape} onpointerdown={closeCardOutsideQr} />
@@ -99,7 +104,7 @@ function revealAnimation(event: MouseEvent) {
             aria-label={`Download ${name}'s contact card`}
             class="contact-card-qr-link"
             href={contactCardUrl}
-            onclick={revealAnimation}
+            onclick={resetFromQr}
           >
             <img alt="" class="contact-card-qr" src={qrCodeUrl}>
           </a>
