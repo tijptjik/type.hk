@@ -1,5 +1,5 @@
 <script lang="ts">
-import Profile from '$lib/bits/patterns/profile.svelte'
+import Profile from '$lib/bits/sections/profile.svelte'
 import type { ContactLink, Link } from '$lib/content/site'
 
 let {

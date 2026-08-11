@@ -1,7 +1,7 @@
 <script lang="ts">
 import FaviconLinkIcon from '$lib/bits/components/favicon-link-icon.svelte'
 import LinkIcon from '$lib/bits/components/link-icon.svelte'
-import ProjectCarousel from '$lib/bits/patterns/project-carousel.svelte'
+import ProjectCarousel from '$lib/bits/components/project-carousel.svelte'
 import type { ProjectIdentity, ProjectPreview } from '$lib/content/site'
 import * as m from '../../../paraglide/messages.js'
 

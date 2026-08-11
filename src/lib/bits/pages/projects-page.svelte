@@ -1,5 +1,5 @@
 <script lang="ts">
-import ProjectIdentities from '$lib/bits/patterns/project-identities.svelte'
+import ProjectIdentities from '$lib/bits/sections/project-identities.svelte'
 import type { ProjectIdentity } from '$lib/content/site'
 
 let {
