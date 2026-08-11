@@ -97,6 +97,42 @@
   --project-badge-copy: var(--project-accent);
 }
 
+/* Palette sampled from needsmorerobots.com. This stays scoped to the
+   route so the original TYPE identity retains its existing Rosé Punk theme. */
+.site-shell[data-profile="needsmorerobots"] {
+  --background: #403345;
+  --surface: #513d55;
+  --foreground: #fffbf6;
+  --muted: #ffe9ab;
+  --link: #f87073;
+  --border: #2daee0;
+  --project-copy: #fffbf6;
+  --project-detail: #ffe9ab;
+  --project-accent: #2daee0;
+  --project-divider: color-mix(in srgb, var(--border) 48%, transparent);
+  --project-hover: color-mix(in srgb, var(--surface) 70%, var(--project-accent));
+  --project-badge-border: color-mix(in srgb, var(--project-accent) 72%, var(--border));
+  --project-badge-background: color-mix(in srgb, var(--project-accent) 12%, var(--surface));
+  --project-badge-copy: var(--project-accent);
+}
+
+.site-shell[data-profile="needsmorerobots"][data-theme="light"] {
+  --background: #fffbf6;
+  --surface: #fff6ed;
+  --foreground: #403345;
+  --muted: #2daee0;
+  --link: #f87073;
+  --border: #2daee0;
+  --project-copy: #403345;
+  --project-detail: #513d55;
+  --project-accent: #f87073;
+  --project-divider: color-mix(in srgb, var(--border) 52%, transparent);
+  --project-hover: color-mix(in srgb, var(--surface) 80%, var(--project-accent));
+  --project-badge-border: color-mix(in srgb, var(--project-accent) 72%, var(--border));
+  --project-badge-background: color-mix(in srgb, var(--project-accent) 12%, var(--surface));
+  --project-badge-copy: var(--project-accent);
+}
+
 html,
 body,
 #app {
