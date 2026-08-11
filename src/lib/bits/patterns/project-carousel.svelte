@@ -38,6 +38,10 @@ let autoplayTimer: ReturnType<typeof setInterval> | undefined
 let autoplayStartTimer: ReturnType<typeof setTimeout> | undefined
 let autoplayEnabled = false
 let autoplayPaused = false
+let dragPointerId: number | undefined
+let dragStartScrollLeft = 0
+let dragStartSlide = 0
+let dragStartX = 0
 
 function showSlide(index: number) {
   if (!carousel || slides.length === 0) return
@@ -98,6 +102,51 @@ function resumeAutoplay() {
   startAutoplay()
 }
 
+function startDrag(event: PointerEvent) {
+  if (!carousel || (event.pointerType === 'mouse' && event.button !== 0)) return
+
+  dragPointerId = event.pointerId
+  dragStartScrollLeft = carousel.scrollLeft
+  dragStartSlide = activeSlide
+  dragStartX = event.clientX
+  carousel.setPointerCapture(event.pointerId)
+  pauseAutoplay()
+}
+
+function moveDrag(event: PointerEvent) {
+  if (!carousel || dragPointerId !== event.pointerId) return
+
+  carousel.scrollLeft = dragStartScrollLeft - (event.clientX - dragStartX)
+}
+
+function finishDrag(event: PointerEvent) {
+  if (!carousel || dragPointerId !== event.pointerId) return
+
+  const distance = event.clientX - dragStartX
+  const threshold = Math.min(56, Math.max(32, carousel.clientWidth * 0.12))
+
+  if (Math.abs(distance) >= threshold) {
+    showSlide(dragStartSlide + (distance > 0 ? -1 : 1))
+  } else {
+    showSlide(dragStartSlide)
+  }
+
+  if (carousel.hasPointerCapture(event.pointerId)) {
+    carousel.releasePointerCapture(event.pointerId)
+  }
+
+  dragPointerId = undefined
+  resumeAutoplay()
+}
+
+function cancelDrag(event: PointerEvent) {
+  if (!carousel || dragPointerId !== event.pointerId) return
+
+  showSlide(dragStartSlide)
+  dragPointerId = undefined
+  resumeAutoplay()
+}
+
 onMount(() => {
   autoplayEnabled =
     slides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -110,13 +159,13 @@ onMount(() => {
 {#if slides.length > 0}
   <section
     aria-labelledby={carouselId}
-    class="project-carousel relative m-0 w-full"
+    class="project-carousel relative m-0 w-full max-[560px]:w-screen max-[560px]:mx-[calc(50%-50vw)]"
     onfocusin={pauseAutoplay}
     onfocusout={resumeAutoplay}
     onpointerenter={pauseAutoplay}
     onpointerleave={resumeAutoplay}
   >
-    <div class="absolute top-3 right-3 z-1">
+    <div class="absolute top-3 right-3 z-1 max-[560px]:hidden">
       <h2 class="sr-only" id={carouselId}>{heading}</h2>
       {#if slides.length > 1}
         <div class="flex gap-[.3rem]">
@@ -144,7 +193,12 @@ onMount(() => {
       aria-labelledby={carouselId}
       aria-roledescription={roleDescription}
       bind:this={carousel}
-      class="flex touch-pan-x touch-pinch-zoom snap-x snap-mandatory overflow-x-auto overscroll-x-contain rounded-[.55rem] border border-border bg-surface [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      class="flex touch-pan-y touch-pinch-zoom snap-x snap-mandatory overflow-x-auto overscroll-x-contain rounded-[.55rem] border border-border bg-surface [scrollbar-width:none] [&::-webkit-scrollbar]:hidden max-[560px]:rounded-none max-[560px]:border-x-0"
+      ondragstart={event => event.preventDefault()}
+      onpointercancel={cancelDrag}
+      onpointerdown={startDrag}
+      onpointermove={moveDrag}
+      onpointerup={finishDrag}
       onscroll={updateActiveSlide}
     >
       {#each slides as slide, index}
@@ -166,7 +220,7 @@ onMount(() => {
               src={slide.src}
             >
             <span
-              class="absolute bottom-3 left-3 rounded-full border border-[var(--overlay-border)] bg-[var(--overlay-bg)] px-[.55rem] py-[.35rem] [font-family:var(--font-ui)] text-[.7rem] font-[650] tracking-[.04em] text-white backdrop-blur-[.45rem] group-hover:border-project-accent group-hover:text-project-accent"
+              class="absolute bottom-3 left-3 rounded-none border border-[var(--overlay-border)] bg-[var(--overlay-bg)] px-[.55rem] py-[2px] [font-family:var(--font-ui)] text-[.7rem] font-[650] tracking-[.04em] text-white backdrop-blur-[.45rem] group-hover:border-project-accent group-hover:text-project-accent"
               >{slide.title}</span
             >
           </a>
