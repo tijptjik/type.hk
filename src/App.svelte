@@ -73,7 +73,7 @@ type Profile = {
 }
 
 const themeStorageKey = 'type-hk-theme'
-const avatarUrl = '/run-particles.gif'
+const avatarUrl = '/run-particles.webp'
 const currentYear = new Date().getFullYear()
 const languageOptions = [
   { value: 'en', label: 'English' },
