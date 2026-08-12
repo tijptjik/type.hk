@@ -73,7 +73,7 @@ type Profile = {
 }
 
 const themeStorageKey = 'type-hk-theme'
-const avatarUrl = 'https://media2.giphy.com/media/3oKIP6s42nSEsz3uNi/giphy.gif'
+const avatarUrl = '/run-particles.gif'
 const currentYear = new Date().getFullYear()
 const languageOptions = [
   { value: 'en', label: 'English' },
