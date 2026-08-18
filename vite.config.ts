@@ -12,7 +12,7 @@ export default defineConfig({
       emitTsDeclarations: true,
     }),
     tailwindcss(),
-    svelte(),
+    svelte({ extensions: ['.svelte', '.svx'] }),
   ],
   resolve: {
     alias: {

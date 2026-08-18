@@ -1,5 +1,9 @@
+import { mdsvex } from 'mdsvex'
+
 /** @type {import('svelte').Config} */
 const config = {
+  extensions: ['.svelte', '.svx'],
+  preprocess: [mdsvex({ extensions: ['.svx'] })],
   compilerOptions: {
     experimental: {
       async: true,
