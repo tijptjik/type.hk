@@ -173,7 +173,7 @@ a {
   line-height: 1.7;
 }
 
-.writing-article h2 {
+.writing-article-content h2 {
   margin-top: 3rem;
   font-family: var(--font-display);
   font-size: 1.5rem;
@@ -181,35 +181,35 @@ a {
   line-height: 1.2;
 }
 
-.writing-article h2:first-child {
+.writing-article-content h2:first-child {
   margin-top: 0;
 }
 
-.writing-article p,
-.writing-article ul,
-.writing-article blockquote {
+.writing-article-content p,
+.writing-article-content ul,
+.writing-article-content blockquote {
   margin-top: 1.25rem;
 }
 
-.writing-article ul {
+.writing-article-content ul {
   list-style: disc;
   padding-left: 1.5rem;
 }
 
-.writing-article li + li {
+.writing-article-content li + li {
   margin-top: 0.5rem;
 }
 
-.writing-article blockquote {
+.writing-article-content blockquote {
   border-left: 2px solid var(--link);
   color: var(--muted);
   padding-left: 1.25rem;
 }
 
-.writing-article blockquote p {
+.writing-article-content blockquote p {
   margin-top: 1.25rem;
 }
 
-.writing-article blockquote p:first-child {
+.writing-article-content blockquote p:first-child {
   margin-top: 0;
 }

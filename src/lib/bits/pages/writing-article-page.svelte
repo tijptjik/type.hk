@@ -47,6 +47,8 @@ const publishedDate = $derived(formatPublicationDate(entry.publishedAt))
       </ul>
     </header>
 
-    <Content />
+    <div class="writing-article-content">
+      <Content />
+    </div>
   </article>
 </main>
