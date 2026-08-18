@@ -5,6 +5,7 @@ import MapsPage from '$lib/bits/pages/maps-page.svelte'
 import ProjectsPage from '$lib/bits/pages/projects-page.svelte'
 import RosePunkPage from '$lib/bits/pages/rose-punk-page.svelte'
 import WritingPage from '$lib/bits/pages/writing-page.svelte'
+import WritingArticlePage from '$lib/bits/pages/writing-article-page.svelte'
 import AbsorptionPortal from '$lib/bits/effects/absorption-portal.svelte'
 import SiteFooter from '$lib/bits/layout/site-footer.svelte'
 import SiteHeader from '$lib/bits/layout/site-header.svelte'
@@ -17,12 +18,19 @@ import {
 } from '$lib/content/needs-more-robots'
 import { contactLinks, projectIdentities, socialLinks } from '$lib/content/site'
 import type { ContactLink, Link } from '$lib/content/site'
-import { writingEntries } from '$lib/content/writing'
+import { grandHotelEuropaEntry, writingEntries } from '$lib/content/writing'
+import GrandHotelEuropa from '$lib/content/writing/grand-hotel-europa.svx'
 import { site_description } from './paraglide/messages.js'
 import * as m from './paraglide/messages.js'
 import { locales, type Locale } from './paraglide/runtime.js'
 
-type Page = 'home' | 'maps' | 'projects' | 'rose-punk' | 'writing'
+type Page =
+  | 'grand-hotel-europa'
+  | 'home'
+  | 'maps'
+  | 'projects'
+  | 'rose-punk'
+  | 'writing'
 type ProfileId = 'type' | 'needsmorerobots'
 type Theme = 'dark' | 'light'
 
@@ -170,7 +178,11 @@ const profile = $derived(profiles[profileId])
 const navigationItems = $derived([
   { label: m.nav_projects(), href: '/projects', active: page === 'projects' },
   { label: m.nav_maps(), href: '/maps', active: page === 'maps' },
-  { label: m.nav_writing(), href: '/writing', active: page === 'writing' },
+  {
+    label: m.nav_writing(),
+    href: '/writing',
+    active: page === 'writing' || page === 'grand-hotel-europa',
+  },
   { label: m.nav_themes(), href: '/themes/rose-punk', active: page === 'rose-punk' },
 ])
 const activeNavigationItems = $derived(
@@ -185,6 +197,7 @@ const pageTitle = $derived.by(() => {
   if (page === 'maps') return m.maps_heading()
   if (page === 'projects') return m.project_identities_heading()
   if (page === 'writing') return m.writing_heading()
+  if (page === 'grand-hotel-europa') return 'Grand Hotel Europa'
   if (page === 'rose-punk') return m.rose_punk_title()
   return profile.home.subtitle
 })
@@ -220,6 +233,7 @@ function getPage(pathname: string): Page {
   if (path === '/maps') return 'maps'
   if (path === '/projects') return 'projects'
   if (path === '/writing') return 'writing'
+  if (path === '/writing/grand-hotel-europa') return 'grand-hotel-europa'
   if (path === '/themes/rose-punk') return 'rose-punk'
   return 'home'
 }
@@ -306,6 +320,12 @@ function changeLocale(nextLocale: string) {
     <ProjectsPage {locale} projects={projectIdentities} {theme} />
   {:else if page === 'writing'}
     <WritingPage entries={writingEntries} heading={m.writing_heading()} {locale} />
+  {:else if page === 'grand-hotel-europa'}
+    <WritingArticlePage
+      entry={grandHotelEuropaEntry}
+      content={GrandHotelEuropa}
+      {locale}
+    />
   {:else if page === 'rose-punk'}
     <RosePunkPage
       palette={rosePunkPalette}
