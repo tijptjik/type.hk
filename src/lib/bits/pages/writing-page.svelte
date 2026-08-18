@@ -40,14 +40,25 @@ function formatPublicationDate(publishedAt: string) {
             >{formatPublicationDate(entry.publishedAt)}</time
           >
           <h2 class="mt-2 font-display text-xl font-semibold leading-[1.15]">
-            <a
-              class="inline-flex items-center gap-[.35rem] text-foreground no-underline hover:text-link [&_svg]:shrink-0"
-              href={entry.href}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              {entry.title} <LinkIcon name="external" size={17} />
-            </a>
+            {#if entry.href}
+              <a
+                class="inline-flex items-center gap-[.35rem] text-foreground no-underline hover:text-link [&_svg]:shrink-0"
+                href={entry.href}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {entry.title} <LinkIcon name="external" size={17} />
+              </a>
+            {:else if entry.slug}
+              <a
+                class="text-foreground no-underline hover:text-link"
+                href={`/writing/${entry.slug}`}
+              >
+                {entry.title}
+              </a>
+            {:else}
+              {entry.title}
+            {/if}
           </h2>
           <ul class="mt-2 flex flex-wrap gap-1.5" aria-label="Topics">
             {#each entry.tags as tag}
@@ -59,13 +70,24 @@ function formatPublicationDate(publishedAt: string) {
             {/each}
           </ul>
           <p class="mt-4 leading-[1.5]">
-            <a
-              class="text-muted no-underline hover:text-link"
-              href={entry.href}
-              rel="noopener noreferrer"
-              target="_blank"
-              >{@html entry.excerpt}</a
-            >
+            {#if entry.href}
+              <a
+                class="text-muted no-underline hover:text-link"
+                href={entry.href}
+                rel="noopener noreferrer"
+                target="_blank"
+                >{@html entry.excerpt}</a
+              >
+            {:else if entry.slug}
+              <a
+                class="text-muted no-underline hover:text-link"
+                href={`/writing/${entry.slug}`}
+              >
+                {@html entry.excerpt}
+              </a>
+            {:else}
+              {@html entry.excerpt}
+            {/if}
           </p>
         </article>
       {/each}
