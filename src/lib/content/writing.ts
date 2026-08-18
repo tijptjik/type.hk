@@ -1,12 +1,23 @@
 export type WritingEntry = {
   excerpt: string
-  href: string
+  href?: string
   publishedAt: string
+  slug?: string
   tags: string[]
   title: string
 }
 
+export const grandHotelEuropaEntry: WritingEntry = {
+  title: 'Grand Hotel Europa',
+  publishedAt: '2026-02-27',
+  slug: 'grand-hotel-europa',
+  tags: ['Performance', 'Literature'],
+  excerpt:
+    "A literary promenade brought Europe's contemporary literary landscape to life through ten performances across Hong Kong. I read from Ilja Leonard Pfeijffer's <i>Grand Hotel Europa</i>, a meditation on the continent's promise and disillusionment.",
+}
+
 export const writingEntries: WritingEntry[] = [
+  grandHotelEuropaEntry,
   {
     title: 'Map Making Guide',
     href: 'https://saanseoi.hk/how-to/create-a-map/',
@@ -35,7 +46,7 @@ export const writingEntries: WritingEntry[] = [
     title: 'The Trial',
     href: 'https://github.com/tijptjik/TheTrial',
     publishedAt: '2021-02-08',
-    tags: ['SciFi','LARP'],
+    tags: ['SciFi', 'LARP'],
     excerpt:
       'A narrative birthday-party LARP in which the birthday girl testifies before a galactic court deciding whether humanity should be cancelled. Players embody Earth artefacts, gathering the evidence that will decide our fate.',
   },
@@ -51,7 +62,7 @@ export const writingEntries: WritingEntry[] = [
     title: 'Narrow Eclipse',
     href: 'https://github.com/tijptjik/NarrowEclipse',
     publishedAt: '2016-01-11',
-    tags: ['SciFi','LARP'],
+    tags: ['SciFi', 'LARP'],
     excerpt:
       'Participatory birthday-party theater piece set as an alternate reality sequel to <i>The Force Awakens</i>: not your average alien dive bar.',
   },
@@ -59,7 +70,7 @@ export const writingEntries: WritingEntry[] = [
     title: 'Synthetic Synthesis',
     href: 'https://github.com/tijptjik/SyntheticSynthesis',
     publishedAt: '2013-02-04',
-    tags: ['SciFi','LARP'],
+    tags: ['SciFi', 'LARP'],
     excerpt:
       'A Battlestar Galactica-inspired surprise-party role-playing adventure, staged across a neighbourhood map. Its stranded survivors must choose between a human future, a Cylon future, or a risky synthesis of both.',
   },
