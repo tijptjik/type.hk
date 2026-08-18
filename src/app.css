@@ -185,6 +185,19 @@ a {
   margin-top: 0;
 }
 
+.writing-article-content a {
+  color: inherit;
+  text-decoration-color: var(--link);
+  text-decoration-line: underline;
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
+.writing-article-content a:hover {
+  color: var(--link);
+}
+
 .writing-article-content p,
 .writing-article-content ul,
 .writing-article-content blockquote {

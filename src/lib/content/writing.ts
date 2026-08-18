@@ -11,7 +11,7 @@ export const grandHotelEuropaEntry: WritingEntry = {
   title: 'Grand Hotel Europa',
   publishedAt: '2026-02-27',
   slug: 'grand-hotel-europa',
-  tags: ['Performance', 'Literature'],
+  tags: ['Literature', 'Performance'],
   excerpt:
     "A literary promenade brought Europe's contemporary literary landscape to life through ten performances across Hong Kong. I read from Ilja Leonard Pfeijffer's <i>Grand Hotel Europa</i>, a meditation on the continent's promise and disillusionment.",
 }
