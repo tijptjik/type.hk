@@ -208,7 +208,7 @@ onMount(() => {
           class="relative aspect-[1200/720] shrink-0 basis-full snap-start snap-always"
         >
           <a
-            class="group relative block size-full text-foreground"
+            class="relative block size-full text-foreground"
             href={slide.href}
             rel="noopener noreferrer"
             target="_blank"
@@ -219,11 +219,11 @@ onMount(() => {
               draggable="false"
               src={slide.src}
             >
-            <span
-              class="absolute bottom-3 left-3 rounded-none border border-[var(--overlay-border)] bg-[var(--overlay-bg)] px-[.55rem] py-[2px] [font-family:var(--font-ui)] text-[.7rem] font-[650] tracking-[.04em] text-white backdrop-blur-[.45rem] group-hover:border-project-accent group-hover:text-project-accent"
-              >{slide.title}</span
-            >
           </a>
+          <span
+            class="pointer-events-none absolute bottom-3 left-3 rounded-none border border-[var(--overlay-border)] bg-[var(--overlay-bg)] px-[.55rem] py-[2px] [font-family:var(--font-ui)] text-[.7rem] font-[650] tracking-[.04em] text-white backdrop-blur-[.45rem]"
+            >{slide.title}</span
+          >
         </article>
       {/each}
     </section>
