@@ -12,7 +12,7 @@
   - [Data](https://saanseoi.hk/data) — Datasets and APIs for Hong Kong mapping projects.
   - [Sources](https://saanseoi.hk/sources) — Datasets sourced and enriched from HK Government, Overture, and civil society.
   - [Basemaps](https://viewer.saanseoi.hk) — Free vector tiles and map styles for Hong Kong, Macau, and the Greater Bay Area.
-  - [Guides](https://saanseoi.hk/how-to/create-a-map) — Guides for creating maps with SaanSeoi data.
+  - [Guides](https://saanseoi.hk/guides/create-a-map) — Guides for creating maps with SaanSeoi data.
 
 ## Maps
 
