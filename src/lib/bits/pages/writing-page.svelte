@@ -63,9 +63,9 @@ function formatPublicationDate(publishedAt: string) {
           <ul class="mt-2 flex flex-wrap gap-1.5" aria-label="Topics">
             {#each entry.tags as tag}
               <li
-                class="rounded-[.2rem] border border-border px-[.4rem] py-[.12rem] text-[.68rem] font-semibold tracking-[.06em] text-muted uppercase"
+                class="inline-flex items-center rounded-[.2rem] border border-border px-[.4rem] py-[.12rem] text-[.68rem] leading-none font-semibold tracking-[.06em] text-muted uppercase"
               >
-                {tag}
+                <span class="relative top-px">{tag}</span>
               </li>
             {/each}
           </ul>
