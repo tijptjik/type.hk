@@ -82,9 +82,9 @@ function mobileProjectName(project: ProjectIdentity) {
           </nav>
         </div>
         <p
-          class="mt-[.7rem] max-w-full break-words [font-family:var(--font-ui)] text-[.9rem] leading-[1.55] tracking-[.005em] text-project-detail"
+          class="mt-[.7rem] max-w-full break-words [font-family:var(--font-ui)] text-[.9rem] leading-[1.55] tracking-[.005em] text-project-detail [&_a]:text-project-accent [&_a:hover]:text-project-accent"
         >
-          {project.description()}
+          {@html project.description()}
         </p>
 
         <section
