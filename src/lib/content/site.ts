@@ -511,7 +511,7 @@ export const projectIdentities: ProjectIdentity[] = [
       },
       {
         id: 'guides',
-        href: 'https://saanseoi.hk/how-to/create-a-map',
+        href: 'https://saanseoi.hk/guides/create-a-map',
         icon: 'external',
         name: m.project_saanseoi_subproject_guides_name,
         description: () => [

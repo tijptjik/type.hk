@@ -20,7 +20,7 @@ export const writingEntries: WritingEntry[] = [
   grandHotelEuropaEntry,
   {
     title: 'Map Making Guide',
-    href: 'https://saanseoi.hk/how-to/create-a-map/',
+    href: 'https://saanseoi.hk/guides/create-a-map/',
     publishedAt: '2026-08-08',
     tags: ['Guides'],
     excerpt:
