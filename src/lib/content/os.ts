@@ -36,8 +36,8 @@ export const osTools: OsTool[] = [
     dateTime: '2026-10',
     description: m.os_bartjik_description,
     media: {
-      src: '/os-previews/bartjik-showcase.webp',
-      videoSrc: '/os-previews/bartjik-showcase.mp4',
+      src: '/os-previews/bartjik-showcase.webp?v=panels-1',
+      videoSrc: '/os-previews/bartjik-showcase.mp4?v=panels-1',
       title: m.os_preview_status,
     },
   },
