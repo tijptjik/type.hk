@@ -17,6 +17,18 @@ bun install
 bun run dev
 ```
 
+The development server listens on `http://127.0.0.1:5176` and fails if that port
+is occupied. The root `Caddyfile` proxies `http://type.localhost` to this server,
+including Vite's HMR WebSocket. Add its site block to `/etc/caddy/Caddyfile`
+alongside the other local projects, then validate and reload Caddy:
+
+```sh
+sudo caddy validate --config /etc/caddy/Caddyfile
+sudo systemctl reload caddy
+```
+
+Keep `bun run dev` running and open <http://type.localhost>.
+
 Build and check the project:
 
 ```sh

@@ -1,0 +1,5 @@
+# Loopback-only development proxy; Caddy forwards Vite's HMR WebSocket.
+http://type.localhost {
+	bind 127.0.0.1 ::1
+	reverse_proxy 127.0.0.1:5176
+}
