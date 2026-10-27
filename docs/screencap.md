@@ -16,17 +16,17 @@ bunx playwright install chromium
 Capture a preview:
 
 ```sh
-bun run capture-preview https://example.com preview.webp
+bun run capture-preview https://example.com .local/captures/preview.webp
 ```
 
-The output path is optional and defaults to `preview.jpg`. Use a `.webp` suffix
+The output path is optional and defaults to `.local/captures/preview.jpg`. Use a `.webp` suffix
 to create a WebP image instead. Add `--hide-nav` to hide the page's `<header>`
 before capturing. Use `--color-scheme dark` or `--color-scheme light` to emulate
 the visitor's preferred scheme. `--scroll-steps <count>` captures a sequence,
 scrolling one viewport height between images, for example:
 
 ```sh
-bun run capture-preview https://saanseoi.hk public/project-previews/saanseoi-dark.webp \
+bun run capture-preview https://saanseoi.hk .local/site-assets/project-previews/saanseoi-dark.webp \
   --color-scheme dark --hide-nav --scroll-steps 4
 ```
 
@@ -37,7 +37,7 @@ Use `--click` once for each button action that should happen after navigation.
 The value must be the button's exact accessible label:
 
 ```sh
-bun run capture-preview 'http://localhost:5173/?panel=prisms' filtered-map.webp \
+bun run capture-preview 'http://localhost:5173/?panel=prisms' .local/captures/filtered-map.webp \
   --click 'Add HK Ghost Signs project prism' --click 'Close panel'
 ```
 
@@ -52,6 +52,11 @@ For a signed-in page, create a Playwright storage-state file locally, keep it
 out of version control, then pass it to the capture command:
 
 ```sh
-bun run capture-preview https://hype.hk/admin admin-preview.webp \
+bun run capture-preview https://hype.hk/admin .local/captures/admin-preview.webp \
   --storage-state hype-auth.json
 ```
+
+Site preview exports are generated assets. Keep them in `.local/site-assets/project-previews/`,
+run `bun run assets:upload` to upload and SHA-256 verify them in
+`tjikos-assets/typehk/project-previews/`, then deploy any updated presentation
+metadata. Public `/project-previews/` URLs are served by the site Worker from R2.

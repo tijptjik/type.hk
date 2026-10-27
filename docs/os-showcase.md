@@ -14,7 +14,7 @@ on mobile.
 ## Assets
 
 Media comes from the local `../tjikos` checkout's app `docs/` directories,
-plus the existing Bartjik comparison recording listed below. These are rendered tools with synthetic demo data. Still images are
+plus the native showcase recordings listed below. These are rendered tools with synthetic demo data. Still images are
 lossless WebP exports without cropping. The page uses `object-contain` so tall
 panels and terminal captures remain complete. Videos play on request with native
 controls and metadata preloading. The current page uses one recording each for
@@ -24,13 +24,13 @@ Earlier exported screenshots remain available as source assets.
 | Tool | Source captures |
 | --- | --- |
 | Notjik | `~/Videos/tjikos/os/notjik-v8.mp4`; poster from `notjik-v8.review/00-intro.png` |
-| Bartjik | Existing `Videos/tooltjik/bartjik-vs-waybar-2026-10-26.mp4`; a frame at 10 seconds is the poster |
+| Bartjik | `~/Videos/tjikos/os/bartjik-v1.mp4`; poster from `bartjik-v1.review/00-intro.png` |
 | Runtjik | `showcase.png`, `windows.png`, `shortcuts.png` |
 | Tjikup | `showcase.png` |
 | Mailtjik | `demo.gif`, `search.png`, `read.png`, `archive.png` |
 | Greetjik | `showcase.png` (captured under the earlier `pony-rs` name) |
 
-Icons in `public/os-icons/` are the six transparent primary SVGs copied from
+Icons prepared in `.local/site-assets/os-icons/` are the six transparent primary SVGs copied from
 Tijpfiles' `home/dot_local/share/icons/rose-punk/scalable/apps/` exports. They
 work on both light and dark page backgrounds; no separate light-mode set is
 required. App-specific internal details remain part of the artwork, while the
@@ -42,7 +42,7 @@ Rainbow Dash; character design rights belong to Hasbro.
 To refresh a still, preserving its full frame:
 
 ```sh
-cwebp -lossless ../tjikos/apps/runtjik/docs/showcase.png -o public/os-previews/runtjik-showcase.webp
+cwebp -lossless ../tjikos/apps/runtjik/docs/showcase.png -o .local/site-assets/os-previews/runtjik-showcase.webp
 ```
 
 Notjik uses the shared Rose Punk showcase template from
@@ -67,18 +67,30 @@ python3 -B scripts/os_showcase.py notjik "$HOME/Videos/tjikos/os/notjik-next.mp4
 ```
 
 The shared frame and proposed feature stories for the other five tools are in
-`../tjikos/docs/os-showcase.md`. Only Notjik currently uses this new template.
+`../tjikos/docs/os-showcase.md`. Notjik and Bartjik use this shared template.
 
 Mailtjik's GIF is encoded as a smaller, seekable H.264 video:
 
 ```sh
-ffmpeg -i ../tjikos/apps/mailtjik/docs/demo.gif -an -c:v libx264 -crf 20 -pix_fmt yuv420p -movflags +faststart public/os-previews/mailtjik-demo.mp4
+ffmpeg -i ../tjikos/apps/mailtjik/docs/demo.gif -an -c:v libx264 -crf 20 -pix_fmt yuv420p -movflags +faststart .local/site-assets/os-previews/mailtjik-demo.mp4
 ```
 
 Runtjik, Tjikup and Greetjik currently use screencaps. Add their recordings by
 supplying a `videoSrc` alongside the still poster in each entry's `media` object.
-Bartjik's existing comparison recording is copied unchanged; its poster is a
-lossless WebP export of an actual frame.
+Bartjik's film uses the shared Rose Punk stage and only native Bartjik panels.
+Its three chapters cover market charts; media/lyrics, usage, audio, networking
+and clocks; and detaching/moving a chart beside a second attached graph. Real
+Wayland pointer gestures trigger the interactions, including the lyrics button,
+audio slider, initial detach, native floating-window move and close control.
+All providers use demo data in an isolated compositor. The poster is its opening
+identity frame, **Panels at your fingertips**, with the line **Live details.
+Fluid transitions. Detachable panels.** The original site video and poster are
+preserved in `~/Videos/tjikos/os/site-before-bartjik-v1/`.
+
+```sh
+cd ../tjikos
+python3 -B scripts/bartjik_showcase.py "$HOME/Videos/tjikos/os/bartjik-next.mp4"
+```
 
 Runtjik's README is currently present in the local Tooltjik checkout but absent
 from the checked `origin/main` tree. Its site link points to the intended GitHub
@@ -86,3 +98,15 @@ README path; publish that app in Tooltjik before expecting the link to resolve.
 
 The Notjik poster uses the opening identity frame: **Notifications with flair**.
 Its feature line is **Live updates. Telegram integration. Replies in place.**
+
+## Storage and upload
+
+Generated screenshots, posters and videos live under
+`.local/site-assets/os-previews/` during preparation and
+`tjikos-assets/typehk/os-previews/` after publication. They are ignored by Git.
+Run `bun run assets:upload` after exporting a capture; it uploads and downloads
+every selected asset to compare SHA-256 hashes and saves a local receipt in
+`.local/r2-receipts/`. Update the cache-busting query in `src/lib/content/os.ts`
+when replacing media, then deploy the site. The Worker streams the existing
+`/os-previews/` URLs from R2 with HEAD, ETag and byte-range support for seeking.
+The build rejects generated media placed back in `public/`.
