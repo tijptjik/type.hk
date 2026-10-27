@@ -4,3 +4,19 @@ dist
 worker-configuration.d.ts
 src/paraglide
 *-auth.json
+
+# Generated public media and release bundles are stored in R2.
+.local/
+__pycache__/
+public/os-previews/
+public/project-previews/
+public/os-icons/
+public/rose-punk-icons/
+public/run-particles.gif
+public/run-particles.webp
+public/rose-punk-releases/*/
+public/**/*.zip
+public/**/*.mp4
+public/**/*.webm
+public/**/*.mov
+public/**/*.gif

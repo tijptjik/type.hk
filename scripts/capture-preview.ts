@@ -110,7 +110,7 @@ for (let index = 0; index < args.length; index += 1) {
   positionalArgs.push(arg)
 }
 
-const [target, output = '.local/site-assets/project-previews/preview.jpg'] = positionalArgs
+const [target, output = '.local/captures/preview.jpg'] = positionalArgs
 
 if (!target) {
   throw new Error(

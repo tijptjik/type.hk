@@ -6,7 +6,16 @@
   "assets": {
     "binding": "ASSETS",
     "directory": "./dist",
-    "not_found_handling": "single-page-application"
+    "not_found_handling": "single-page-application",
+    "run_worker_first": [
+      "/os-previews/*",
+      "/project-previews/*",
+      "/os-icons/*",
+      "/rose-punk-icons/*",
+      "/rose-punk-releases/*",
+      "/run-particles.gif",
+      "/run-particles.webp"
+    ]
   },
   "routes": [
     {
@@ -16,5 +25,11 @@
   ],
   "observability": {
     "enabled": true
-  }
+  },
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "tjikos-assets"
+    }
+  ]
 }

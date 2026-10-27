@@ -41,13 +41,13 @@ class ThemeIconSyncTests(unittest.TestCase):
             icons = json.loads((site / 'src/lib/content/rose-punk-icons.json').read_text())
             self.assertEqual({icon['id'] for icon in icons}, {'app', 'fish', 'shelfmark'})
             for icon in icons:
-                self.assertEqual((site / 'public' / icon['src'].lstrip('/')).read_bytes(), svg)
-            manifest = json.loads((site / 'public/rose-punk-icons/manifest.json').read_text())
+                self.assertEqual((site / '.local/site-assets' / icon['src'].lstrip('/')).read_bytes(), svg)
+            manifest = json.loads((site / '.local/site-assets/rose-punk-icons/manifest.json').read_text())
             fish = next(icon for icon in manifest if icon['id'] == 'fish')
             self.assertEqual(fish['license'], 'Original artwork')
             self.assertIn('/rose-punk/', fish['source'])
 
-            os_icons = site / 'public/os-icons'
+            os_icons = site / '.local/site-assets/os-icons'
             self.assertEqual({path.stem for path in os_icons.glob('*.svg')}, set(sync.OWN_APP_IDS))
             for name in sync.OWN_APP_IDS:
                 self.assertEqual((os_icons / f'{name}.svg').read_bytes(), (desktop / f'{name}.svg').read_bytes())
@@ -66,7 +66,7 @@ class ThemeIconSyncTests(unittest.TestCase):
             for name in sync.OWN_APP_IDS:
                 (desktop / f'{name}.svg').write_bytes(svg)
             (desktop / 'notjik.svg').write_bytes(b'<svg xmlns="http://www.w3.org/2000/svg"><rect id="tile" fill="#26233a"/></svg>')
-            destination = site / 'public/os-icons'
+            destination = site / '.local/site-assets/os-icons'
             destination.mkdir(parents=True)
             existing = destination / 'notjik.svg'
             existing.write_bytes(svg)
@@ -74,4 +74,4 @@ class ThemeIconSyncTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'without a shared tile'):
                     sync.main()
             self.assertEqual(existing.read_bytes(), svg)
-            self.assertFalse((site / 'public/rose-punk-icons').exists())
+            self.assertFalse((site / '.local/site-assets/rose-punk-icons').exists())
