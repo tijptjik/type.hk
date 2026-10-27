@@ -1,6 +1,16 @@
 {
-  "latest": "0.1.0-rc.1",
+  "latest": "0.1.0-rc.2",
   "releases": [
+    {
+      "downloads": {
+        "SHA256SUMS": "/rose-punk-releases/0.1.0-rc.2/SHA256SUMS",
+        "rose-punk-framed.zip": "/rose-punk-releases/0.1.0-rc.2/rose-punk-framed.zip",
+        "rose-punk.zip": "/rose-punk-releases/0.1.0-rc.2/rose-punk.zip"
+      },
+      "manifest": "/rose-punk-releases/0.1.0-rc.2/release.json",
+      "sha256": "4d574c9b3adfad32e7f2baba017ea6ed3ac85d3214538cc177fd6da43b792cad",
+      "version": "0.1.0-rc.2"
+    },
     {
       "downloads": {
         "SHA256SUMS": "/rose-punk-releases/0.1.0-rc.1/SHA256SUMS",
