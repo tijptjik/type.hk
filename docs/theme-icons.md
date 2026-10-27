@@ -27,7 +27,9 @@ review variants are not included.
 `EXCLUDED` in the script omits Notjik, Bartjik, Runtjik, Tjikup, Mailtjik and
 Greetjik. Those custom application
 identities belong on `/os`. New shared catalogue entries are picked up on refresh.
-The current gallery contains 112 unique icons.
+The current gallery contains 112 unique icons. The same refresh also copies the
+six transparent primary app icons to `public/os-icons/` for tjikOS. Shared dark
+tiles are rejected before any export changes.
 
 `src/lib/content/rose-punk-icons.json` is the generated presentation list.
 `public/rose-punk-icons/manifest.json` records source paths, hashes and attribution

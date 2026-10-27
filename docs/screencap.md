@@ -1,9 +1,13 @@
 # Site preview screenshots
 
-Capture a site locally with Playwright. The tool opens a local Chromium browser,
+Capture a site locally with Playwright. The tool opens installed Google Chrome Stable headlessly,
 uses a 1200×720 viewport, and saves a preview image.
 
-Install Chromium once:
+Install Google Chrome Stable through your operating system's package manager.
+Local captures share that installation and do not need `playwright install`.
+Set `PLAYWRIGHT_CHROMIUM_CHANNEL` to select another installed channel when needed.
+
+CI uses Playwright's bundled browser by default; provision it with:
 
 ```sh
 bunx playwright install chromium
