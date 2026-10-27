@@ -17,18 +17,17 @@ Media comes from the local `../tjikos` checkout's app `docs/` directories,
 plus the native showcase recordings listed below. These are rendered tools: most use demo data; Bartjik uses fetched public market/music data and isolated control fixtures. Still images are
 lossless WebP exports without cropping. The page uses `object-contain` so tall
 panels and terminal captures remain complete. Videos play on request with native
-controls and metadata preloading. The current page uses one recording each for
-Notjik, Bartjik and Mailtjik, plus one still each for Runtjik, Tjikup and Greetjik.
+controls and metadata preloading. The current page uses a native showcase film and opening-frame poster for each of the six tools.
 Earlier exported screenshots remain available as source assets.
 
 | Tool | Source captures |
 | --- | --- |
 | Notjik | `~/Videos/tjikos/os/notjik-v8.mp4`; poster from `notjik-v8.review/00-intro.png` |
 | Bartjik | `~/Videos/tjikos/os/bartjik-v3.mp4`; poster from `bartjik-v3.review/00-intro.png` |
-| Runtjik | `showcase.png`, `windows.png`, `shortcuts.png` |
-| Tjikup | `showcase.png` |
-| Mailtjik | `demo.gif`, `search.png`, `read.png`, `archive.png` |
-| Greetjik | `showcase.png` (captured under the earlier `pony-rs` name) |
+| Runtjik | `~/Videos/tjikos/os/runtjik-v2.mp4`; opening-frame poster |
+| Tjikup | `~/Videos/tjikos/os/tjikup-v1.mp4`; opening-frame poster |
+| Mailtjik | `~/Videos/tjikos/os/mailtjik-v1.mp4`; opening-frame poster |
+| Greetjik | `~/Videos/tjikos/os/greetjik-v1.mp4`; opening-frame poster |
 
 Icons prepared in `.local/site-assets/os-icons/` are the six transparent primary SVGs copied from
 Tijpfiles' `home/dot_local/share/icons/rose-punk/scalable/apps/` exports. They
@@ -69,14 +68,26 @@ python3 -B scripts/os_showcase.py notjik "$HOME/Videos/tjikos/os/notjik-next.mp4
 The shared frame and proposed feature stories for the other five tools are in
 `../tjikos/docs/os-showcase.md`. Notjik and Bartjik use this shared template.
 
-Mailtjik's GIF is encoded as a smaller, seekable H.264 video:
+Runtjik uses `runtjik-showcase-v2.{mp4,webp}`; the other three new films use
+`{tool}-showcase-v1.{mp4,webp}`. They use
+`../tjikos/scripts/suite_showcase.py` and the shared native stage:
 
-```sh
-ffmpeg -i ../tjikos/apps/mailtjik/docs/demo.gif -an -c:v libx264 -crf 20 -pix_fmt yuv420p -movflags +faststart .local/site-assets/os-previews/mailtjik-demo.mp4
-```
+| Tool | End-user story |
+| --- | --- |
+| Runtjik | Fuzzy app discovery, choosing an open instance, and gracefully closing running apps |
+| Mailtjik | Find a conversation, read rich mail with inline imagery, select and preview preservation scope |
+| Tjikup | One real successful workflow, parallel checks, verified results; busy section at 3× |
+| Greetjik | **Start every session with a quip**; piped messages and three real pony renders, just for fun |
 
-Runtjik, Tjikup and Greetjik currently use screencaps. Add their recordings by
-supplying a `videoSrc` alongside the still poster in each entry's `media` object.
+All use native keyboard input and real application rendering at 1200 × 720,
+60 fps. Mail/launcher fixtures stay synthetic. Tjikup actually runs four
+application test suites, then packages and verifies their reports. Only its busy
+section is sped up; the final success summary remains at normal speed. Its
+review folder includes the workflow, command receipts, verified package and
+precise edit boundaries. Runtjik uses the current managed icon, SHA-256
+`8f206f65201cc2750b9b40f9b91af2c722d6cf274e2486d0ca8184cf52950cf8`,
+including in its opening, header and outro. Its site icon has a matching cache key.
+
 Bartjik's revised film uses the shared Rose Punk stage at 1200 × 720 and 60 fps.
 Its six captioned chapters show actual CoinGecko rates/history and fluid pointer
 tracking; Karla Blum's **Acid Rain** artwork pulsing to its real preview audio;
@@ -105,9 +116,7 @@ python3 -B scripts/bartjik_showcase.py "$HOME/Videos/tjikos/os/bartjik-next.mp4"
   --data "$HOME/Videos/tjikos/os/bartjik-public-20261028/snapshot.json"
 ```
 
-Runtjik's README is currently present in the local Tooltjik checkout but absent
-from the checked `origin/main` tree. Its site link points to the intended GitHub
-README path; publish that app in Tooltjik before expecting the link to resolve.
+App README links use the renamed `tijptjik/tjikos` repository.
 
 The Notjik poster uses the opening identity frame: **Notifications with flair**.
 Its feature line is **Live updates. Telegram integration. Replies in place.**
@@ -127,3 +136,10 @@ The build rejects generated media placed back in `public/`.
 Vite serves staged media from `.local/site-assets/` through its normal file
 middleware, including video byte ranges. This keeps `/os` reviewable locally
 without putting generated media in `public/`.
+
+Runtjik’s revised third chapter is **Your launcher is a task manager.** It opens
+`/running`, gracefully closes both windows of one app, then closes another app.
+The native tiles pulse and reflow as their real cooperative fixture windows exit.
+The launcher stays open. The private recorder allows only manifest-listed GTK
+fixtures and retains native close-event receipts plus zero exit statuses. The
+shortcut-management chapter is removed.

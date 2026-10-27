@@ -30,7 +30,7 @@ let navigationTools = $derived(
               alt=""
               class="size-9 object-contain"
               height="36"
-              src={`/os-icons/${tool.id}.svg`}
+              src={`/os-icons/${tool.id}.svg${tool.iconVersion ? `?v=${tool.iconVersion}` : ''}`}
               width="36"
             >
           </a>
@@ -53,7 +53,7 @@ let navigationTools = $derived(
               alt=""
               class="size-9 object-contain"
               height="36"
-              src={`/os-icons/${tool.id}.svg`}
+              src={`/os-icons/${tool.id}.svg${tool.iconVersion ? `?v=${tool.iconVersion}` : ''}`}
               width="36"
             >
           </a>
@@ -105,7 +105,7 @@ let navigationTools = $derived(
                   alt=""
                   class="size-8 shrink-0"
                   height="32"
-                  src={`/os-icons/${tool.id}.svg`}
+                  src={`/os-icons/${tool.id}.svg${tool.iconVersion ? `?v=${tool.iconVersion}` : ''}`}
                   width="32"
                 >
                 {tool.name}
