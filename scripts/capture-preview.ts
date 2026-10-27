@@ -144,9 +144,12 @@ function outputPathForStep(step: number, imageCount: number) {
   return `${output.slice(0, extensionIndex)}-${step + 1}${output.slice(extensionIndex)}`
 }
 
-const browser = await chromium.launch(
-  disableWebSecurity ? { args: ['--disable-web-security'] } : undefined,
-)
+// Reuse installed Chrome locally instead of downloading another Chromium revision.
+const browser = await chromium.launch({
+  channel:
+    process.env.PLAYWRIGHT_CHROMIUM_CHANNEL || (process.env.CI ? undefined : 'chrome'),
+  args: disableWebSecurity ? ['--disable-web-security'] : undefined,
+})
 
 try {
   const context = await browser.newContext({
