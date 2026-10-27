@@ -67,7 +67,7 @@ def main():
         os_icons[key] = data
     # Read and validate the full collection before updating the exported files.
     icons = sorted(entries.values(), key=lambda entry: (entry["name"].casefold(), entry["id"]))
-    destination = ROOT / "public/rose-punk-icons"
+    destination = ROOT / ".local/site-assets/rose-punk-icons"
     destination.mkdir(parents=True, exist_ok=True)
     for icon in icons:
         shutil.copyfile(source / icon["source"], destination / f"{icon['id']}.svg")
@@ -77,11 +77,11 @@ def main():
     (destination / "manifest.json").write_text(json.dumps(icons, ensure_ascii=False, indent=2) + "\n")
     content = [{key: icon[key] for key in ("id", "name", "src")} for icon in icons]
     (ROOT / "src/lib/content/rose-punk-icons.json").write_text(json.dumps(content, ensure_ascii=False, indent=2) + "\n")
-    os_destination = ROOT / "public/os-icons"
+    os_destination = ROOT / ".local/site-assets/os-icons"
     os_destination.mkdir(parents=True, exist_ok=True)
     for key, data in os_icons.items():
         (os_destination / f"{key}.svg").write_bytes(data)
-    print(f"Exported {len(icons)} gallery icons and {len(os_icons)} transparent tjikOS icons")
+    print(f"Prepared for R2: {len(icons)} gallery icons and {len(os_icons)} transparent tjikOS icons")
 
 
 if __name__ == "__main__":
