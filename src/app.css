@@ -154,6 +154,12 @@ html {
   scrollbar-gutter: stable;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.os-tools) {
+    scroll-behavior: smooth;
+  }
+}
+
 button,
 select {
   font: inherit;

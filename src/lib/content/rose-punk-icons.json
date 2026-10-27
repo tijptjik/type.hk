@@ -1,0 +1,562 @@
+[
+  {
+    "id": "audio-player",
+    "name": "Audio Player",
+    "src": "/rose-punk-icons/audio-player.svg"
+  },
+  {
+    "id": "audiobookshelf",
+    "name": "Audiobookshelf",
+    "src": "/rose-punk-icons/audiobookshelf.svg"
+  },
+  {
+    "id": "bluetooth-adapters",
+    "name": "Bluetooth Adapters",
+    "src": "/rose-punk-icons/bluetooth-adapters.svg"
+  },
+  {
+    "id": "bluetooth-manager",
+    "name": "Bluetooth Manager",
+    "src": "/rose-punk-icons/bluetooth-manager.svg"
+  },
+  {
+    "id": "brave",
+    "name": "Brave",
+    "src": "/rose-punk-icons/brave.svg"
+  },
+  {
+    "id": "calendar",
+    "name": "Calendar",
+    "src": "/rose-punk-icons/calendar.svg"
+  },
+  {
+    "id": "camera",
+    "name": "Camera",
+    "src": "/rose-punk-icons/camera.svg"
+  },
+  {
+    "id": "characters",
+    "name": "Characters",
+    "src": "/rose-punk-icons/characters.svg"
+  },
+  {
+    "id": "chatgpt",
+    "name": "ChatGPT",
+    "src": "/rose-punk-icons/chatgpt.svg"
+  },
+  {
+    "id": "chezetc",
+    "name": "Chezetc",
+    "src": "/rose-punk-icons/chezetc.svg"
+  },
+  {
+    "id": "chezmoi",
+    "name": "Chezmoi",
+    "src": "/rose-punk-icons/chezmoi.svg"
+  },
+  {
+    "id": "clocks",
+    "name": "Clocks",
+    "src": "/rose-punk-icons/clocks.svg"
+  },
+  {
+    "id": "codex",
+    "name": "Codex",
+    "src": "/rose-punk-icons/codex.svg"
+  },
+  {
+    "id": "codex-lb",
+    "name": "Codex LB",
+    "src": "/rose-punk-icons/codex-lb.svg"
+  },
+  {
+    "id": "collie",
+    "name": "Collie",
+    "src": "/rose-punk-icons/collie.svg"
+  },
+  {
+    "id": "color-profile-viewer",
+    "name": "Color Profile Viewer",
+    "src": "/rose-punk-icons/color-profile-viewer.svg"
+  },
+  {
+    "id": "connections",
+    "name": "Connections",
+    "src": "/rose-punk-icons/connections.svg"
+  },
+  {
+    "id": "contacts",
+    "name": "Contacts",
+    "src": "/rose-punk-icons/contacts.svg"
+  },
+  {
+    "id": "discord",
+    "name": "Discord",
+    "src": "/rose-punk-icons/discord.svg"
+  },
+  {
+    "id": "disk-usage-analyzer",
+    "name": "Disk Usage Analyzer",
+    "src": "/rose-punk-icons/disk-usage-analyzer.svg"
+  },
+  {
+    "id": "disks",
+    "name": "Disks",
+    "src": "/rose-punk-icons/disks.svg"
+  },
+  {
+    "id": "docker",
+    "name": "Docker",
+    "src": "/rose-punk-icons/docker.svg"
+  },
+  {
+    "id": "document-scanner",
+    "name": "Document Scanner",
+    "src": "/rose-punk-icons/document-scanner.svg"
+  },
+  {
+    "id": "document-viewer",
+    "name": "Document Viewer",
+    "src": "/rose-punk-icons/document-viewer.svg"
+  },
+  {
+    "id": "drizzle",
+    "name": "Drizzle Studio",
+    "src": "/rose-punk-icons/drizzle.svg"
+  },
+  {
+    "id": "eye-of-gnome",
+    "name": "Eye of GNOME",
+    "src": "/rose-punk-icons/eye-of-gnome.svg"
+  },
+  {
+    "id": "fcitx-5-configuration",
+    "name": "Fcitx 5 Configuration",
+    "src": "/rose-punk-icons/fcitx-5-configuration.svg"
+  },
+  {
+    "id": "fedora-media-writer",
+    "name": "Fedora Media Writer",
+    "src": "/rose-punk-icons/fedora-media-writer.svg"
+  },
+  {
+    "id": "feishin",
+    "name": "Feishin",
+    "src": "/rose-punk-icons/feishin.svg"
+  },
+  {
+    "id": "file-roller",
+    "name": "File Roller",
+    "src": "/rose-punk-icons/file-roller.svg"
+  },
+  {
+    "id": "files",
+    "name": "Files",
+    "src": "/rose-punk-icons/files.svg"
+  },
+  {
+    "id": "firefox",
+    "name": "Firefox",
+    "src": "/rose-punk-icons/firefox.svg"
+  },
+  {
+    "id": "fish",
+    "name": "Fish shell",
+    "src": "/rose-punk-icons/fish.svg"
+  },
+  {
+    "id": "flatpak",
+    "name": "Flatpak",
+    "src": "/rose-punk-icons/flatpak.svg"
+  },
+  {
+    "id": "flatseal",
+    "name": "Flatseal",
+    "src": "/rose-punk-icons/flatseal.svg"
+  },
+  {
+    "id": "fonts",
+    "name": "Fonts",
+    "src": "/rose-punk-icons/fonts.svg"
+  },
+  {
+    "id": "gimp",
+    "name": "GIMP",
+    "src": "/rose-punk-icons/gimp.svg"
+  },
+  {
+    "id": "gmail",
+    "name": "Gmail",
+    "src": "/rose-punk-icons/gmail.svg"
+  },
+  {
+    "id": "google-calendar",
+    "name": "Google Calendar",
+    "src": "/rose-punk-icons/google-calendar.svg"
+  },
+  {
+    "id": "chrome",
+    "name": "Google Chrome",
+    "src": "/rose-punk-icons/chrome.svg"
+  },
+  {
+    "id": "google-photos",
+    "name": "Google Photos",
+    "src": "/rose-punk-icons/google-photos.svg"
+  },
+  {
+    "id": "gpu-screen-recorder",
+    "name": "GPU Screen Recorder",
+    "src": "/rose-punk-icons/gpu-screen-recorder.svg"
+  },
+  {
+    "id": "grimmory",
+    "name": "Grimmory",
+    "src": "/rose-punk-icons/grimmory.svg"
+  },
+  {
+    "id": "help",
+    "name": "Help",
+    "src": "/rose-punk-icons/help.svg"
+  },
+  {
+    "id": "herdr",
+    "name": "Herdr",
+    "src": "/rose-punk-icons/herdr.svg"
+  },
+  {
+    "id": "htop",
+    "name": "Htop",
+    "src": "/rose-punk-icons/htop.svg"
+  },
+  {
+    "id": "hyprvoice",
+    "name": "Hyprvoice",
+    "src": "/rose-punk-icons/hyprvoice.svg"
+  },
+  {
+    "id": "image-viewer",
+    "name": "Image Viewer",
+    "src": "/rose-punk-icons/image-viewer.svg"
+  },
+  {
+    "id": "keyboard-layout-viewer",
+    "name": "Keyboard layout viewer",
+    "src": "/rose-punk-icons/keyboard-layout-viewer.svg"
+  },
+  {
+    "id": "kitty",
+    "name": "kitty",
+    "src": "/rose-punk-icons/kitty.svg"
+  },
+  {
+    "id": "koreader",
+    "name": "KOReader",
+    "src": "/rose-punk-icons/koreader.svg"
+  },
+  {
+    "id": "llmtrim",
+    "name": "llmtrim",
+    "src": "/rose-punk-icons/llmtrim.svg"
+  },
+  {
+    "id": "logs",
+    "name": "Logs",
+    "src": "/rose-punk-icons/logs.svg"
+  },
+  {
+    "id": "lutris",
+    "name": "Lutris",
+    "src": "/rose-punk-icons/lutris.svg"
+  },
+  {
+    "id": "maps",
+    "name": "Maps",
+    "src": "/rose-punk-icons/maps.svg"
+  },
+  {
+    "id": "mpv-media-player",
+    "name": "mpv Media Player",
+    "src": "/rose-punk-icons/mpv-media-player.svg"
+  },
+  {
+    "id": "mullvad",
+    "name": "Mullvad VPN",
+    "src": "/rose-punk-icons/mullvad.svg"
+  },
+  {
+    "id": "neovim",
+    "name": "Neovim",
+    "src": "/rose-punk-icons/neovim.svg"
+  },
+  {
+    "id": "nginx",
+    "name": "Nginx",
+    "src": "/rose-punk-icons/nginx.svg"
+  },
+  {
+    "id": "obs-studio",
+    "name": "OBS Studio",
+    "src": "/rose-punk-icons/obs-studio.svg"
+  },
+  {
+    "id": "obsidian",
+    "name": "Obsidian",
+    "src": "/rose-punk-icons/obsidian.svg"
+  },
+  {
+    "id": "oo7",
+    "name": "oo7",
+    "src": "/rose-punk-icons/oo7.svg"
+  },
+  {
+    "id": "parental-controls",
+    "name": "Parental Controls",
+    "src": "/rose-punk-icons/parental-controls.svg"
+  },
+  {
+    "id": "passwords-and-keys",
+    "name": "Passwords and Keys",
+    "src": "/rose-punk-icons/passwords-and-keys.svg"
+  },
+  {
+    "id": "plex",
+    "name": "Plex",
+    "src": "/rose-punk-icons/plex.svg"
+  },
+  {
+    "id": "power",
+    "name": "Power",
+    "src": "/rose-punk-icons/power.svg"
+  },
+  {
+    "id": "problem-reporting",
+    "name": "Problem Reporting",
+    "src": "/rose-punk-icons/problem-reporting.svg"
+  },
+  {
+    "id": "profilarr",
+    "name": "Profilarr",
+    "src": "/rose-punk-icons/profilarr.svg"
+  },
+  {
+    "id": "prowlarr",
+    "name": "Prowlarr",
+    "src": "/rose-punk-icons/prowlarr.svg"
+  },
+  {
+    "id": "python",
+    "name": "Python",
+    "src": "/rose-punk-icons/python.svg"
+  },
+  {
+    "id": "qgis-desktop",
+    "name": "QGIS Desktop",
+    "src": "/rose-punk-icons/qgis-desktop.svg"
+  },
+  {
+    "id": "radarr",
+    "name": "Radarr",
+    "src": "/rose-punk-icons/radarr.svg"
+  },
+  {
+    "id": "rust",
+    "name": "Rust",
+    "src": "/rose-punk-icons/rust.svg"
+  },
+  {
+    "id": "scrcpy",
+    "name": "scrcpy",
+    "src": "/rose-punk-icons/scrcpy.svg"
+  },
+  {
+    "id": "scrutiny",
+    "name": "Scrutiny",
+    "src": "/rose-punk-icons/scrutiny.svg"
+  },
+  {
+    "id": "seerr",
+    "name": "Seerr",
+    "src": "/rose-punk-icons/seerr.svg"
+  },
+  {
+    "id": "settings",
+    "name": "Settings",
+    "src": "/rose-punk-icons/settings.svg"
+  },
+  {
+    "id": "shelfmark",
+    "name": "Shelfmark",
+    "src": "/rose-punk-icons/shelfmark.svg"
+  },
+  {
+    "id": "signal",
+    "name": "Signal",
+    "src": "/rose-punk-icons/signal.svg"
+  },
+  {
+    "id": "simplescreenrecorder",
+    "name": "SimpleScreenRecorder",
+    "src": "/rose-punk-icons/simplescreenrecorder.svg"
+  },
+  {
+    "id": "snapraid",
+    "name": "SnapRAID",
+    "src": "/rose-punk-icons/snapraid.svg"
+  },
+  {
+    "id": "software",
+    "name": "Software",
+    "src": "/rose-punk-icons/software.svg"
+  },
+  {
+    "id": "solaar",
+    "name": "Solaar",
+    "src": "/rose-punk-icons/solaar.svg"
+  },
+  {
+    "id": "sonarr",
+    "name": "Sonarr",
+    "src": "/rose-punk-icons/sonarr.svg"
+  },
+  {
+    "id": "spotify",
+    "name": "Spotify",
+    "src": "/rose-punk-icons/spotify.svg"
+  },
+  {
+    "id": "steam",
+    "name": "Steam",
+    "src": "/rose-punk-icons/steam.svg"
+  },
+  {
+    "id": "strata",
+    "name": "Strata",
+    "src": "/rose-punk-icons/strata.svg"
+  },
+  {
+    "id": "sublime-text",
+    "name": "Sublime Text",
+    "src": "/rose-punk-icons/sublime-text.svg"
+  },
+  {
+    "id": "system-monitor",
+    "name": "System Monitor",
+    "src": "/rose-punk-icons/system-monitor.svg"
+  },
+  {
+    "id": "tailscale",
+    "name": "Tailscale",
+    "src": "/rose-punk-icons/tailscale.svg"
+  },
+  {
+    "id": "tautulli",
+    "name": "Tautulli",
+    "src": "/rose-punk-icons/tautulli.svg"
+  },
+  {
+    "id": "telegram",
+    "name": "Telegram",
+    "src": "/rose-punk-icons/telegram.svg"
+  },
+  {
+    "id": "terminal",
+    "name": "Terminal",
+    "src": "/rose-punk-icons/terminal.svg"
+  },
+  {
+    "id": "text-editor",
+    "name": "Text Editor",
+    "src": "/rose-punk-icons/text-editor.svg"
+  },
+  {
+    "id": "thumbnails",
+    "name": "Thumbnails",
+    "src": "/rose-punk-icons/thumbnails.svg"
+  },
+  {
+    "id": "tippecanoe",
+    "name": "Tippecanoe",
+    "src": "/rose-punk-icons/tippecanoe.svg"
+  },
+  {
+    "id": "tour",
+    "name": "Tour",
+    "src": "/rose-punk-icons/tour.svg"
+  },
+  {
+    "id": "transmission",
+    "name": "Transmission",
+    "src": "/rose-punk-icons/transmission.svg"
+  },
+  {
+    "id": "tweaks",
+    "name": "Tweaks",
+    "src": "/rose-punk-icons/tweaks.svg"
+  },
+  {
+    "id": "uuctl",
+    "name": "uuctl",
+    "src": "/rose-punk-icons/uuctl.svg"
+  },
+  {
+    "id": "video-player",
+    "name": "Video Player",
+    "src": "/rose-punk-icons/video-player.svg"
+  },
+  {
+    "id": "vite",
+    "name": "Vite",
+    "src": "/rose-punk-icons/vite.svg"
+  },
+  {
+    "id": "vlc",
+    "name": "VLC media player",
+    "src": "/rose-punk-icons/vlc.svg"
+  },
+  {
+    "id": "volume-control",
+    "name": "Volume Control",
+    "src": "/rose-punk-icons/volume-control.svg"
+  },
+  {
+    "id": "weather",
+    "name": "Weather",
+    "src": "/rose-punk-icons/weather.svg"
+  },
+  {
+    "id": "yuzu",
+    "name": "yuzu",
+    "src": "/rose-punk-icons/yuzu.svg"
+  },
+  {
+    "id": "zapzap",
+    "name": "ZapZap",
+    "src": "/rose-punk-icons/zapzap.svg"
+  },
+  {
+    "id": "zed",
+    "name": "Zed",
+    "src": "/rose-punk-icons/zed.svg"
+  },
+  {
+    "id": "zed-nightly",
+    "name": "Zed Nightly",
+    "src": "/rose-punk-icons/zed-nightly.svg"
+  },
+  {
+    "id": "zed-preview",
+    "name": "Zed Preview",
+    "src": "/rose-punk-icons/zed-preview.svg"
+  },
+  {
+    "id": "zen",
+    "name": "Zen Browser",
+    "src": "/rose-punk-icons/zen.svg"
+  },
+  {
+    "id": "zoom",
+    "name": "Zoom",
+    "src": "/rose-punk-icons/zoom.svg"
+  }
+]

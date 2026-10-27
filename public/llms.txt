@@ -14,6 +14,15 @@
   - [Basemaps](https://viewer.saanseoi.hk) — Free vector tiles and map styles for Hong Kong, Macau, and the Greater Bay Area.
   - [Guides](https://saanseoi.hk/guides/create-a-map) — Guides for creating maps with SaanSeoi data.
 
+## tjikOS
+
+- [Notjik](https://github.com/tijptjik/tooltjik/blob/main/apps/notjik/README.md) — Rich desktop notifications. Oct '26.
+- [Bartjik](https://github.com/tijptjik/tooltjik/blob/main/apps/bartjik/README.md) — Interactive desktop bar and panels. Oct '26.
+- [Runtjik](https://github.com/tijptjik/tooltjik/blob/main/apps/runtjik/README.md) — Application launcher and window switcher. Oct '26.
+- [Tjikup](https://github.com/tijptjik/tooltjik/blob/main/apps/tjikup/README.md) — Workflow and script runner. May '26.
+- [Mailtjik](https://github.com/tijptjik/tooltjik/blob/main/apps/mailtjik/README.md) — Encrypted email archives and terminal reader. Oct '26.
+- [Greetjik](https://github.com/tijptjik/tooltjik/blob/main/apps/greetjik/README.md) — Native terminal pony greetings. Oct '26.
+
 ## Maps
 
 - [A Romantic's Atlas of Hong Kong](https://romanticatlas.hype.hk/?noSplash=true&noMusic=true) — An interactive atlas of Hong Kong.
@@ -25,6 +34,7 @@
 
 - [Homepage](https://type.hk)
 - [Projects](https://type.hk/projects)
+- [tjikOS](https://type.hk/os)
 - [GitHub](https://github.type.hk)
 - [Instagram](https://ig.type.hk)
 - [LinkedIn](https://linkedin.type.hk)

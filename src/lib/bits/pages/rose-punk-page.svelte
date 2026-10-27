@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Check, Copy, Download } from '@lucide/svelte'
 import LinkIcon from '$lib/bits/components/link-icon.svelte'
+import ThemeIcons from '$lib/bits/sections/theme-icons.svelte'
 import type { PaletteColor, ThemeResource } from '$lib/content/rose-punk'
 
 let {
@@ -98,7 +99,7 @@ function downloadThemeJson() {
 
       <aside
         aria-labelledby="resources-heading"
-        class="w-[20rem] self-start max-[700px]:self-auto"
+        class="w-full max-w-[20rem] self-start max-[700px]:self-auto"
       >
         <h2
           class="mb-4 font-display text-[.78rem] font-semibold tracking-[.1em] text-muted uppercase max-[560px]:text-[#ff53a6]"
@@ -195,5 +196,7 @@ function downloadThemeJson() {
         {/each}
       </div>
     </section>
+
+    <ThemeIcons />
   </section>
 </main>
