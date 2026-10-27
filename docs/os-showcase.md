@@ -14,7 +14,7 @@ on mobile.
 ## Assets
 
 Media comes from the local `../tjikos` checkout's app `docs/` directories,
-plus the native showcase recordings listed below. These are rendered tools with synthetic demo data. Still images are
+plus the native showcase recordings listed below. These are rendered tools: most use demo data; Bartjik uses fetched public market/music data and isolated control fixtures. Still images are
 lossless WebP exports without cropping. The page uses `object-contain` so tall
 panels and terminal captures remain complete. Videos play on request with native
 controls and metadata preloading. The current page uses one recording each for
@@ -24,7 +24,7 @@ Earlier exported screenshots remain available as source assets.
 | Tool | Source captures |
 | --- | --- |
 | Notjik | `~/Videos/tjikos/os/notjik-v8.mp4`; poster from `notjik-v8.review/00-intro.png` |
-| Bartjik | `~/Videos/tjikos/os/bartjik-v1.mp4`; poster from `bartjik-v1.review/00-intro.png` |
+| Bartjik | `~/Videos/tjikos/os/bartjik-v3.mp4`; poster from `bartjik-v3.review/00-intro.png` |
 | Runtjik | `showcase.png`, `windows.png`, `shortcuts.png` |
 | Tjikup | `showcase.png` |
 | Mailtjik | `demo.gif`, `search.png`, `read.png`, `archive.png` |
@@ -77,19 +77,32 @@ ffmpeg -i ../tjikos/apps/mailtjik/docs/demo.gif -an -c:v libx264 -crf 20 -pix_fm
 
 Runtjik, Tjikup and Greetjik currently use screencaps. Add their recordings by
 supplying a `videoSrc` alongside the still poster in each entry's `media` object.
-Bartjik's film uses the shared Rose Punk stage and only native Bartjik panels.
-Its three chapters cover market charts; media/lyrics, usage, audio, networking
-and clocks; and detaching/moving a chart beside a second attached graph. Real
-Wayland pointer gestures trigger the interactions, including the lyrics button,
-audio slider, initial detach, native floating-window move and close control.
-All providers use demo data in an isolated compositor. The poster is its opening
-identity frame, **Panels at your fingertips**, with the line **Live details.
-Fluid transitions. Detachable panels.** The original site video and poster are
-preserved in `~/Videos/tjikos/os/site-before-bartjik-v1/`.
+Bartjik's revised film uses the shared Rose Punk stage at 1200 × 720 and 60 fps.
+Its six captioned chapters show actual CoinGecko rates/history and fluid pointer
+tracking; Karla Blum's **Acid Rain** artwork pulsing to its real preview audio;
+real window thumbnails and a native workspace switch; VPN locations and Tailscale
+connect/disconnect; usage, audio, current world clocks and Desktop/Game mode;
+then a 420 ms exponential detach release and two independent chart windows.
+
+Two native bars introduce the feature groups together, then each gets a focused
+section so lower-bar panels have space for their controls. All input uses the
+private compositor's real Wayland pointer seat, including smooth scrolling.
+Workspace previews capture actual application windows. Connectivity, quota,
+audio-device and mode controls stay in isolated demo state. No host VPN/network,
+volume or monitor setting is changed. Rates are a fetched snapshot, with 289
+actual history points per coin. Original CoinGecko/iTunes responses, public cover
+art, preview audio, source URLs and hashes are kept beside the recording at
+`~/Videos/tjikos/os/bartjik-public-20261028/`. Audio plays only in the music chapter. Bartjik starts with sound enabled after the viewer presses Play; other films retain their silent default.
+
+The versioned site media is `bartjik-showcase-v2.{mp4,webp}`. The poster is the
+opening identity **Panels at your fingertips**, with **Real rates. Music that
+moves. Your desktop, connected.** The outro retains the app icon/name/repository.
+Earlier site media remains available under its original filenames.
 
 ```sh
 cd ../tjikos
-python3 -B scripts/bartjik_showcase.py "$HOME/Videos/tjikos/os/bartjik-next.mp4"
+python3 -B scripts/bartjik_showcase.py "$HOME/Videos/tjikos/os/bartjik-next.mp4" \
+  --data "$HOME/Videos/tjikos/os/bartjik-public-20261028/snapshot.json"
 ```
 
 Runtjik's README is currently present in the local Tooltjik checkout but absent
@@ -110,3 +123,7 @@ every selected asset to compare SHA-256 hashes and saves a local receipt in
 when replacing media, then deploy the site. The Worker streams the existing
 `/os-previews/` URLs from R2 with HEAD, ETag and byte-range support for seeking.
 The build rejects generated media placed back in `public/`.
+
+Vite serves staged media from `.local/site-assets/` through its normal file
+middleware, including video byte ranges. This keeps `/os` reviewable locally
+without putting generated media in `public/`.

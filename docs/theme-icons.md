@@ -54,3 +54,9 @@ Versioned release cuts are prepared outside `public/`. The Tijpfiles release
 publisher uploads them in immutable mode before deploying the small registry and
 gallery manifest. Both theme ZIPs, their gallery SVGs, hashes and release manifest
 remain together in R2. Existing release bytes cannot be overwritten by a refresh.
+
+For local development, `bun run dev` serves generated media from
+`.local/site-assets/` and registered release snapshots from
+`.local/rose-punk-releases/<version>/`. Release registration retains the exact
+snapshot there, so the gallery can use its versioned URLs without copying files
+into `public/`. Missing local assets return 404 instead of the app's HTML.

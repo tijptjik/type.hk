@@ -76,7 +76,7 @@ let navigationTools = $derived(
                 aria-label={`${tool.name} — ${tool.media.title()}`}
                 class="block size-full object-contain"
                 controls
-                muted
+                muted={!tool.media.hasAudio}
                 playsinline
                 poster={tool.media.src}
                 preload="metadata"

@@ -9,6 +9,7 @@ export type OsTool = {
     src: string
     title: () => string
     videoSrc?: string
+    hasAudio?: boolean
   }
 }
 
@@ -17,7 +18,7 @@ export function osReadme(id: string) {
 }
 
 // One media item per tool. Keep stills until a recording is available.
-// Captures use synthetic demo data; see docs/os-showcase.md.
+// Data sources and isolated control fixtures are documented in docs/os-showcase.md.
 export const osTools: OsTool[] = [
   {
     id: 'notjik',
@@ -36,8 +37,9 @@ export const osTools: OsTool[] = [
     dateTime: '2026-10',
     description: m.os_bartjik_description,
     media: {
-      src: '/os-previews/bartjik-showcase.webp?v=panels-1',
-      videoSrc: '/os-previews/bartjik-showcase.mp4?v=panels-1',
+      src: '/os-previews/bartjik-showcase-v2.webp',
+      videoSrc: '/os-previews/bartjik-showcase-v2.mp4',
+      hasAudio: true,
       title: m.os_preview_status,
     },
   },
