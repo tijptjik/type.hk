@@ -32,7 +32,7 @@ class ThemeIconSyncTests(unittest.TestCase):
             desktop.mkdir(parents=True)
             servers.mkdir(parents=True)
             svg = b'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"/>'
-            for name in ('app', 'fish'):
+            for name in ('app', 'fish', *sync.OWN_APP_IDS):
                 (desktop / (name + '.svg')).write_bytes(svg)
             (servers / 'shelfmark.svg').write_bytes(svg)
             (site / 'src/lib/content').mkdir(parents=True)
@@ -46,3 +46,32 @@ class ThemeIconSyncTests(unittest.TestCase):
             fish = next(icon for icon in manifest if icon['id'] == 'fish')
             self.assertEqual(fish['license'], 'Original artwork')
             self.assertIn('/rose-punk/', fish['source'])
+
+            os_icons = site / 'public/os-icons'
+            self.assertEqual({path.stem for path in os_icons.glob('*.svg')}, set(sync.OWN_APP_IDS))
+            for name in sync.OWN_APP_IDS:
+                self.assertEqual((os_icons / f'{name}.svg').read_bytes(), (desktop / f'{name}.svg').read_bytes())
+
+    def test_shared_dark_tile_is_rejected_before_exports_change(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            source, site = root / 'source', root / 'site'
+            inputs = source / 'scripts/icons'
+            inputs.mkdir(parents=True)
+            for name in ('catalog', 'command-icons', 'homepage', 'provenance'):
+                (inputs / f'{name}.json').write_text('{}')
+            desktop = source / 'home/dot_local/share/icons/rose-punk/scalable/apps'
+            desktop.mkdir(parents=True)
+            svg = b'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"/>'
+            for name in sync.OWN_APP_IDS:
+                (desktop / f'{name}.svg').write_bytes(svg)
+            (desktop / 'notjik.svg').write_bytes(b'<svg xmlns="http://www.w3.org/2000/svg"><rect id="tile" fill="#26233a"/></svg>')
+            destination = site / 'public/os-icons'
+            destination.mkdir(parents=True)
+            existing = destination / 'notjik.svg'
+            existing.write_bytes(svg)
+            with patch.object(sync, 'ROOT', site), patch('sys.argv', ['sync-theme-icons.py', str(source)]):
+                with self.assertRaisesRegex(ValueError, 'without a shared tile'):
+                    sync.main()
+            self.assertEqual(existing.read_bytes(), svg)
+            self.assertFalse((site / 'public/rose-punk-icons').exists())

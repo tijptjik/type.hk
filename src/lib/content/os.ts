@@ -25,8 +25,8 @@ export const osTools: OsTool[] = [
     dateTime: '2026-10',
     description: m.os_notjik_description,
     media: {
-      src: '/os-previews/notjik-showcase.webp',
-      videoSrc: '/os-previews/notjik-showcase.mp4',
+      src: '/os-previews/notjik-showcase.webp?v=8',
+      videoSrc: '/os-previews/notjik-showcase.mp4?v=8',
       title: m.os_preview_notifications,
     },
   },

@@ -84,6 +84,7 @@ export const rosePunkPalette: PaletteColor[] = [
 ]
 
 export const rosePunkResources: ThemeResource[] = [
+  { label: 'Icon releases', href: '/rose-punk-releases/' },
   {
     label: 'Dotfiles',
     href: 'https://github.com/tijptjik/dotfiles',
