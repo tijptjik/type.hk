@@ -1,7 +1,10 @@
 <script lang="ts">
 import { onDestroy } from 'svelte'
-import icons from '$lib/content/rose-punk-icons.json'
+import allIcons from '$lib/content/rose-punk-icons.json'
 import * as m from '../../../paraglide/messages.js'
+
+// Launcher controls are not application icons, including in older release lists.
+const icons = allIcons.filter(icon => !icon.id.startsWith('runtjik-'))
 
 let query = $state('')
 let copyStates = $state<Record<string, 'copying' | 'copied'>>({})
