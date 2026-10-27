@@ -61,8 +61,8 @@ export const osTools: OsTool[] = [
     dateTime: '2026-05',
     description: m.os_tjikup_description,
     media: {
-      src: '/os-previews/tjikup-showcase-v1.webp',
-      videoSrc: '/os-previews/tjikup-showcase-v1.mp4',
+      src: '/os-previews/tjikup-showcase-v2.webp',
+      videoSrc: '/os-previews/tjikup-showcase-v2.mp4',
       title: m.os_preview_workflow,
     },
   },

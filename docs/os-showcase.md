@@ -23,9 +23,9 @@ Earlier exported screenshots remain available as source assets.
 | Tool | Source captures |
 | --- | --- |
 | Notjik | `~/Videos/tjikos/os/notjik-v8.mp4`; poster from `notjik-v8.review/00-intro.png` |
-| Bartjik | `~/Videos/tjikos/os/bartjik-v3.mp4`; poster from `bartjik-v3.review/00-intro.png` |
+| Bartjik | `~/Videos/tjikos/os/bartjik-v4.mp4` (no audio); poster from `bartjik-v3.review/00-intro.png` |
 | Runtjik | `~/Videos/tjikos/os/runtjik-v2.mp4`; opening-frame poster |
-| Tjikup | `~/Videos/tjikos/os/tjikup-v1.mp4`; opening-frame poster |
+| Tjikup | `~/Videos/tjikos/os/tjikup-v2.mp4`; opening-frame poster |
 | Mailtjik | `~/Videos/tjikos/os/mailtjik-v1.mp4`; opening-frame poster |
 | Greetjik | `~/Videos/tjikos/os/greetjik-v1.mp4`; opening-frame poster |
 
@@ -68,7 +68,7 @@ python3 -B scripts/os_showcase.py notjik "$HOME/Videos/tjikos/os/notjik-next.mp4
 The shared frame and proposed feature stories for the other five tools are in
 `../tjikos/docs/os-showcase.md`. Notjik and Bartjik use this shared template.
 
-Runtjik uses `runtjik-showcase-v2.{mp4,webp}`; the other three new films use
+Runtjik and Tjikup use `{tool}-showcase-v2.{mp4,webp}`; Mailtjik and Greetjik use
 `{tool}-showcase-v1.{mp4,webp}`. They use
 `../tjikos/scripts/suite_showcase.py` and the shared native stage:
 
@@ -76,12 +76,14 @@ Runtjik uses `runtjik-showcase-v2.{mp4,webp}`; the other three new films use
 | --- | --- |
 | Runtjik | Fuzzy app discovery, choosing an open instance, and gracefully closing running apps |
 | Mailtjik | Find a conversation, read rich mail with inline imagery, select and preview preservation scope |
-| Tjikup | One real successful workflow, parallel checks, verified results; busy section at 3× |
+| Tjikup | Real successful workflow, native rich reporting with six app icons, counts and timings; busy section at 3× |
 | Greetjik | **Start every session with a quip**; piped messages and three real pony renders, just for fun |
 
 All use native keyboard input and real application rendering at 1200 × 720,
-60 fps. Mail/launcher fixtures stay synthetic. Tjikup actually runs four
-application test suites, then packages and verifies their reports. Only its busy
+60 fps. Mail/launcher fixtures stay synthetic. Tjikup actually runs six
+application test suites, then packages and verifies their reports. Its final rich
+report shows all six current primary icons, 198 passing checks, per-app timings
+and package verification, using the existing native Kitty fleet report renderer. Only its busy
 section is sped up; the final success summary remains at normal speed. Its
 review folder includes the workflow, command receipts, verified package and
 precise edit boundaries. Runtjik uses the current managed icon, SHA-256
@@ -103,9 +105,9 @@ audio-device and mode controls stay in isolated demo state. No host VPN/network,
 volume or monitor setting is changed. Rates are a fetched snapshot, with 289
 actual history points per coin. Original CoinGecko/iTunes responses, public cover
 art, preview audio, source URLs and hashes are kept beside the recording at
-`~/Videos/tjikos/os/bartjik-public-20261028/`. Audio plays only in the music chapter. Bartjik starts with sound enabled after the viewer presses Play; other films retain their silent default.
+`~/Videos/tjikos/os/bartjik-public-20261028/`. All gallery films are silent. Bartjik’s public preview drives only the visual pulse. Its audio track was removed with a video stream copy; the output contains no audio stream and retains the exact video packets.
 
-The versioned site media is `bartjik-showcase-v2.{mp4,webp}`. The poster is the
+The silent movie is `bartjik-showcase-v3.mp4`; its poster is `bartjik-showcase-v2.webp`. The poster is the
 opening identity **Panels at your fingertips**, with **Real rates. Music that
 moves. Your desktop, connected.** The outro retains the app icon/name/repository.
 Earlier site media remains available under its original filenames.
