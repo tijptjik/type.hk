@@ -2,696 +2,701 @@
   {
     "id": "audio-player",
     "name": "Audio Player",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/audio-player.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/audio-player.svg"
   },
   {
     "id": "audiobookshelf",
     "name": "Audiobookshelf",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/audiobookshelf.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/audiobookshelf.svg"
   },
   {
     "id": "auto-m4b",
     "name": "Auto-M4B",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/auto-m4b.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/auto-m4b.svg"
   },
   {
     "id": "bartjik",
     "name": "Bartjik",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/bartjik.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/bartjik.svg"
   },
   {
     "id": "beets",
     "name": "Beets",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/beets.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/beets.svg"
   },
   {
     "id": "bitwarden",
     "name": "Bitwarden",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/bitwarden.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/bitwarden.svg"
   },
   {
     "id": "bluetooth-adapters",
     "name": "Bluetooth Adapters",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/bluetooth-adapters.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/bluetooth-adapters.svg"
   },
   {
     "id": "bluetooth-manager",
     "name": "Bluetooth Manager",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/bluetooth-manager.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/bluetooth-manager.svg"
   },
   {
     "id": "bookmarks",
     "name": "Bookmarks",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/bookmarks.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/bookmarks.svg"
   },
   {
     "id": "bookshelf",
     "name": "Bookshelf",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/bookshelf.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/bookshelf.svg"
   },
   {
     "id": "brave",
     "name": "Brave",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/brave.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/brave.svg"
   },
   {
     "id": "bun",
     "name": "Bun",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/bun.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/bun.svg"
   },
   {
     "id": "byparr",
     "name": "Byparr",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/byparr.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/byparr.svg"
   },
   {
     "id": "calendar",
     "name": "Calendar",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/calendar.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/calendar.svg"
   },
   {
     "id": "camera",
     "name": "Camera",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/camera.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/camera.svg"
   },
   {
     "id": "characters",
     "name": "Characters",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/characters.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/characters.svg"
   },
   {
     "id": "chatgpt",
     "name": "ChatGPT",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/chatgpt.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/chatgpt.svg"
   },
   {
     "id": "chezetc",
     "name": "Chezetc",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/chezetc.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/chezetc.svg"
   },
   {
     "id": "chezmoi",
     "name": "Chezmoi",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/chezmoi.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/chezmoi.svg"
   },
   {
     "id": "chrome",
     "name": "Google Chrome",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/chrome.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/chrome.svg"
   },
   {
     "id": "clocks",
     "name": "Clocks",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/clocks.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/clocks.svg"
   },
   {
     "id": "codex",
     "name": "Codex",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/codex.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/codex.svg"
   },
   {
     "id": "codex-lb",
     "name": "Codex LB",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/codex-lb.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/codex-lb.svg"
   },
   {
     "id": "collie",
     "name": "Collie",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/collie.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/collie.svg"
   },
   {
     "id": "color-profile-viewer",
     "name": "Color Profile Viewer",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/color-profile-viewer.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/color-profile-viewer.svg"
   },
   {
     "id": "connections",
     "name": "Connections",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/connections.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/connections.svg"
   },
   {
     "id": "contacts",
     "name": "Contacts",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/contacts.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/contacts.svg"
   },
   {
     "id": "discord",
     "name": "Discord",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/discord.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/discord.svg"
   },
   {
     "id": "disk-usage-analyzer",
     "name": "Disk Usage Analyzer",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/disk-usage-analyzer.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/disk-usage-analyzer.svg"
   },
   {
     "id": "disks",
     "name": "Disks",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/disks.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/disks.svg"
   },
   {
     "id": "docker",
     "name": "Docker",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/docker.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/docker.svg"
   },
   {
     "id": "document-scanner",
     "name": "Document Scanner",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/document-scanner.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/document-scanner.svg"
   },
   {
     "id": "document-viewer",
     "name": "Document Viewer",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/document-viewer.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/document-viewer.svg"
   },
   {
     "id": "drizzle",
     "name": "Drizzle Studio",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/drizzle.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/drizzle.svg"
   },
   {
     "id": "ephemera",
     "name": "Ephemera",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/ephemera.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/ephemera.svg"
   },
   {
     "id": "eye-of-gnome",
     "name": "Eye of GNOME",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/eye-of-gnome.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/eye-of-gnome.svg"
   },
   {
     "id": "fcitx-5-configuration",
     "name": "Fcitx 5 Configuration",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/fcitx-5-configuration.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/fcitx-5-configuration.svg"
   },
   {
     "id": "fedora-media-writer",
     "name": "Fedora Media Writer",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/fedora-media-writer.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/fedora-media-writer.svg"
   },
   {
     "id": "feishin",
     "name": "Feishin",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/feishin.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/feishin.svg"
   },
   {
     "id": "file-roller",
     "name": "File Roller",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/file-roller.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/file-roller.svg"
   },
   {
     "id": "files",
     "name": "Files",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/files.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/files.svg"
   },
   {
     "id": "firefox",
     "name": "Firefox",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/firefox.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/firefox.svg"
   },
   {
     "id": "fish",
     "name": "Fish shell",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/fish.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/fish.svg"
   },
   {
     "id": "flaresolverr",
     "name": "FlareSolverr",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/flaresolverr.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/flaresolverr.svg"
   },
   {
     "id": "flatpak",
     "name": "Flatpak",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/flatpak.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/flatpak.svg"
   },
   {
     "id": "flatseal",
     "name": "Flatseal",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/flatseal.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/flatseal.svg"
   },
   {
     "id": "fnm",
     "name": "FNM",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/fnm.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/fnm.svg"
   },
   {
     "id": "fonts",
     "name": "Fonts",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/fonts.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/fonts.svg"
   },
   {
     "id": "gimp",
     "name": "GIMP",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/gimp.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/gimp.svg"
   },
   {
     "id": "gitfetch",
     "name": "Gitfetch",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/gitfetch.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/gitfetch.svg"
   },
   {
     "id": "gmail",
     "name": "Gmail",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/gmail.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/gmail.svg"
+  },
+  {
+    "id": "gnome",
+    "name": "GNOME",
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/gnome.svg"
   },
   {
     "id": "google-calendar",
     "name": "Google Calendar",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/google-calendar.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/google-calendar.svg"
   },
   {
     "id": "google-photos",
     "name": "Google Photos",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/google-photos.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/google-photos.svg"
   },
   {
     "id": "gpu-screen-recorder",
     "name": "GPU Screen Recorder",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/gpu-screen-recorder.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/gpu-screen-recorder.svg"
   },
   {
     "id": "greetjik",
     "name": "Greetjik",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/greetjik.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/greetjik.svg"
   },
   {
     "id": "grimmory",
     "name": "Grimmory",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/grimmory.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/grimmory.svg"
   },
   {
     "id": "gum",
     "name": "Gum",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/gum.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/gum.svg"
   },
   {
     "id": "help",
     "name": "Help",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/help.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/help.svg"
   },
   {
     "id": "herdr",
     "name": "Herdr",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/herdr.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/herdr.svg"
   },
   {
     "id": "homepage",
     "name": "Homepage",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/homepage.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/homepage.svg"
   },
   {
     "id": "htop",
     "name": "Htop",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/htop.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/htop.svg"
   },
   {
     "id": "hyprvoice",
     "name": "Hyprvoice",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/hyprvoice.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/hyprvoice.svg"
   },
   {
     "id": "image-viewer",
     "name": "Image Viewer",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/image-viewer.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/image-viewer.svg"
   },
   {
     "id": "keyboard-layout-viewer",
     "name": "Keyboard layout viewer",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/keyboard-layout-viewer.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/keyboard-layout-viewer.svg"
   },
   {
     "id": "kitty",
     "name": "kitty",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/kitty.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/kitty.svg"
   },
   {
     "id": "koreader",
     "name": "KOReader",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/koreader.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/koreader.svg"
   },
   {
     "id": "lazylibrarian",
     "name": "LazyLibrarian",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/lazylibrarian.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/lazylibrarian.svg"
   },
   {
     "id": "lidarr",
     "name": "Lidarr",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/lidarr.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/lidarr.svg"
   },
   {
     "id": "llmtrim",
     "name": "llmtrim",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/llmtrim.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/llmtrim.svg"
   },
   {
     "id": "logs",
     "name": "Logs",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/logs.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/logs.svg"
   },
   {
     "id": "lutris",
     "name": "Lutris",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/lutris.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/lutris.svg"
   },
   {
     "id": "mailtjik",
     "name": "Mailtjik",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/mailtjik.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/mailtjik.svg"
   },
   {
     "id": "maps",
     "name": "Maps",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/maps.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/maps.svg"
   },
   {
     "id": "mariadb",
     "name": "MariaDB",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/mariadb.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/mariadb.svg"
   },
   {
     "id": "mpv-media-player",
     "name": "mpv Media Player",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/mpv-media-player.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/mpv-media-player.svg"
   },
   {
     "id": "mullvad",
     "name": "Mullvad VPN",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/mullvad.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/mullvad.svg"
   },
   {
     "id": "navidrome",
     "name": "Navidrome",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/navidrome.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/navidrome.svg"
   },
   {
     "id": "neovim",
     "name": "Neovim",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/neovim.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/neovim.svg"
   },
   {
     "id": "nginx",
     "name": "Nginx",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/nginx.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/nginx.svg"
   },
   {
     "id": "notjik",
     "name": "Notjik",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/notjik.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/notjik.svg"
   },
   {
     "id": "obs-studio",
     "name": "OBS Studio",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/obs-studio.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/obs-studio.svg"
   },
   {
     "id": "obsidian",
     "name": "Obsidian",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/obsidian.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/obsidian.svg"
   },
   {
     "id": "octo-fiestarr",
     "name": "Octo-Fiestarr",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/octo-fiestarr.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/octo-fiestarr.svg"
   },
   {
     "id": "oo7",
     "name": "oo7",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/oo7.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/oo7.svg"
   },
   {
     "id": "parental-controls",
     "name": "Parental Controls",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/parental-controls.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/parental-controls.svg"
   },
   {
     "id": "passwords-and-keys",
     "name": "Passwords and Keys",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/passwords-and-keys.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/passwords-and-keys.svg"
   },
   {
     "id": "plex",
     "name": "Plex",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/plex.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/plex.svg"
   },
   {
     "id": "plex-rewind",
     "name": "Plex Rewind",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/plex-rewind.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/plex-rewind.svg"
   },
   {
     "id": "power",
     "name": "Power",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/power.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/power.svg"
   },
   {
     "id": "problem-reporting",
     "name": "Problem Reporting",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/problem-reporting.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/problem-reporting.svg"
   },
   {
     "id": "profilarr",
     "name": "Profilarr",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/profilarr.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/profilarr.svg"
   },
   {
     "id": "prowlarr",
     "name": "Prowlarr",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/prowlarr.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/prowlarr.svg"
   },
   {
     "id": "python",
     "name": "Python",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/python.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/python.svg"
   },
   {
     "id": "qgis-desktop",
     "name": "QGIS Desktop",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/qgis-desktop.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/qgis-desktop.svg"
   },
   {
     "id": "radarr",
     "name": "Radarr",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/radarr.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/radarr.svg"
   },
   {
     "id": "runtjik",
     "name": "Runtjik",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/runtjik.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/runtjik.svg"
   },
   {
     "id": "rust",
     "name": "Rust",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/rust.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/rust.svg"
   },
   {
     "id": "scrcpy",
     "name": "scrcpy",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/scrcpy.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/scrcpy.svg"
   },
   {
     "id": "scrutiny",
     "name": "Scrutiny",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/scrutiny.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/scrutiny.svg"
   },
   {
     "id": "seerr",
     "name": "Seerr",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/seerr.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/seerr.svg"
   },
   {
     "id": "settings",
     "name": "Settings",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/settings.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/settings.svg"
   },
   {
     "id": "shelfmark",
     "name": "Shelfmark",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/shelfmark.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/shelfmark.svg"
   },
   {
     "id": "signal",
     "name": "Signal",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/signal.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/signal.svg"
   },
   {
     "id": "simplescreenrecorder",
     "name": "SimpleScreenRecorder",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/simplescreenrecorder.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/simplescreenrecorder.svg"
   },
   {
     "id": "snapraid",
     "name": "SnapRAID",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/snapraid.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/snapraid.svg"
   },
   {
     "id": "software",
     "name": "Software",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/software.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/software.svg"
   },
   {
     "id": "solaar",
     "name": "Solaar",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/solaar.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/solaar.svg"
   },
   {
     "id": "sonarr",
     "name": "Sonarr",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/sonarr.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/sonarr.svg"
   },
   {
     "id": "spotify",
     "name": "Spotify",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/spotify.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/spotify.svg"
   },
   {
     "id": "steam",
     "name": "Steam",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/steam.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/steam.svg"
   },
   {
     "id": "strata",
     "name": "Strata",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/strata.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/strata.svg"
   },
   {
     "id": "sublime-text",
     "name": "Sublime Text",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/sublime-text.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/sublime-text.svg"
   },
   {
     "id": "system-monitor",
     "name": "System Monitor",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/system-monitor.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/system-monitor.svg"
   },
   {
     "id": "tailscale",
     "name": "Tailscale",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/tailscale.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/tailscale.svg"
   },
   {
     "id": "tautulli",
     "name": "Tautulli",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/tautulli.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/tautulli.svg"
   },
   {
     "id": "telegram",
     "name": "Telegram",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/telegram.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/telegram.svg"
   },
   {
     "id": "terminal",
     "name": "Terminal",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/terminal.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/terminal.svg"
   },
   {
     "id": "text-editor",
     "name": "Text Editor",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/text-editor.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/text-editor.svg"
   },
   {
     "id": "thumbnails",
     "name": "Thumbnails",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/thumbnails.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/thumbnails.svg"
   },
   {
     "id": "tippecanoe",
     "name": "Tippecanoe",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/tippecanoe.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/tippecanoe.svg"
   },
   {
     "id": "tjikup",
     "name": "Tjikup",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/tjikup.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/tjikup.svg"
   },
   {
     "id": "tour",
     "name": "Tour",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/tour.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/tour.svg"
   },
   {
     "id": "transmission",
     "name": "Transmission",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/transmission.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/transmission.svg"
   },
   {
     "id": "tweaks",
     "name": "Tweaks",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/tweaks.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/tweaks.svg"
   },
   {
     "id": "unpackerr",
     "name": "Unpackerr",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/unpackerr.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/unpackerr.svg"
   },
   {
     "id": "uuctl",
     "name": "uuctl",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/uuctl.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/uuctl.svg"
   },
   {
     "id": "uv",
     "name": "UV",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/uv.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/uv.svg"
   },
   {
     "id": "video-player",
     "name": "Video Player",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/video-player.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/video-player.svg"
   },
   {
     "id": "vite",
     "name": "Vite",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/vite.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/vite.svg"
   },
   {
     "id": "vlc",
     "name": "VLC media player",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/vlc.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/vlc.svg"
   },
   {
     "id": "volume-control",
     "name": "Volume Control",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/volume-control.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/volume-control.svg"
   },
   {
     "id": "weather",
     "name": "Weather",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/weather.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/weather.svg"
   },
   {
     "id": "yuzu",
     "name": "yuzu",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/yuzu.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/yuzu.svg"
   },
   {
     "id": "zapzap",
     "name": "ZapZap",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/zapzap.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/zapzap.svg"
   },
   {
     "id": "zed",
     "name": "Zed",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/zed.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/zed.svg"
   },
   {
     "id": "zed-nightly",
     "name": "Zed Nightly",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/zed-nightly.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/zed-nightly.svg"
   },
   {
     "id": "zed-preview",
     "name": "Zed Preview",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/zed-preview.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/zed-preview.svg"
   },
   {
     "id": "zen",
     "name": "Zen Browser",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/zen.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/zen.svg"
   },
   {
     "id": "zoom",
     "name": "Zoom",
-    "src": "/rose-punk-releases/0.1.0-rc.7/icons/zoom.svg"
+    "src": "/rose-punk-releases/0.1.0-rc.8/icons/zoom.svg"
   }
 ]
