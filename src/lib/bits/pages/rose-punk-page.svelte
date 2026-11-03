@@ -99,15 +99,9 @@ function downloadThemeJson() {
       </div>
 
       <aside
-        aria-labelledby="resources-heading"
+        aria-label={resourcesHeading}
         class="w-full max-w-[20rem] self-start max-[700px]:self-auto"
       >
-        <h2
-          class="mb-4 font-display text-[.78rem] font-semibold tracking-[.1em] text-muted uppercase max-[560px]:text-[#ff53a6]"
-          id="resources-heading"
-        >
-          {resourcesHeading}
-        </h2>
         <div class="flex flex-wrap gap-[.6rem]">
           {#each resources as resource}
             {#if resource.href}
@@ -149,14 +143,14 @@ function downloadThemeJson() {
         </button>
       </div>
       <Tooltip.Provider delayDuration={250}>
-        <div class="grid grid-cols-2 gap-2 sm:grid-cols-4 xl:grid-cols-6">
+        <div class="grid grid-cols-2 gap-3 sm:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
           {#each palette as color}
             <Tooltip.Root>
               <Tooltip.Trigger
                 aria-label={copiedHex === color.hex
                     ? `${color.hex} copied to clipboard`
                     : `Copy ${color.hex} (${color.token}) to clipboard`}
-                class="group relative grid w-full cursor-pointer grid-cols-[2rem_minmax(0,1fr)] items-center gap-3 rounded-[.65rem] border border-[#3b384d] bg-[#1f1d2e] p-3 text-left text-[#f5f5f7] transition-colors hover:border-[#ff53a6] focus-visible:border-[#ff53a6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ff53a6] sm:grid-cols-[2.5rem_minmax(0,1fr)]"
+                class="group relative grid min-h-[5.75rem] w-full cursor-pointer grid-cols-[minmax(0,1fr)_max-content] items-center gap-3 rounded-[.65rem] border border-[#3b384d] bg-[#1f1d2e] p-3 text-left text-[#f5f5f7] transition-colors hover:border-[#ff53a6] focus-visible:border-[#ff53a6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ff53a6]"
                 onclick={() => copyHex(color.hex)}
                 type="button"
               >
@@ -181,10 +175,10 @@ function downloadThemeJson() {
                 </span>
                 <span
                   aria-hidden="true"
-                  class="h-12 rounded-[.35rem] border border-white/12"
+                  class="min-h-12 self-stretch rounded-[.35rem] border border-white/12"
                   style={`background: ${color.hex}`}
                 ></span>
-                <span>
+                <span class="pr-4 whitespace-nowrap">
                   <span class="block font-display text-[.85rem]">
                     {color.token}
                   </span>
