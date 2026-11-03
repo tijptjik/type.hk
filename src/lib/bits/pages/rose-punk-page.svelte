@@ -1,5 +1,6 @@
 <script lang="ts">
 import { Check, Copy, Download } from '@lucide/svelte'
+import { Tooltip } from 'bits-ui'
 import LinkIcon from '$lib/bits/components/link-icon.svelte'
 import ThemeIcons from '$lib/bits/sections/theme-icons.svelte'
 import type { PaletteColor, ThemeResource } from '$lib/content/rose-punk'
@@ -147,54 +148,63 @@ function downloadThemeJson() {
           <span class="relative top-[2px]">JSON</span>
         </button>
       </div>
-      <div class="grid grid-cols-[repeat(auto-fit,minmax(13rem,1fr))] gap-3">
-        {#each palette as color}
-          <button
-            aria-label={copiedHex === color.hex
-                ? `${color.hex} copied to clipboard`
-                : `Copy ${color.hex} (${color.token}) to clipboard`}
-            class="group relative grid min-h-[6.3rem] w-full cursor-pointer grid-cols-[3.4rem_1fr] gap-[.85rem] rounded-[.65rem] border border-[#3b384d] bg-[#1f1d2e] p-3 text-left transition-colors hover:border-[#ff53a6] focus-visible:border-[#ff53a6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ff53a6]"
-            onclick={() => copyHex(color.hex)}
-            title={copiedHex === color.hex ? `${color.hex} copied` : `Copy ${color.hex}`}
-            type="button"
-          >
-            <span
-              aria-hidden="true"
-              class="pointer-events-none absolute top-3 right-3 grid size-5 place-items-center"
-            >
-              <Copy
-                class={`absolute size-4 transition-all duration-200 ${
-                    copiedHex === color.hex
-                      ? 'scale-75 -rotate-45 opacity-0'
-                      : 'scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100'
-                  }`}
-              />
-              <Check
-                class={`absolute size-4 text-[#9bdfeb] transition-all duration-200 ${
-                    copiedHex === color.hex
-                      ? 'scale-100 opacity-100'
-                      : 'scale-75 rotate-45 opacity-0'
-                  }`}
-              />
-            </span>
-            <div
-              aria-label={`${color.token} ${color.hex}`}
-              class="min-h-[4.7rem] rounded-[.4rem] border border-white/12"
-              role="img"
-              style={`background: ${color.hex}`}
-            ></div>
-            <div>
-              <h3 class="m-0 font-display text-[.9rem] text-[#f5f5f7]">
-                {color.token}
-              </h3>
-              <code class="font-mono text-[.75rem] text-[#f4b7b5]">{color.hex}</code>
-              <p class="mt-[.4rem] text-[.71rem] leading-[1.35] text-[#9bdfeb]">
-                {color.description}
-              </p>
-            </div>
-          </button>
-        {/each}
-      </div>
+      <Tooltip.Provider delayDuration={250}>
+        <div class="grid grid-cols-2 gap-2 sm:grid-cols-4 xl:grid-cols-6">
+          {#each palette as color}
+            <Tooltip.Root>
+              <Tooltip.Trigger
+                aria-label={copiedHex === color.hex
+                    ? `${color.hex} copied to clipboard`
+                    : `Copy ${color.hex} (${color.token}) to clipboard`}
+                class="group relative grid w-full cursor-pointer grid-cols-[2rem_minmax(0,1fr)] items-center gap-3 rounded-[.65rem] border border-[#3b384d] bg-[#1f1d2e] p-3 text-left text-[#f5f5f7] transition-colors hover:border-[#ff53a6] focus-visible:border-[#ff53a6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ff53a6] sm:grid-cols-[2.5rem_minmax(0,1fr)]"
+                onclick={() => copyHex(color.hex)}
+                type="button"
+              >
+                <span
+                  aria-hidden="true"
+                  class="pointer-events-none absolute top-2 right-2 grid size-4 place-items-center"
+                >
+                  <Copy
+                    class={`absolute size-4 transition-all duration-200 ${
+                        copiedHex === color.hex
+                          ? 'scale-75 -rotate-45 opacity-0'
+                          : 'scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100'
+                      }`}
+                  />
+                  <Check
+                    class={`absolute size-4 text-[#9bdfeb] transition-all duration-200 ${
+                        copiedHex === color.hex
+                          ? 'scale-100 opacity-100'
+                          : 'scale-75 rotate-45 opacity-0'
+                      }`}
+                  />
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="h-12 rounded-[.35rem] border border-white/12"
+                  style={`background: ${color.hex}`}
+                ></span>
+                <span>
+                  <span class="block font-display text-[.85rem]">
+                    {color.token}
+                  </span>
+                  <code class="font-mono text-[.75rem] text-[#f4b7b5]">{color.hex}</code>
+                </span>
+              </Tooltip.Trigger>
+              <Tooltip.Portal>
+                <Tooltip.Content
+                  role="tooltip"
+                  sideOffset={8}
+                  collisionPadding={12}
+                  class="z-50 max-w-[min(18rem,calc(100vw-24px))] rounded-lg border border-[#555169] bg-[#26233a] px-3 py-2 text-[.75rem] leading-relaxed text-[#9bdfeb] shadow-lg"
+                >
+                  {color.description}
+                </Tooltip.Content>
+              </Tooltip.Portal>
+            </Tooltip.Root>
+          {/each}
+        </div>
+      </Tooltip.Provider>
     </section>
 
     <ThemeIcons />

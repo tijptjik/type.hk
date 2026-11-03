@@ -5,6 +5,10 @@ worker-configuration.d.ts
 src/paraglide
 *-auth.json
 
+# Local Playwright screenshots and session logs.
+/output/playwright/
+/.playwright-cli/
+
 # Generated public media and release bundles are stored in R2.
 .local/
 __pycache__/
