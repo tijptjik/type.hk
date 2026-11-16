@@ -4,7 +4,7 @@ import { paraglideVitePlugin } from '@inlang/paraglide-js'
 import tailwindcss from '@tailwindcss/vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 import { defineConfig } from 'vite'
-import { assetKey } from './src/lib/r2-assets'
+import { assetKey } from './src/lib/r2-assets.ts'
 
 export default defineConfig({
   server: {
