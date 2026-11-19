@@ -25,7 +25,7 @@
 
 ## Maps
 
-- [A Romantic's Atlas of Hong Kong](https://romanticatlas.hype.hk/?noSplash=true&noMusic=true) — An interactive atlas of Hong Kong.
+- [A Romantic's Atlas of Hong Kong](https://romanticatlas.hype.hk/noMusic=true) — An interactive atlas of Hong Kong.
 - [HK Ghost Signs](https://hype.hk?project=hkghostsigns) — A map of Hong Kong's defunct and faded signs.
 - [Hong Kong Tramways](https://tramways.hype.hk) — An interactive map of Hong Kong's tramways.
 - [Breadline](https://breadline.hk) — A map for just-in-time food recovery in Hong Kong.

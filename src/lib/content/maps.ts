@@ -21,7 +21,7 @@ export const mapShowcases: MapShowcase[] = [
   {
     title: "A Romantic's Atlas of Hong Kong",
     dateTime: '2026-08',
-    href: 'https://romanticatlas.hype.hk/?noSplash=true&noMusic=true',
+    href: 'https://romanticatlas.hype.hk/noMusic=true',
     embedUrl: 'https://romanticatlas.hype.hk?kioskMode=true',
   },
   {
