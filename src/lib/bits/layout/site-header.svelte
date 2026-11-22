@@ -120,9 +120,11 @@ onMount(() => {
 <div
   aria-hidden="true"
   bind:this={navigationMeasure}
-  class="pointer-events-none fixed top-0 left-0 grid w-max grid-cols-[auto_auto_auto] gap-4 invisible"
+  class="pointer-events-none invisible fixed top-0 left-0 grid w-max grid-cols-[auto_auto_auto] gap-4"
 >
-  <span class="font-display text-[1.15rem] font-bold tracking-[.08em] text-foreground">{brand}</span>
+  <span class="font-display text-foreground text-[1.15rem] font-bold tracking-[.08em]"
+    >{brand}</span
+  >
   <ul
     class="flex min-w-max list-none items-center justify-center gap-[.9rem] overflow-visible p-0"
   >
@@ -131,7 +133,7 @@ onMount(() => {
         {#if index > 0}
           <span aria-hidden="true" class="text-muted">·</span>
         {/if}
-        <span class="text-[.9rem] text-foreground whitespace-nowrap">{item.label}</span>
+        <span class="text-foreground text-[.9rem] whitespace-nowrap">{item.label}</span>
         {#if item.external}
           <LinkIcon name="external" size={14} />
         {/if}
@@ -145,7 +147,7 @@ onMount(() => {
 </div>
 
 <header
-  class={`sticky top-0 w-full bg-background transition-transform duration-180 motion-reduce:transition-none ${menuOpen ? 'z-[60]' : 'z-10'} ${isHidden ? '-translate-y-full' : ''}`}
+  class={`bg-background sticky top-0 w-full transition-transform duration-180 motion-reduce:transition-none ${menuOpen ? 'z-[60]' : 'z-10'} ${isHidden ? '-translate-y-full' : ''}`}
 >
   <div
     bind:this={header}
@@ -156,15 +158,15 @@ onMount(() => {
       class={`grid items-center gap-4 max-[560px]:gap-[.6rem] ${isCompact ? 'grid-cols-[1fr_auto]' : 'grid-cols-[auto_minmax(0,1fr)_auto]'}`}
     >
       <a
-        class="font-display text-[1.15rem] font-bold tracking-[.08em] text-foreground no-underline hover:text-link"
+        class="font-display text-foreground hover:text-link text-[1.15rem] font-bold tracking-[.08em] no-underline"
         href={homeHref}
-        onclick={(event) => handleNavigation(event, { href: homeHref, label: 'Home' })}
+        onclick={event => handleNavigation(event, { href: homeHref, label: 'Home' })}
         >{brand}</a
       >
 
       {#if pageTitle}
         <span
-          class={`absolute left-1/2 max-w-[calc(100%-7rem)] -translate-x-1/2 overflow-hidden font-display text-[.78rem] font-semibold tracking-[.06em] text-foreground text-ellipsis text-center uppercase whitespace-nowrap ${isCompact ? 'block' : 'hidden'}`}
+          class={`font-display text-foreground pointer-events-none absolute left-1/2 max-w-[calc(100%-7rem)] -translate-x-1/2 overflow-hidden text-center text-[.78rem] font-semibold tracking-[.06em] text-ellipsis whitespace-nowrap uppercase ${isCompact ? 'block' : 'hidden'}`}
           >{compactPageTitle}</span
         >
       {/if}
@@ -179,9 +181,9 @@ onMount(() => {
             {/if}
             <a
               aria-current={item.active ? 'page' : undefined}
-              class={`inline-flex items-center gap-[.2rem] text-[.9rem] text-foreground no-underline whitespace-nowrap hover:text-link ${item.active ? 'text-link' : ''}`}
+              class={`text-foreground hover:text-link inline-flex items-center gap-[.2rem] text-[.9rem] whitespace-nowrap no-underline ${item.active ? 'text-link' : ''}`}
               href={item.href}
-              onclick={(event) => handleNavigation(event, item)}
+              onclick={event => handleNavigation(event, item)}
               rel={item.external ? 'noopener noreferrer' : undefined}
               target={item.external ? '_blank' : undefined}
             >
@@ -196,7 +198,7 @@ onMount(() => {
       </ul>
 
       <div
-        class={`justify-self-end items-center gap-[.45rem] ${isCompact ? 'hidden' : 'flex'}`}
+        class={`items-center gap-[.45rem] justify-self-end ${isCompact ? 'hidden' : 'flex'}`}
       >
         <Tooltip.Provider delayDuration={250}>
           <Tooltip.Root>
@@ -205,7 +207,7 @@ onMount(() => {
                 <button
                   {...props}
                   aria-label={themeToggleLabel}
-                  class="inline-grid size-8 place-items-center rounded-[.45rem] text-foreground hover:bg-surface hover:text-link"
+                  class="text-foreground hover:bg-surface hover:text-link inline-grid size-8 place-items-center rounded-[.45rem]"
                   onclick={onThemeToggle}
                   type="button"
                 >
@@ -216,7 +218,7 @@ onMount(() => {
 
             <Tooltip.Portal>
               <Tooltip.Content
-                class="z-10 rounded-[.45rem] border border-border bg-surface px-[.6rem] py-[.45rem] text-[.75rem] text-foreground shadow-[0_.5rem_1.5rem_rgb(0_0_0_/_0.2)]"
+                class="border-border bg-surface text-foreground z-10 rounded-[.45rem] border px-[.6rem] py-[.45rem] text-[.75rem] shadow-[0_.5rem_1.5rem_rgb(0_0_0_/_0.2)]"
                 side="bottom"
                 sideOffset={8}
               >
@@ -235,14 +237,14 @@ onMount(() => {
         >
           <Select.Trigger
             aria-label={languageLabel}
-            class="inline-grid size-8 place-items-center rounded-[.45rem] p-0 text-[.83rem] text-muted hover:bg-surface hover:text-link"
+            class="text-muted hover:bg-surface hover:text-link inline-grid size-8 place-items-center rounded-[.45rem] p-0 text-[.83rem]"
           >
             <ProIcon name="globe" size={20} />
           </Select.Trigger>
 
           <Select.Portal>
             <Select.Content
-              class="z-10 min-w-36 rounded-[.45rem] border border-border bg-surface p-[.3rem] text-foreground shadow-[0_.5rem_1.5rem_rgb(0_0_0_/_0.2)]"
+              class="border-border bg-surface text-foreground z-10 min-w-36 rounded-[.45rem] border p-[.3rem] shadow-[0_.5rem_1.5rem_rgb(0_0_0_/_0.2)]"
               side="bottom"
               sideOffset={8}
             >
@@ -268,7 +270,7 @@ onMount(() => {
         aria-controls="mobile-navigation"
         aria-expanded={menuOpen}
         aria-label={menuToggleLabel}
-        class={`size-8 place-items-center rounded-[.45rem] text-foreground hover:bg-surface ${isCompact ? 'inline-grid' : 'hidden'}`}
+        class={`text-foreground hover:bg-surface size-8 place-items-center rounded-[.45rem] ${isCompact ? 'inline-grid' : 'hidden'}`}
         onclick={() => (menuOpen = !menuOpen)}
         type="button"
       >
@@ -278,7 +280,7 @@ onMount(() => {
 
     {#if isCompact && menuOpen}
       <div
-        class="absolute top-full right-0 left-0 z-5 grid gap-4 mt-[-1.2px] rounded-[.65rem] border border-border bg-surface p-[.8rem] shadow-[0_.5rem_1.5rem_rgb(0_0_0_/_0.16)]"
+        class="border-border bg-surface absolute top-full right-0 left-0 z-5 mt-[-1.2px] grid gap-4 rounded-[.65rem] border p-[.8rem] shadow-[0_.5rem_1.5rem_rgb(0_0_0_/_0.16)]"
         id="mobile-navigation"
         transition:fly={{ y: -8, duration: 160 }}
       >
@@ -287,9 +289,9 @@ onMount(() => {
             <li>
               <a
                 aria-current={item.active ? 'page' : undefined}
-                class={`flex min-h-10 w-full items-center gap-2 rounded-[.4rem] px-[.55rem] py-[.45rem] text-left text-[.9rem] text-foreground no-underline hover:bg-background hover:text-link ${item.active ? 'text-link' : ''}`}
+                class={`text-foreground hover:bg-background hover:text-link flex min-h-10 w-full items-center gap-2 rounded-[.4rem] px-[.55rem] py-[.45rem] text-left text-[.9rem] no-underline ${item.active ? 'text-link' : ''}`}
                 href={item.href}
-                onclick={(event) => handleNavigation(event, item)}
+                onclick={event => handleNavigation(event, item)}
                 rel={item.external ? 'noopener noreferrer' : undefined}
                 target={item.external ? '_blank' : undefined}
               >
@@ -303,9 +305,11 @@ onMount(() => {
           {/each}
         </ul>
 
-        <div class="flex items-center justify-between border-t border-border pt-[.65rem]">
+        <div
+          class="border-border flex items-center justify-between border-t pt-[.65rem]"
+        >
           <button
-            class="flex min-h-10 items-center gap-2 rounded-[.4rem] px-[.55rem] py-[.45rem] text-left text-[.9rem] text-foreground hover:bg-background hover:text-link"
+            class="text-foreground hover:bg-background hover:text-link flex min-h-10 items-center gap-2 rounded-[.4rem] px-[.55rem] py-[.45rem] text-left text-[.9rem]"
             onclick={onThemeToggle}
             type="button"
           >
@@ -322,7 +326,7 @@ onMount(() => {
           >
             <Select.Trigger
               aria-label={languageLabel}
-              class="flex min-h-10 items-center gap-2 rounded-[.4rem] px-[.55rem] py-[.45rem] text-left text-[.9rem] text-foreground hover:bg-background hover:text-link"
+              class="text-foreground hover:bg-background hover:text-link flex min-h-10 items-center gap-2 rounded-[.4rem] px-[.55rem] py-[.45rem] text-left text-[.9rem]"
             >
               <ProIcon name="globe" size={20} />
               <span>{languageLabel}</span>
@@ -330,7 +334,7 @@ onMount(() => {
 
             <Select.Portal>
               <Select.Content
-                class="z-10 min-w-36 rounded-[.45rem] border border-border bg-surface p-[.3rem] text-foreground shadow-[0_.5rem_1.5rem_rgb(0_0_0_/_0.2)]"
+                class="border-border bg-surface text-foreground z-10 min-w-36 rounded-[.45rem] border p-[.3rem] shadow-[0_.5rem_1.5rem_rgb(0_0_0_/_0.2)]"
                 side="bottom"
                 sideOffset={8}
               >

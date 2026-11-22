@@ -20,14 +20,14 @@ panels and terminal captures remain complete. Videos play on request with native
 controls and metadata preloading. The current page uses a native showcase film and opening-frame poster for each of the six tools.
 Earlier exported screenshots remain available as source assets.
 
-| Tool | Source captures |
-| --- | --- |
-| Notjik | `~/Videos/tjikos/os/notjik-v8.mp4`; poster from `notjik-v8.review/00-intro.png` |
-| Bartjik | `~/Videos/tjikos/os/bartjik-v4.mp4` (no audio); poster from `bartjik-v3.review/00-intro.png` |
-| Runtjik | `~/Videos/tjikos/os/runtjik-v2.mp4`; opening-frame poster |
-| Tjikup | `~/Videos/tjikos/os/tjikup-v2.mp4`; opening-frame poster |
-| Mailtjik | `~/Videos/tjikos/os/mailtjik-v1.mp4`; opening-frame poster |
-| Greetjik | `~/Videos/tjikos/os/greetjik-v1.mp4`; opening-frame poster |
+| Tool     | Source captures                                                                              |
+| -------- | -------------------------------------------------------------------------------------------- |
+| Notjik   | `~/Videos/tjikos/os/notjik-v8.mp4`; poster from `notjik-v8.review/00-intro.png`              |
+| Bartjik  | `~/Videos/tjikos/os/bartjik-v4.mp4` (no audio); poster from `bartjik-v3.review/00-intro.png` |
+| Runtjik  | `~/Videos/tjikos/os/runtjik-v2.mp4`; opening-frame poster                                    |
+| Tjikup   | `~/Videos/tjikos/os/tjikup-v2.mp4`; opening-frame poster                                     |
+| Mailtjik | `~/Videos/tjikos/os/mailtjik-v1.mp4`; opening-frame poster                                   |
+| Greetjik | `~/Videos/tjikos/os/greetjik-v1.mp4`; opening-frame poster                                   |
 
 Icons prepared in `.local/site-assets/os-icons/` are the six transparent primary SVGs copied from
 Tijpfiles' `home/dot_local/share/icons/rose-punk/scalable/apps/` exports. They
@@ -72,12 +72,12 @@ Runtjik and Tjikup use `{tool}-showcase-v2.{mp4,webp}`; Mailtjik and Greetjik us
 `{tool}-showcase-v1.{mp4,webp}`. They use
 `../tjikos/scripts/suite_showcase.py` and the shared native stage:
 
-| Tool | End-user story |
-| --- | --- |
-| Runtjik | Fuzzy app discovery, choosing an open instance, and gracefully closing running apps |
-| Mailtjik | Find a conversation, read rich mail with inline imagery, select and preview preservation scope |
-| Tjikup | Real successful workflow, native rich reporting with six app icons, counts and timings; busy section at 3× |
-| Greetjik | **Start every session with a quip**; piped messages and three real pony renders, just for fun |
+| Tool     | End-user story                                                                                             |
+| -------- | ---------------------------------------------------------------------------------------------------------- |
+| Runtjik  | Fuzzy app discovery, choosing an open instance, and gracefully closing running apps                        |
+| Mailtjik | Find a conversation, read rich mail with inline imagery, select and preview preservation scope             |
+| Tjikup   | Real successful workflow, native rich reporting with six app icons, counts and timings; busy section at 3× |
+| Greetjik | **Start every session with a quip**; piped messages and three real pony renders, just for fun              |
 
 All use native keyboard input and real application rendering at 1200 × 720,
 60 fps. Mail/launcher fixtures stay synthetic. Tjikup actually runs six

@@ -6,7 +6,14 @@
     "useIgnoreFile": true
   },
   "files": {
-    "includes": ["**", "!**/node_modules", "!**/dist", "!**/.wrangler", "!**/*.d.ts"]
+    "includes": [
+      "**",
+      "!**/node_modules",
+      "!**/dist",
+      "!**/.wrangler",
+      "!**/.dotjik-runner",
+      "!**/*.d.ts"
+    ]
   },
   "formatter": {
     "enabled": true,

@@ -8,18 +8,25 @@ function bucket() {
     etag: 'version-one',
     httpEtag: '"version-one"',
     uploaded: new Date('2026-10-27T00:00:00Z'),
-    writeHttpMetadata(headers) { headers.set('Content-Type', 'video/mp4') },
+    writeHttpMetadata(headers) {
+      headers.set('Content-Type', 'video/mp4')
+    },
   }
   return {
-    async head() { return metadata },
-    async get(key, options) {
+    async head() {
+      return metadata
+    },
+    async get(_key, options) {
       const range = options?.range
-      const data = range ? bytes.slice(range.offset, range.offset + range.length) : bytes
+      const data = range
+        ? bytes.slice(range.offset, range.offset + range.length)
+        : bytes
       return { ...metadata, body: new Blob([data]).stream() }
     },
   }
 }
-const request = (headers = {}, method = 'GET') => new Request('https://type.hk/os-previews/test.mp4', { method, headers })
+const request = (headers = {}, method = 'GET') =>
+  new Request('https://type.hk/os-previews/test.mp4', { method, headers })
 
 describe('R2 generated assets', () => {
   test('keeps registry/index and application routes in static assets', () => {
@@ -28,7 +35,9 @@ describe('R2 generated assets', () => {
     expect(assetKey('/themes/rose-punk')).toBeNull()
     expect(assetKey('/contact.vcf')).toBeNull()
     expect(assetKey('/private/secret')).toBeNull()
-    expect(assetKey('/rose-punk-releases/0.1.0-rc.1/rose-punk.zip')).toBe('typehk/rose-punk-releases/0.1.0-rc.1/rose-punk.zip')
+    expect(assetKey('/rose-punk-releases/0.1.0-rc.1/rose-punk.zip')).toBe(
+      'typehk/rose-punk-releases/0.1.0-rc.1/rose-punk.zip',
+    )
   })
   test('serves full streaming responses and HEAD metadata', async () => {
     const response = await assetResponse(request(), bucket(), 'key')
@@ -52,18 +61,38 @@ describe('R2 generated assets', () => {
     }
   })
   test('rejects unsatisfiable ranges and respects If-Range', async () => {
-    const invalid = await assetResponse(request({ Range: 'bytes=20-' }), bucket(), 'key')
+    const invalid = await assetResponse(
+      request({ Range: 'bytes=20-' }),
+      bucket(),
+      'key',
+    )
     expect(invalid.status).toBe(416)
     expect(invalid.headers.get('Content-Range')).toBe('bytes */10')
-    const changed = await assetResponse(request({ Range: 'bytes=2-5', 'If-Range': '"old"' }), bucket(), 'key')
+    const changed = await assetResponse(
+      request({ Range: 'bytes=2-5', 'If-Range': '"old"' }),
+      bucket(),
+      'key',
+    )
     expect(changed.status).toBe(200)
     expect(await changed.text()).toBe('0123456789')
   })
   test('returns 304 for matching ETags and 404 for missing assets', async () => {
-    const response = await assetResponse(request({ 'If-None-Match': '"other", W/"version-one"' }), bucket(), 'key')
+    const response = await assetResponse(
+      request({ 'If-None-Match': '"other", W/"version-one"' }),
+      bucket(),
+      'key',
+    )
     expect(response.status).toBe(304)
     expect(await response.text()).toBe('')
-    const missing = await assetResponse(request(), { async head() { return null } }, 'key')
+    const missing = await assetResponse(
+      request(),
+      {
+        async head() {
+          return null
+        },
+      },
+      'key',
+    )
     expect(missing.status).toBe(404)
     const post = await assetResponse(request({}, 'POST'), bucket(), 'key')
     expect(post.status).toBe(405)

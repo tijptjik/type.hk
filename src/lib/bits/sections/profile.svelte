@@ -82,7 +82,7 @@ onMount(() => {
   </div>
   <Name {alias} {name} />
   <p
-    class="mt-[.6rem] mb-12 text-[calc(var(--profile-name-size)*.55)] text-muted max-[560px]:mt-[clamp(.25rem,.8svh,.5rem)] max-[560px]:mb-[clamp(1.5rem,4svh,2.25rem)]"
+    class="text-muted mt-[.6rem] mb-12 text-[calc(var(--profile-name-size)*.55)] max-[560px]:mt-[clamp(.25rem,.8svh,.5rem)] max-[560px]:mb-[clamp(1.5rem,4svh,2.25rem)]"
   >
     {subtitle}
   </p>
@@ -92,33 +92,33 @@ onMount(() => {
   >
     {#if socialLinks.length && socialsHeading}
       <section
-      class="grid w-max justify-items-center gap-[.4rem] max-[560px]:gap-1"
-      aria-labelledby="contact-links-heading"
-    >
-      <h2
-        class="m-0 font-display text-[.72rem] font-semibold tracking-[.12em] text-muted uppercase max-[560px]:text-[.68rem]"
-        id="contact-links-heading"
+        class="grid w-max justify-items-center gap-[.4rem] max-[560px]:gap-1"
+        aria-labelledby="contact-links-heading"
       >
-        {contactHeading}
-      </h2>
-      <nav
-        aria-label={contactHeading}
-        class="flex flex-wrap justify-center gap-[.35rem] max-[560px]:-mt-[4px]"
-      >
-        {#each contactLinks as contact}
-          <a
-            aria-disabled={isEmailLink(contact) && !emailLinksReady}
-            class="grid size-[2.7rem] place-items-center rounded-full text-foreground hover:bg-surface hover:text-link max-[560px]:size-[clamp(2.2rem,5.5svh,2.7rem)]"
-            href={getContactHref(contact)}
-            rel={isExternalLink(contact) ? 'noopener' : undefined}
-            target={isExternalLink(contact) ? '_blank' : undefined}
-            title={contact.label}
-          >
-            <LinkIcon name={contact.icon} />
-            <span class="sr-only">{contact.label}</span>
-          </a>
-        {/each}
-      </nav>
+        <h2
+          class="font-display text-muted m-0 text-[.72rem] font-semibold tracking-[.12em] uppercase max-[560px]:text-[.68rem]"
+          id="contact-links-heading"
+        >
+          {contactHeading}
+        </h2>
+        <nav
+          aria-label={contactHeading}
+          class="flex flex-wrap justify-center gap-[.35rem] max-[560px]:-mt-[4px]"
+        >
+          {#each contactLinks as contact}
+            <a
+              aria-disabled={isEmailLink(contact) && !emailLinksReady}
+              class="text-foreground hover:bg-surface hover:text-link grid size-[2.7rem] place-items-center rounded-full max-[560px]:size-[clamp(2.2rem,5.5svh,2.7rem)]"
+              href={getContactHref(contact)}
+              rel={isExternalLink(contact) ? 'noopener' : undefined}
+              target={isExternalLink(contact) ? '_blank' : undefined}
+              title={contact.label}
+            >
+              <LinkIcon name={contact.icon} />
+              <span class="sr-only">{contact.label}</span>
+            </a>
+          {/each}
+        </nav>
       </section>
     {/if}
 
@@ -127,7 +127,7 @@ onMount(() => {
       aria-labelledby="social-links-heading"
     >
       <h2
-        class="m-0 font-display text-[.72rem] font-semibold tracking-[.12em] text-muted uppercase max-[560px]:text-[.68rem]"
+        class="font-display text-muted m-0 text-[.72rem] font-semibold tracking-[.12em] uppercase max-[560px]:text-[.68rem]"
         id="social-links-heading"
       >
         {socialsHeading}
@@ -138,7 +138,7 @@ onMount(() => {
       >
         {#each socialLinks as social}
           <a
-            class="grid size-[2.7rem] place-items-center rounded-full text-foreground hover:bg-surface hover:text-link max-[560px]:size-[clamp(2.2rem,5.5svh,2.7rem)]"
+            class="text-foreground hover:bg-surface hover:text-link grid size-[2.7rem] place-items-center rounded-full max-[560px]:size-[clamp(2.2rem,5.5svh,2.7rem)]"
             href={social.href}
             rel="me noopener"
             target="_blank"

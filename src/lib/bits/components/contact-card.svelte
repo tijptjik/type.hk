@@ -50,7 +50,6 @@ function toggleCard() {
   if (isFlipped) closeCard()
   else openCard()
 }
-
 </script>
 
 <div class="contact-card">
@@ -80,6 +79,7 @@ function toggleCard() {
             href={contactCardUrl}
             download
           >
+            <span class="sr-only">{`Download ${name}'s contact card`}</span>
             <img alt="" class="contact-card-qr" src={qrCodeUrl}>
           </a>
         {/if}

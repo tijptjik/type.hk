@@ -114,101 +114,106 @@ function handleKeydown(event: KeyboardEvent) {
 <svelte:window onkeydown={handleKeydown} />
 
 <main
-  class="grid mx-auto w-[calc(100%-clamp(2rem,7vw,6rem))] max-w-[1920px] place-items-center py-20 pt-6 pb-10 max-[560px]:w-full max-[560px]:py-0"
+  class="mx-auto grid w-[calc(100%-clamp(2rem,7vw,6rem))] max-w-[1920px] place-items-center py-20 pt-6 pb-10 max-[560px]:w-full max-[560px]:py-0"
 >
   <section aria-label={heading} class="map-showcase w-full">
-    {#if activeShowcaseHref}<div aria-hidden="true" class="map-expanded__scrim"></div>{/if}
+    {#if activeShowcaseHref}
+      <div aria-hidden="true" class="map-expanded__scrim"></div>
+    {/if}
     <div
       class="grid grid-cols-2 gap-[clamp(1.5rem,3vw,4rem)] max-[1024px]:grid-cols-1 max-[1024px]:gap-12"
     >
-        {#each showcases as showcase}
-          <article class="min-w-0 px-[var(--map-card-gutter)] [&>*]:min-w-0">
-            {#if showcase.embedUrl}
-              <div
-                aria-label={activeShowcaseHref === showcase.href ? showcase.title : undefined}
-                aria-modal={activeShowcaseHref === showcase.href ? 'true' : undefined}
-                class:map-preview--expanded={activeShowcaseHref === showcase.href}
-                class="map-preview group relative aspect-[1200/720] overflow-hidden rounded-[.55rem] border border-border bg-surface"
-                role={activeShowcaseHref === showcase.href ? 'dialog' : undefined}
-                style={transitioningShowcaseHref === showcase.href
-                  ? 'view-transition-name: map-showcase-stage'
-                  : undefined}
+      {#each showcases as showcase}
+        <article class="min-w-0 px-[var(--map-card-gutter)] [&>*]:min-w-0">
+          {#if showcase.embedUrl}
+            <!-- biome-ignore lint/a11y/useAriaPropsSupportedByRole: The dialog role and its ARIA attributes are enabled together when expanded. -->
+            <div
+              aria-label={activeShowcaseHref === showcase.href
+                ? showcase.title
+                : undefined}
+              aria-modal={activeShowcaseHref === showcase.href ? 'true' : undefined}
+              class:map-preview--expanded={activeShowcaseHref === showcase.href}
+              class="map-preview group border-border bg-surface relative aspect-[1200/720] overflow-hidden rounded-[.55rem] border"
+              role={activeShowcaseHref === showcase.href ? 'dialog' : undefined}
+              style={transitioningShowcaseHref === showcase.href
+                ? 'view-transition-name: map-showcase-stage'
+                : undefined}
+            >
+              <iframe
+                allow="fullscreen"
+                aria-hidden={activeShowcaseHref !== showcase.href}
+                class={`block size-full border-0 ${activeShowcaseHref === showcase.href ? '' : 'pointer-events-none'}`}
+                loading="lazy"
+                src={showcase.embedUrl}
+                tabindex={activeShowcaseHref === showcase.href ? undefined : -1}
+                title={`${showcase.title} preview`}
+              ></iframe>
+              {#if activeShowcaseHref === showcase.href}
+                <button
+                  aria-label={`Close ${showcase.title}`}
+                  bind:this={closeButton}
+                  class="map-expanded__close grid size-11 place-items-center rounded-full"
+                  onclick={closeShowcase}
+                  type="button"
+                >
+                  <X aria-hidden="true" size={24} />
+                </button>
+              {:else}
+                <button
+                  aria-label={`Expand ${showcase.title}`}
+                  class="map-preview__expand absolute inset-0 cursor-zoom-in max-[1024px]:hidden"
+                  onclick={event => void openShowcase(showcase, event)}
+                  type="button"
+                >
+                  <span class="map-preview__expand-icon">
+                    <Maximize2 aria-hidden="true" size={18} />
+                  </span>
+                </button>
+              {/if}
+            </div>
+          {:else}
+            <a
+              class="map-preview border-border bg-surface block aspect-[1200/720] overflow-hidden rounded-[.55rem] border"
+              href={showcase.href}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <img
+                alt={`Preview of ${showcase.title}`}
+                class="block size-full object-cover"
+                src={showcase.imageSrc}
               >
-                <iframe
-                  allow="fullscreen"
-                  aria-hidden={activeShowcaseHref !== showcase.href}
-                  class={`block size-full border-0 ${activeShowcaseHref === showcase.href ? '' : 'pointer-events-none'}`}
-                  loading="lazy"
-                  src={showcase.embedUrl}
-                  tabindex={activeShowcaseHref === showcase.href ? undefined : -1}
-                  title={`${showcase.title} preview`}
-                ></iframe>
-                {#if activeShowcaseHref === showcase.href}
-                  <button
-                    aria-label={`Close ${showcase.title}`}
-                    bind:this={closeButton}
-                    class="map-expanded__close grid size-11 place-items-center rounded-full"
-                    onclick={closeShowcase}
-                    type="button"
-                  >
-                    <X aria-hidden="true" size={24} />
-                  </button>
-                {:else}
-                  <button
-                    aria-label={`Expand ${showcase.title}`}
-                    class="map-preview__expand absolute inset-0 cursor-zoom-in max-[1024px]:hidden"
-                    onclick={event => void openShowcase(showcase, event)}
-                    type="button"
-                  >
-                    <span class="map-preview__expand-icon">
-                      <Maximize2 aria-hidden="true" size={18} />
-                    </span>
-                  </button>
-                {/if}
-              </div>
-            {:else}
+            </a>
+          {/if}
+          <div class="mt-3 flex items-start justify-between gap-3">
+            <h2
+              class="min-w-0 [font-family:var(--font-ui)] text-[clamp(1.25rem,1.7vw,1.65rem)] leading-[1.1] font-bold tracking-[-.035em]"
+            >
               <a
-                class="map-preview block aspect-[1200/720] overflow-hidden rounded-[.55rem] border border-border bg-surface"
+                class="text-project-copy hover:text-project-accent inline-flex items-center gap-2.5 no-underline"
                 href={showcase.href}
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <img
-                  alt={`Preview of ${showcase.title}`}
-                  class="block size-full object-cover"
-                  src={showcase.imageSrc}
-                >
+                <span class="pl-[2px]">
+                  <FaviconLinkIcon
+                    fallbackIcon="external"
+                    href={showcase.href}
+                    size={20}
+                  />
+                </span>
+                <span>{showcase.title}</span>
               </a>
-            {/if}
-            <div class="mt-3 flex items-start justify-between gap-3">
-              <h2
-                class="min-w-0 [font-family:var(--font-ui)] text-[clamp(1.25rem,1.7vw,1.65rem)] font-bold leading-[1.1] tracking-[-.035em]"
-              >
-                <a
-                  class="inline-flex items-center gap-2.5 text-project-copy no-underline hover:text-project-accent"
-                  href={showcase.href}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <span class="pl-[2px]">
-                    <FaviconLinkIcon
-                      fallbackIcon="external"
-                      href={showcase.href}
-                      size={20}
-                    />
-                  </span>
-                  <span>{showcase.title}</span>
-                </a>
-              </h2>
-              <time
-                class="shrink-0 font-mono text-[.72rem] tracking-[.04em] text-project-detail"
-                datetime={showcase.dateTime}
-              >
-                {formatMapDate(showcase.dateTime)}
-              </time>
-            </div>
-          </article>
-        {/each}
+            </h2>
+            <time
+              class="text-project-detail shrink-0 font-mono text-[.72rem] tracking-[.04em]"
+              datetime={showcase.dateTime}
+            >
+              {formatMapDate(showcase.dateTime)}
+            </time>
+          </div>
+        </article>
+      {/each}
     </div>
   </section>
 </main>

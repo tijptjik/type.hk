@@ -13,7 +13,7 @@ let videoControlsVisible = $state<Record<string, boolean>>({})
 </script>
 
 <main
-  class="grid mx-auto w-[calc(100%-clamp(2rem,7vw,6rem))] max-w-[1920px] place-items-center py-20 pt-6 max-[560px]:w-[min(100%-24px,720px)] max-[560px]:py-0"
+  class="mx-auto grid w-[calc(100%-clamp(2rem,7vw,6rem))] max-w-[1920px] place-items-center py-20 pt-6 max-[560px]:w-[min(100%-24px,720px)] max-[560px]:py-0"
 >
   <section aria-label={m.os_heading()} class="os-tools w-full">
     <header
@@ -23,12 +23,12 @@ let videoControlsVisible = $state<Record<string, boolean>>({})
         {#each tools.filter(tool => tool.id === 'greetjik') as tool}
           <a
             aria-label={tool.name}
-            class="block rounded-[.45rem] transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-link motion-reduce:transition-none"
+            class="focus-visible:outline-link block rounded-[.45rem] transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none"
             href={`#${tool.id}`}
             title={tool.name}
           >
             <img
-              alt=""
+              alt={tool.name}
               class="size-9 object-contain"
               height="36"
               src={`/os-icons/${tool.id}.svg${tool.iconVersion ? `?v=${tool.iconVersion}` : ''}`}
@@ -37,7 +37,7 @@ let videoControlsVisible = $state<Record<string, boolean>>({})
           </a>
         {/each}
         <h1
-          class="m-0 font-display text-[clamp(1.5rem,3vw,2rem)] font-bold leading-none tracking-[-.04em] text-foreground"
+          class="font-display text-foreground m-0 text-[clamp(1.5rem,3vw,2rem)] leading-none font-bold tracking-[-.04em]"
         >
           {m.os_heading()}
         </h1>
@@ -46,12 +46,12 @@ let videoControlsVisible = $state<Record<string, boolean>>({})
         {#each navigationTools as tool}
           <a
             aria-label={tool.name}
-            class="block rounded-[.45rem] transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-link motion-reduce:transition-none"
+            class="focus-visible:outline-link block rounded-[.45rem] transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none"
             href={`#${tool.id}`}
             title={tool.name}
           >
             <img
-              alt=""
+              alt={tool.name}
               class="size-9 object-contain"
               height="36"
               src={`/os-icons/${tool.id}.svg${tool.iconVersion ? `?v=${tool.iconVersion}` : ''}`}
@@ -70,7 +70,7 @@ let videoControlsVisible = $state<Record<string, boolean>>({})
           id={tool.id}
         >
           <div
-            class="os-media aspect-[1200/720] w-full overflow-hidden rounded-[.55rem] border border-border bg-surface max-[560px]:mx-[calc(50%-50vw)] max-[560px]:w-screen max-[560px]:rounded-none max-[560px]:border-x-0"
+            class="os-media border-border bg-surface aspect-[1200/720] w-full overflow-hidden rounded-[.55rem] border max-[560px]:mx-[calc(50%-50vw)] max-[560px]:w-screen max-[560px]:rounded-none max-[560px]:border-x-0"
           >
             {#if tool.media.videoSrc}
               <video
@@ -97,10 +97,10 @@ let videoControlsVisible = $state<Record<string, boolean>>({})
           </div>
           <div class="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1">
             <h2
-              class="m-0 shrink-0 [font-family:var(--font-ui)] text-[clamp(1.25rem,1.7vw,1.65rem)] font-bold leading-[1.1] tracking-[-.035em]"
+              class="m-0 shrink-0 [font-family:var(--font-ui)] text-[clamp(1.25rem,1.7vw,1.65rem)] leading-[1.1] font-bold tracking-[-.035em]"
             >
               <a
-                class="inline-flex items-center gap-2 text-project-copy no-underline hover:text-project-accent"
+                class="text-project-copy hover:text-project-accent inline-flex items-center gap-2 no-underline"
                 href={osReadme(tool.id)}
                 rel="noopener noreferrer"
                 target="_blank"
@@ -116,12 +116,12 @@ let videoControlsVisible = $state<Record<string, boolean>>({})
               </a>
             </h2>
             <p
-              class="m-0 min-w-0 flex-1 [font-family:var(--font-ui)] text-[.8rem] leading-[1.4] text-project-detail max-[560px]:order-last max-[560px]:basis-full"
+              class="text-project-detail m-0 min-w-0 flex-1 [font-family:var(--font-ui)] text-[.8rem] leading-[1.4] max-[560px]:order-last max-[560px]:basis-full"
             >
               {tool.description()}
             </p>
             <time
-              class="ml-auto shrink-0 font-mono text-[.72rem] tracking-[.04em] text-project-detail"
+              class="text-project-detail ml-auto shrink-0 font-mono text-[.72rem] tracking-[.04em]"
               datetime={tool.dateTime}
               >{formatMapDate(tool.dateTime)}</time
             >

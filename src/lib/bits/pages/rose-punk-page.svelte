@@ -74,7 +74,7 @@ function downloadThemeJson() {
 </script>
 
 <main
-  class="grid mx-auto w-[calc(100%-clamp(2rem,7vw,6rem))] max-w-[1920px] place-items-center py-20 pt-6 pb-10 max-[560px]:w-[min(100%-24px,720px)] max-[560px]:py-0"
+  class="mx-auto grid w-[calc(100%-clamp(2rem,7vw,6rem))] max-w-[1920px] place-items-center py-20 pt-6 pb-10 max-[560px]:w-[min(100%-24px,720px)] max-[560px]:py-0"
 >
   <section class="w-full">
     <header
@@ -87,12 +87,12 @@ function downloadThemeJson() {
           Theme
         </p>
         <h1
-          class="m-0 font-display text-[clamp(2.75rem,9vw,5.5rem)] font-[650] leading-[.95] text-foreground max-[560px]:hidden"
+          class="font-display text-foreground m-0 text-[clamp(2.75rem,9vw,5.5rem)] leading-[.95] font-[650] max-[560px]:hidden"
         >
           {title}
         </h1>
         <p
-          class="mt-[1.1rem] text-[clamp(1.05rem,2.5vw,1.3rem)] text-[#eb6f92] whitespace-nowrap max-[560px]:mt-[10px] max-[560px]:text-center max-[560px]:whitespace-normal"
+          class="mt-[1.1rem] text-[clamp(1.05rem,2.5vw,1.3rem)] whitespace-nowrap text-[#eb6f92] max-[560px]:mt-[10px] max-[560px]:text-center max-[560px]:whitespace-normal"
         >
           {tagline}
         </p>
@@ -106,7 +106,7 @@ function downloadThemeJson() {
           {#each resources as resource}
             {#if resource.href}
               <a
-                class="inline-flex items-center gap-[.4rem] rounded-full border border-border px-[.8rem] py-[.6rem] text-[.85rem] text-foreground no-underline hover:border-link hover:text-link"
+                class="border-border text-foreground hover:border-link hover:text-link inline-flex items-center gap-[.4rem] rounded-full border px-[.8rem] py-[.6rem] text-[.85rem] no-underline"
                 href={resource.href}
                 rel="noopener noreferrer"
                 target="_blank"
@@ -115,7 +115,7 @@ function downloadThemeJson() {
               </a>
             {:else}
               <span
-                class="inline-flex items-center rounded-full border border-border px-[.8rem] py-[.6rem] text-[.85rem] text-[#6e6a86]"
+                class="border-border inline-flex items-center rounded-full border px-[.8rem] py-[.6rem] text-[.85rem] text-[#6e6a86]"
                 >{resource.label}</span
               >
             {/if}
@@ -127,14 +127,14 @@ function downloadThemeJson() {
     <section aria-labelledby="palette-heading">
       <div class="mb-4 flex items-center justify-between gap-4">
         <h2
-          class="m-0 font-display text-[.78rem] font-semibold tracking-[.1em] text-muted uppercase max-[560px]:text-[#ff53a6]"
+          class="font-display text-muted m-0 text-[.78rem] font-semibold tracking-[.1em] uppercase max-[560px]:text-[#ff53a6]"
           id="palette-heading"
         >
           {paletteHeading}
         </h2>
         <button
           aria-label="Download Rosé Punk Base24 theme as JSON"
-          class="inline-flex items-center gap-1 border border-[#eb6f92] px-[.45rem] py-[2px] font-display text-[.62rem] font-semibold tracking-[.07em] text-[#eb6f92] uppercase hover:bg-[#eb6f92]/12"
+          class="font-display inline-flex items-center gap-1 border border-[#eb6f92] px-[.45rem] py-[2px] text-[.62rem] font-semibold tracking-[.07em] text-[#eb6f92] uppercase hover:bg-[#eb6f92]/12"
           onclick={downloadThemeJson}
           type="button"
         >
@@ -143,13 +143,15 @@ function downloadThemeJson() {
         </button>
       </div>
       <Tooltip.Provider delayDuration={250}>
-        <div class="grid grid-cols-2 gap-3 sm:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8">
+        <div
+          class="grid grid-cols-2 gap-3 sm:grid-cols-4 xl:grid-cols-6 2xl:grid-cols-8"
+        >
           {#each palette as color}
             <Tooltip.Root>
               <Tooltip.Trigger
                 aria-label={copiedHex === color.hex
-                    ? `${color.hex} copied to clipboard`
-                    : `Copy ${color.hex} (${color.token}) to clipboard`}
+                  ? `${color.hex} copied to clipboard`
+                  : `Copy ${color.hex} (${color.token}) to clipboard`}
                 class="group relative grid min-h-[5.75rem] w-full cursor-pointer grid-cols-[minmax(0,1fr)_max-content] items-center gap-3 rounded-[.65rem] border border-[#3b384d] bg-[#1f1d2e] p-3 text-left text-[#f5f5f7] transition-colors hover:border-[#ff53a6] focus-visible:border-[#ff53a6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#ff53a6]"
                 onclick={() => copyHex(color.hex)}
                 type="button"
@@ -160,17 +162,17 @@ function downloadThemeJson() {
                 >
                   <Copy
                     class={`absolute size-4 transition-all duration-200 ${
-                        copiedHex === color.hex
-                          ? 'scale-75 -rotate-45 opacity-0'
-                          : 'scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100'
-                      }`}
+                      copiedHex === color.hex
+                        ? 'scale-75 -rotate-45 opacity-0'
+                        : 'scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100'
+                    }`}
                   />
                   <Check
                     class={`absolute size-4 text-[#9bdfeb] transition-all duration-200 ${
-                        copiedHex === color.hex
-                          ? 'scale-100 opacity-100'
-                          : 'scale-75 rotate-45 opacity-0'
-                      }`}
+                      copiedHex === color.hex
+                        ? 'scale-100 opacity-100'
+                        : 'scale-75 rotate-45 opacity-0'
+                    }`}
                   />
                 </span>
                 <span
@@ -179,10 +181,12 @@ function downloadThemeJson() {
                   style={`background: ${color.hex}`}
                 ></span>
                 <span class="pr-4 whitespace-nowrap">
-                  <span class="block font-display text-[.85rem]">
+                  <span class="font-display block text-[.85rem]">
                     {color.token}
                   </span>
-                  <code class="font-mono text-[.75rem] text-[#f4b7b5]">{color.hex}</code>
+                  <code class="font-mono text-[.75rem] text-[#f4b7b5]"
+                    >{color.hex}</code
+                  >
                 </span>
               </Tooltip.Trigger>
               <Tooltip.Portal>

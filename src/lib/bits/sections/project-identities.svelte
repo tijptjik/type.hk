@@ -34,11 +34,15 @@ function mobileProjectName(project: ProjectIdentity) {
         <ProjectCarousel
           autoplayStartDelay={index % 2 === 1 ? 300 : 0}
           carouselId={`project-${project.id}-carousel-heading`}
-          heading={m.project_carousel_label({ project: project.name(), heading: m.project_carousel_heading() })}
+          heading={m.project_carousel_label({
+            project: project.name(),
+            heading: m.project_carousel_heading(),
+          })}
           nextLabel={m.project_carousel_next()}
           previousLabel={m.project_carousel_previous()}
           roleDescription={m.project_carousel_role_description()}
-          slideLabel={({ current, total }) => m.project_carousel_slide({ current, total })}
+          slideLabel={({ current, total }) =>
+            m.project_carousel_slide({ current, total })}
           slideRoleDescription={m.project_carousel_slide_role_description()}
           slides={previewsForTheme(project.previews).map(({ copy, ...preview }) => ({
             ...preview,
@@ -48,10 +52,10 @@ function mobileProjectName(project: ProjectIdentity) {
 
         <div class="mt-6 flex items-center justify-between gap-3">
           <h3
-            class="m-0 [font-family:var(--font-ui)] text-[clamp(1.25rem,1.7vw,1.65rem)] font-bold leading-[1.1] tracking-[-.035em]"
+            class="m-0 [font-family:var(--font-ui)] text-[clamp(1.25rem,1.7vw,1.65rem)] leading-[1.1] font-bold tracking-[-.035em]"
           >
             <a
-              class="inline-flex items-center gap-2 text-project-copy no-underline hover:text-project-accent"
+              class="text-project-copy hover:text-project-accent inline-flex items-center gap-2 no-underline"
               href={project.href}
               rel="noopener"
               target="_blank"
@@ -69,7 +73,7 @@ function mobileProjectName(project: ProjectIdentity) {
           >
             {#each project.links as link}
               <a
-                class="grid size-8 place-items-center rounded-[.4rem] text-project-detail hover:bg-project-hover hover:text-project-accent"
+                class="text-project-detail hover:bg-project-hover hover:text-project-accent grid size-8 place-items-center rounded-[.4rem]"
                 href={link.href}
                 rel="noopener"
                 target="_blank"
@@ -82,7 +86,7 @@ function mobileProjectName(project: ProjectIdentity) {
           </nav>
         </div>
         <p
-          class="mt-[.7rem] max-w-full break-words [font-family:var(--font-ui)] text-[.9rem] leading-[1.55] tracking-[.005em] text-project-detail [&_a]:text-project-accent [&_a:hover]:text-project-accent"
+          class="text-project-detail [&_a]:text-project-accent [&_a:hover]:text-project-accent mt-[.7rem] max-w-full [font-family:var(--font-ui)] text-[.9rem] leading-[1.55] tracking-[.005em] break-words"
         >
           {@html project.description()}
         </p>
@@ -92,7 +96,7 @@ function mobileProjectName(project: ProjectIdentity) {
           class="mt-[1.6rem]"
         >
           <h4
-            class="mb-[.85rem] flex items-center gap-[.7rem] font-display text-[.72rem] font-semibold tracking-[.12em] text-project-detail uppercase before:h-px before:flex-1 before:bg-project-divider before:content-[''] after:h-px after:flex-1 after:bg-project-divider after:content-[''] max-[560px]:mb-4 max-[560px]:text-[.76rem]"
+            class="font-display text-project-detail before:bg-project-divider after:bg-project-divider mb-[.85rem] flex items-center gap-[.7rem] text-[.72rem] font-semibold tracking-[.12em] uppercase before:h-px before:flex-1 before:content-[''] after:h-px after:flex-1 after:content-[''] max-[560px]:mb-4 max-[560px]:text-[.76rem]"
           >
             {m.project_subprojects_heading()}
           </h4>
@@ -102,7 +106,7 @@ function mobileProjectName(project: ProjectIdentity) {
                 <div class="flex flex-wrap items-center gap-[.45rem]">
                   {#if highlight.href}
                     <a
-                      class="inline-flex min-h-4 items-center gap-[.4rem] [font-family:var(--font-ui)] text-[.92rem] leading-none font-semibold text-project-copy no-underline hover:text-project-accent [&_svg]:block max-[560px]:text-[1rem]"
+                      class="text-project-copy hover:text-project-accent inline-flex min-h-4 items-center gap-[.4rem] [font-family:var(--font-ui)] text-[.92rem] leading-none font-semibold no-underline max-[560px]:text-[1rem] [&_svg]:block"
                       href={highlight.href}
                       rel="noopener"
                       target="_blank"
@@ -112,19 +116,19 @@ function mobileProjectName(project: ProjectIdentity) {
                     </a>
                   {:else}
                     <span
-                      class="[font-family:var(--font-ui)] text-[.92rem] font-semibold text-project-copy max-[560px]:text-[1rem]"
+                      class="text-project-copy [font-family:var(--font-ui)] text-[.92rem] font-semibold max-[560px]:text-[1rem]"
                       >{highlight.name()}</span
                     >
                   {/if}
                   {#if highlight.comingSoon}
                     <span
-                      class="inline-block rounded-[.2rem] border border-project-badge-border bg-project-badge-background px-[.28rem] py-[.06rem] [font-family:var(--font-ui)] text-[.62em] leading-[1.2] font-bold tracking-[.05em] text-project-badge-copy uppercase"
+                      class="border-project-badge-border bg-project-badge-background text-project-badge-copy inline-block rounded-[.2rem] border px-[.28rem] py-[.06rem] [font-family:var(--font-ui)] text-[.62em] leading-[1.2] font-bold tracking-[.05em] uppercase"
                       >{m.project_coming_soon()}</span
                     >
                   {/if}
                 </div>
                 <p
-                  class="m-0 [font-family:var(--font-ui)] text-[.9rem] leading-[1.55] tracking-[.005em] text-project-detail [&_a]:text-project-accent [&_a:hover]:text-project-accent max-[560px]:text-[.94rem] max-[560px]:leading-[1.6]"
+                  class="text-project-detail [&_a]:text-project-accent [&_a:hover]:text-project-accent m-0 [font-family:var(--font-ui)] text-[.9rem] leading-[1.55] tracking-[.005em] max-[560px]:text-[.94rem] max-[560px]:leading-[1.6]"
                 >
                   {#each highlight.description() as part}
                     {#if part.type === 'link'}

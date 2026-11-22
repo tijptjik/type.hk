@@ -150,12 +150,14 @@ function createPulse({ origin, target }: PulseDetail) {
     if (generation !== pulseGeneration) return
 
     const elapsed = now - startedAt
-    const travelProgress = Math.min(1, Math.max(0, (elapsed - pulseDelay) / pulseDuration))
+    const travelProgress = Math.min(
+      1,
+      Math.max(0, (elapsed - pulseDelay) / pulseDuration),
+    )
     // This exponential response launches the wave briskly, then lets its
     // velocity decay continuously instead of introducing a visible slow-down.
     const propagation =
-      (1 - Math.exp(-pulseDamping * travelProgress)) /
-      (1 - Math.exp(-pulseDamping))
+      (1 - Math.exp(-pulseDamping * travelProgress)) / (1 - Math.exp(-pulseDamping))
     const radius = finalRadius * propagation
 
     pulse.style.width = `${Math.max(1, radius * 2)}px`
@@ -245,10 +247,7 @@ function handlePulseImpact(element: HTMLElement) {
     window.setTimeout(() => element.classList.remove('absorption-pulse-hit'), 460),
   )
 
-  sourceImpactElapsed.set(
-    element,
-    Math.max(0, performance.now() - gatheringStartedAt),
-  )
+  sourceImpactElapsed.set(element, Math.max(0, performance.now() - gatheringStartedAt))
 
   if (element.id !== 'profile-name') return
 
@@ -260,9 +259,13 @@ function cancelPulse() {
   pulseGeneration += 1
   cancelAnimationFrame(pulseFrame)
   pulseFrame = 0
-  pulseHitTimers.forEach(timer => clearTimeout(timer))
+  pulseHitTimers.forEach(timer => {
+    clearTimeout(timer)
+  })
   pulseHitTimers = []
-  absorptionLayer?.querySelectorAll('.absorption-pulse').forEach(pulse => pulse.remove())
+  absorptionLayer?.querySelectorAll('.absorption-pulse').forEach(pulse => {
+    pulse.remove()
+  })
   document.querySelectorAll<HTMLElement>('.absorption-pulse-hit').forEach(element => {
     element.classList.remove('absorption-pulse-hit')
   })
@@ -367,7 +370,8 @@ function preludeMotion(particle: AbsorptionParticle, elapsed: number): Motion {
   // has time to settle in before the more erratic pull starts to show.
   const gentlePull = smootherstep((elapsed - 9_800) / 12_000)
   const violentPull = smootherstep((elapsed - 17_500) / 13_000)
-  const sourceImpact = sourceImpactElapsed.get(particle.source) ?? Number.POSITIVE_INFINITY
+  const sourceImpact =
+    sourceImpactElapsed.get(particle.source) ?? Number.POSITIVE_INFINITY
   const breakPull =
     elapsed < sourceImpact ? 0 : 1 - smoothstep((elapsed - sourceImpact) / 460)
   // Each glyph begins to yield toward the orb shortly before its own release.
@@ -396,7 +400,8 @@ function preludeMotion(particle: AbsorptionParticle, elapsed: number): Motion {
     depth:
       gentlePull * Math.sin(elapsed * 0.0041 + phase * 0.5) * 2.5 +
       violentPull * Math.sin(elapsed * 0.029 + phase * 1.4) * 10 +
-      breakPull * Math.sin(elapsed * 0.18 + phase) * 7 - tension * 3.5,
+      breakPull * Math.sin(elapsed * 0.18 + phase) * 7 -
+      tension * 3.5,
     pitch:
       gentlePull * Math.cos(elapsed * 0.0047 + phase) * 1.1 +
       violentPull * Math.cos(elapsed * 0.027 + phase * 1.6) * 5 +
@@ -515,6 +520,7 @@ function prepareParticles() {
     }
 
     const style = window.getComputedStyle(source)
+    // biome-ignore lint/performance/useDomNodeTextContent: Particle text must match rendered text, excluding hidden content.
     const text = source.querySelector('svg') ? '' : source.innerText.trim()
 
     if (text && textMeasure) {

@@ -26,7 +26,7 @@ function formatPublicationDate(publishedAt: string) {
 </script>
 
 <main
-  class="grid mx-auto w-[calc(100%-clamp(2rem,7vw,6rem))] max-w-[1920px] place-items-center py-20 pt-6 max-[560px]:w-[min(100%-24px,720px)] max-[560px]:py-0"
+  class="mx-auto grid w-[calc(100%-clamp(2rem,7vw,6rem))] max-w-[1920px] place-items-center py-20 pt-6 max-[560px]:w-[min(100%-24px,720px)] max-[560px]:py-0"
 >
   <section aria-label={heading} class="w-full max-[560px]:pt-3">
     <div
@@ -35,14 +35,14 @@ function formatPublicationDate(publishedAt: string) {
       {#each sortedEntries as entry}
         <article class="min-w-0 px-[clamp(0rem,1.15vw,1.25rem)]">
           <time
-            class="block text-[.73rem] font-semibold leading-none tracking-[.08em] text-muted uppercase"
+            class="text-muted block text-[.73rem] leading-none font-semibold tracking-[.08em] uppercase"
             datetime={entry.publishedAt}
             >{formatPublicationDate(entry.publishedAt)}</time
           >
-          <h2 class="mt-2 font-display text-xl font-semibold leading-[1.15]">
+          <h2 class="font-display mt-2 text-xl leading-[1.15] font-semibold">
             {#if entry.href}
               <a
-                class="inline-flex items-center gap-[.35rem] text-foreground no-underline hover:text-link [&_svg]:shrink-0"
+                class="text-foreground hover:text-link inline-flex items-center gap-[.35rem] no-underline [&_svg]:shrink-0"
                 href={entry.href}
                 rel="noopener noreferrer"
                 target="_blank"
@@ -51,7 +51,7 @@ function formatPublicationDate(publishedAt: string) {
               </a>
             {:else if entry.slug}
               <a
-                class="text-foreground no-underline hover:text-link"
+                class="text-foreground hover:text-link no-underline"
                 href={`/writing/${entry.slug}`}
               >
                 {entry.title}
@@ -63,7 +63,7 @@ function formatPublicationDate(publishedAt: string) {
           <ul class="mt-2 flex flex-wrap gap-1.5" aria-label="Topics">
             {#each entry.tags as tag}
               <li
-                class="inline-flex items-center rounded-[.2rem] border border-border px-[.4rem] py-[.12rem] text-[.68rem] leading-none font-semibold tracking-[.06em] text-muted uppercase"
+                class="border-border text-muted inline-flex items-center rounded-[.2rem] border px-[.4rem] py-[.12rem] text-[.68rem] leading-none font-semibold tracking-[.06em] uppercase"
               >
                 <span class="relative top-px">{tag}</span>
               </li>
@@ -72,7 +72,7 @@ function formatPublicationDate(publishedAt: string) {
           <p class="mt-4 leading-[1.5]">
             {#if entry.href}
               <a
-                class="text-muted no-underline hover:text-link"
+                class="text-muted hover:text-link no-underline"
                 href={entry.href}
                 rel="noopener noreferrer"
                 target="_blank"
@@ -80,7 +80,7 @@ function formatPublicationDate(publishedAt: string) {
               >
             {:else if entry.slug}
               <a
-                class="text-muted no-underline hover:text-link"
+                class="text-muted hover:text-link no-underline"
                 href={`/writing/${entry.slug}`}
               >
                 {@html entry.excerpt}

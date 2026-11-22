@@ -176,7 +176,7 @@ onMount(() => {
 {#if slides.length > 0}
   <section
     aria-labelledby={carouselId}
-    class="project-carousel relative m-0 w-full max-[560px]:w-screen max-[560px]:mx-[calc(50%-50vw)]"
+    class="project-carousel relative m-0 w-full max-[560px]:mx-[calc(50%-50vw)] max-[560px]:w-screen"
     onfocusin={pauseAutoplay}
     onfocusout={resumeAutoplay}
     onpointerenter={pauseAutoplay}
@@ -188,7 +188,7 @@ onMount(() => {
         <div class="flex gap-[.3rem]">
           <button
             aria-label={previousLabel}
-            class="grid size-8 place-items-center rounded-full border border-[var(--overlay-border)] bg-[var(--overlay-bg)] text-muted backdrop-blur-[.45rem] hover:border-project-accent hover:bg-[color-mix(in_srgb,var(--overlay-bg)_85%,black)] hover:text-project-accent"
+            class="text-muted hover:border-project-accent hover:text-project-accent grid size-8 place-items-center rounded-full border border-[var(--overlay-border)] bg-[var(--overlay-bg)] backdrop-blur-[.45rem] hover:bg-[color-mix(in_srgb,var(--overlay-bg)_85%,black)]"
             onclick={() => showSlide(activeSlide - 1)}
             type="button"
           >
@@ -196,7 +196,7 @@ onMount(() => {
           </button>
           <button
             aria-label={nextLabel}
-            class="grid size-8 place-items-center rounded-full border border-[var(--overlay-border)] bg-[var(--overlay-bg)] text-muted backdrop-blur-[.45rem] hover:border-project-accent hover:bg-[color-mix(in_srgb,var(--overlay-bg)_85%,black)] hover:text-project-accent"
+            class="text-muted hover:border-project-accent hover:text-project-accent grid size-8 place-items-center rounded-full border border-[var(--overlay-border)] bg-[var(--overlay-bg)] backdrop-blur-[.45rem] hover:bg-[color-mix(in_srgb,var(--overlay-bg)_85%,black)]"
             onclick={() => showSlide(activeSlide + 1)}
             type="button"
           >
@@ -206,11 +206,12 @@ onMount(() => {
       {/if}
     </div>
 
+    <!-- biome-ignore lint/a11y/useKeyWithClickEvents: This handler only cancels pointer clicks after dragging; child links and navigation buttons support keyboard activation. -->
     <section
       aria-labelledby={carouselId}
       aria-roledescription={roleDescription}
       bind:this={carousel}
-      class="flex touch-pan-y touch-pinch-zoom snap-x snap-mandatory overflow-x-auto overscroll-x-contain rounded-[.55rem] border border-border bg-surface [scrollbar-width:none] [&::-webkit-scrollbar]:hidden max-[560px]:rounded-none max-[560px]:border-x-0"
+      class="border-border bg-surface flex touch-pan-y touch-pinch-zoom snap-x snap-mandatory [scrollbar-width:none] overflow-x-auto overscroll-x-contain rounded-[.55rem] border max-[560px]:rounded-none max-[560px]:border-x-0 [&::-webkit-scrollbar]:hidden"
       ondragstart={event => event.preventDefault()}
       onpointercancel={cancelDrag}
       onpointerdown={startDrag}
@@ -226,14 +227,14 @@ onMount(() => {
           class="relative aspect-[1200/720] shrink-0 basis-full snap-start snap-always"
         >
           <a
-            class="relative block size-full text-foreground"
+            class="text-foreground relative block size-full"
             href={slide.href}
             rel="noopener noreferrer"
             target="_blank"
           >
             <img
               alt={slide.alt}
-              class="block size-full select-none object-cover"
+              class="block size-full object-cover select-none"
               draggable="false"
               src={slide.src}
             >
@@ -252,7 +253,7 @@ onMount(() => {
           <button
             aria-label={slideLabel({ current: index + 1, total: slides.length })}
             aria-current={index === activeSlide ? 'true' : undefined}
-            class={`size-[.55rem] rounded-full bg-border p-0 hover:bg-project-accent ${index === activeSlide ? 'bg-project-accent' : ''}`}
+            class={`bg-border hover:bg-project-accent size-[.55rem] rounded-full p-0 ${index === activeSlide ? 'bg-project-accent' : ''}`}
             onclick={() => showSlide(index)}
             type="button"
           ></button>

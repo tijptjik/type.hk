@@ -299,6 +299,7 @@ function changeLocale(nextLocale: string) {
   // The project resolves its locale from this cookie. Persisting it directly
   // avoids coupling application startup to Paraglide's generated runtime while
   // it is being replaced during Vite HMR.
+  // biome-ignore lint/suspicious/noDocumentCookie: Persist the locale synchronously before reload, including on HTTP previews without Cookie Store.
   document.cookie = `PARAGLIDE_LOCALE=${encodeURIComponent(nextLocale)}; Path=/; Max-Age=34560000; SameSite=Lax`
   window.location.reload()
 }
@@ -312,7 +313,7 @@ function changeLocale(nextLocale: string) {
 </svelte:head>
 
 <div
-  class="site-shell grid min-h-dvh grid-rows-[auto_1fr_auto] bg-background font-sans text-foreground transition-[background-color,color] duration-180 motion-reduce:transition-none"
+  class="site-shell bg-background text-foreground grid min-h-dvh grid-rows-[auto_1fr_auto] font-sans transition-[background-color,color] duration-180 motion-reduce:transition-none"
   data-locale={locale}
   data-profile={profile.id}
   data-theme={theme}
@@ -359,26 +360,28 @@ function changeLocale(nextLocale: string) {
       resourcesHeading={m.rose_punk_resources_heading()}
     />
   {:else}
-    {#key homeResetKey}<HomePage
-      avatarUrl={profile.home.avatarUrl}
-      contactCardQrData={profile.home.contactCardQrData}
-      contactCardUrl={profile.home.contactCardUrl}
-      contactHeading={profile.home.contactHeading}
-      contactLinks={profile.home.contactLinks}
-      alias={profile.home.alias}
-      name={profile.home.name}
-      qrDark={profile.home.qrDark}
-      qrLight={profile.home.qrLight}
-      socialLinks={profile.home.socialLinks}
-      socialsHeading={profile.home.socialsHeading}
-      subtitle={profile.home.subtitle}
-      onAbsorb={origin => (absorptionOrigin = origin)}
-    />{/key}
+    {#key homeResetKey}
+      <HomePage
+        avatarUrl={profile.home.avatarUrl}
+        contactCardQrData={profile.home.contactCardQrData}
+        contactCardUrl={profile.home.contactCardUrl}
+        contactHeading={profile.home.contactHeading}
+        contactLinks={profile.home.contactLinks}
+        alias={profile.home.alias}
+        name={profile.home.name}
+        qrDark={profile.home.qrDark}
+        qrLight={profile.home.qrLight}
+        socialLinks={profile.home.socialLinks}
+        socialsHeading={profile.home.socialsHeading}
+        subtitle={profile.home.subtitle}
+        onAbsorb={origin => (absorptionOrigin = origin)}
+      />
+    {/key}
   {/if}
 
   {#if profile.footer.type === 'custom'}
     <footer
-      class="mx-auto flex w-[min(100%-2rem,720px)] justify-between gap-4 py-5 text-[.75rem] text-muted max-[560px]:w-[min(100%-24px,720px)] max-[560px]:flex-col max-[560px]:items-center max-[560px]:gap-[.35rem] max-[560px]:py-[clamp(.75rem,1.5svh,1rem)] max-[560px]:text-center"
+      class="text-muted mx-auto flex w-[min(100%-2rem,720px)] justify-between gap-4 py-5 text-[.75rem] max-[560px]:w-[min(100%-24px,720px)] max-[560px]:flex-col max-[560px]:items-center max-[560px]:gap-[.35rem] max-[560px]:py-[clamp(.75rem,1.5svh,1rem)] max-[560px]:text-center"
     >
       <span>{profile.footer.copyright}</span>
       <span

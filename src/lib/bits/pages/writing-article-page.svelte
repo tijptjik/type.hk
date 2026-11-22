@@ -27,19 +27,19 @@ const publishedDate = $derived(formatPublicationDate(entry.publishedAt))
   class="mx-auto w-[min(100%-2rem,760px)] py-12 max-[560px]:w-[min(100%-24px,760px)] max-[560px]:py-8"
 >
   <article class="writing-article">
-    <header class="mb-12 border-b border-border pb-8">
+    <header class="border-border mb-12 border-b pb-8">
       <time
-        class="block text-[.73rem] font-semibold leading-none tracking-[.08em] text-muted uppercase"
+        class="text-muted block text-[.73rem] leading-none font-semibold tracking-[.08em] uppercase"
         datetime={entry.publishedAt}
         >{publishedDate}</time
       >
-      <h1 class="mt-3 font-display text-4xl font-semibold leading-[1.05]">
+      <h1 class="font-display mt-3 text-4xl leading-[1.05] font-semibold">
         {entry.title}
       </h1>
       <ul class="mt-5 flex flex-wrap gap-1.5" aria-label="Topics">
         {#each entry.tags as tag}
           <li
-            class="inline-flex items-center rounded-[.2rem] border border-border px-[.4rem] py-[.12rem] text-[.68rem] leading-none font-semibold tracking-[.06em] text-muted uppercase"
+            class="border-border text-muted inline-flex items-center rounded-[.2rem] border px-[.4rem] py-[.12rem] text-[.68rem] leading-none font-semibold tracking-[.06em] uppercase"
           >
             <span class="relative top-px">{tag}</span>
           </li>

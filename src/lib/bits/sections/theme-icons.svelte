@@ -101,18 +101,18 @@ const filteredIcons = $derived(
 
 <section
   aria-labelledby="icons-heading"
-  class="mt-12 scroll-mt-16 border-t border-border pt-8"
+  class="border-border mt-12 scroll-mt-16 border-t pt-8"
   id="icons"
 >
   <div class="mb-5 flex flex-wrap items-end justify-between gap-4">
     <div>
       <h2
-        class="m-0 font-display text-[.78rem] font-semibold tracking-[.1em] text-muted uppercase max-[560px]:text-[#ff53a6]"
+        class="font-display text-muted m-0 text-[.78rem] font-semibold tracking-[.1em] uppercase max-[560px]:text-[#ff53a6]"
         id="icons-heading"
       >
         {m.rose_punk_icons_heading()}
       </h2>
-      <p class="mt-2 text-[.85rem] leading-relaxed text-project-detail">
+      <p class="text-project-detail mt-2 text-[.85rem] leading-relaxed">
         {m.rose_punk_icons_description()}
       </p>
     </div>
@@ -120,13 +120,16 @@ const filteredIcons = $derived(
       <label class="sr-only" for="icon-search">{m.rose_punk_icons_search()}</label>
       <input
         bind:value={query}
-        class="w-full rounded-[.45rem] border border-border bg-surface px-3 py-2 text-[.85rem] text-foreground placeholder:text-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link"
+        class="border-border bg-surface text-foreground placeholder:text-muted focus-visible:outline-link w-full rounded-[.45rem] border px-3 py-2 text-[.85rem] focus-visible:outline-2 focus-visible:outline-offset-2"
         id="icon-search"
         placeholder={m.rose_punk_icons_search()}
         type="search"
       >
-      <p aria-live="polite" aria-atomic="true" class="text-[.7rem] text-muted">
-        {m.rose_punk_icons_count({ visible: filteredIcons.length, total: icons.length })}
+      <p aria-live="polite" aria-atomic="true" class="text-muted text-[.7rem]">
+        {m.rose_punk_icons_count({
+          visible: filteredIcons.length,
+          total: icons.length,
+        })}
       </p>
     </div>
   </div>
@@ -137,11 +140,15 @@ const filteredIcons = $derived(
       <li class="min-w-0">
         <button
           aria-busy={copyStates[icon.id] === 'copying'}
-          aria-label={copyStates[icon.id] === 'copied' ? m.rose_punk_icons_copied({ name: icon.name }) : m.rose_punk_icons_copy({ name: icon.name })}
-          class="icon-copy flex h-full min-h-36 w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-[.65rem] border border-border bg-surface px-2 py-4 text-center text-foreground transition-colors hover:border-link hover:text-link focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link"
+          aria-label={copyStates[icon.id] === 'copied'
+            ? m.rose_punk_icons_copied({ name: icon.name })
+            : m.rose_punk_icons_copy({ name: icon.name })}
+          class="icon-copy border-border bg-surface text-foreground hover:border-link hover:text-link focus-visible:outline-link flex h-full min-h-36 w-full cursor-pointer flex-col items-center justify-center gap-3 rounded-[.65rem] border px-2 py-4 text-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
           data-copied={copyStates[icon.id] === 'copied'}
           onclick={() => copyIcon(icon)}
-          title={copyStates[icon.id] === 'copied' ? m.rose_punk_icons_copied({ name: icon.name }) : m.rose_punk_icons_copy({ name: icon.name })}
+          title={copyStates[icon.id] === 'copied'
+            ? m.rose_punk_icons_copied({ name: icon.name })
+            : m.rose_punk_icons_copy({ name: icon.name })}
           type="button"
         >
           <span aria-hidden="true" class="icon-art relative block size-16 shrink-0">
@@ -156,7 +163,7 @@ const filteredIcons = $derived(
             >
             <svg
               aria-hidden="true"
-              class="icon-check absolute inset-0 size-full text-link"
+              class="icon-check text-link absolute inset-0 size-full"
               fill="none"
               viewBox="0 0 64 64"
             >
@@ -170,7 +177,7 @@ const filteredIcons = $derived(
               />
             </svg>
           </span>
-          <span class="max-w-full break-words text-[.72rem] leading-snug"
+          <span class="max-w-full text-[.72rem] leading-snug break-words"
             >{icon.name}</span
           >
         </button>
@@ -179,7 +186,7 @@ const filteredIcons = $derived(
   </ul>
   <p aria-live="polite" aria-atomic="true" class="sr-only">{copyFeedback}</p>
   {#if filteredIcons.length === 0}
-    <p class="py-10 text-center text-[.9rem] text-muted">{m.rose_punk_icons_empty()}</p>
+    <p class="text-muted py-10 text-center text-[.9rem]">{m.rose_punk_icons_empty()}</p>
   {/if}
 </section>
 
@@ -189,10 +196,6 @@ const filteredIcons = $derived(
     opacity 200ms ease,
     transform 260ms ease,
     filter 200ms ease;
-}
-
-.icon-copy:hover:not([data-copied="true"]) .icon-art img {
-  transform: scale(1.08);
 }
 
 .icon-check {
@@ -217,6 +220,10 @@ const filteredIcons = $derived(
   opacity: 0;
   transform: scale(0.65) rotate(12deg);
   filter: blur(5px);
+}
+
+.icon-copy:hover:not([data-copied="true"]) .icon-art img {
+  transform: scale(1.08);
 }
 
 .icon-copy[data-copied="true"] .icon-check {

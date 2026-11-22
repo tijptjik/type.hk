@@ -80,7 +80,9 @@ onMount(() => {
   function clearRollTimers() {
     clearTimeout(rollTimer)
     clearTimeout(settleTimer)
-    lockTimers.forEach(timer => clearTimeout(timer))
+    lockTimers.forEach(timer => {
+      clearTimeout(timer)
+    })
     cancelAnimationFrame(animationFrame)
     clearTimeout(breakTimer)
     rollTimer = 0
@@ -164,14 +166,14 @@ onMount(() => {
 <h1
   class:breaking={isBreaking}
   class:windAffected={isWindAffected}
-  class="flex justify-center font-display font-[650] leading-none tracking-[-.035em]"
+  class="font-display flex justify-center leading-none font-[650] tracking-[-.035em]"
   id="profile-name"
   style={`--rolling-slot-count: ${slotCount}; font-size: var(--profile-name-size)`}
 >
   <span class="sr-only">{announcedText}</span>
   <span
     aria-hidden="true"
-    class="inline-flex max-w-full py-[.14em] max-[40rem]:text-[.9em] max-[360px]:text-[.8em]"
+    class="inline-flex max-w-full py-[.14em] max-[360px]:text-[.8em] max-[40rem]:text-[.9em]"
   >
     {#each reels as reel, index}
       <span
@@ -189,7 +191,7 @@ onMount(() => {
           {#each reel as character, characterIndex}
             <span
               data-rolling-face
-              class="rolling-board__face grid h-[1em] place-items-center leading-none tracking-normal text-foreground"
+              class="rolling-board__face text-foreground grid h-[1em] place-items-center leading-none tracking-normal"
               style={`--rolling-color: ${rollingColors[(index + characterIndex) % rollingColors.length]}`}
               >{character}</span
             >
@@ -222,6 +224,11 @@ onMount(() => {
   transition-duration: 0ms;
 }
 
+.breaking .rolling-board__face,
+.breaking [data-rolling-guide] {
+  animation: rolling-board-fritz 460ms steps(5, end) both;
+}
+
 .rolling-board__reel.rolling:not(.locked) .rolling-board__face {
   color: var(--rolling-color);
 }
@@ -229,11 +236,6 @@ onMount(() => {
 .windAffected {
   animation: name-wind 10s linear forwards;
   will-change: filter;
-}
-
-.breaking .rolling-board__face,
-.breaking [data-rolling-guide] {
-  animation: rolling-board-fritz 460ms steps(5, end) both;
 }
 
 @keyframes rolling-board-fritz {
