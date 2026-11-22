@@ -178,6 +178,7 @@ let profileId = $state<ProfileId>(getProfileId(window.location.pathname))
 let absorptionOrigin = $state<{ x: number; y: number }>()
 let absorptionComplete = $state(false)
 let homeResetKey = $state(0)
+let documentVisible = $state(true)
 
 const profile = $derived(profiles[profileId])
 const navigationItems = $derived([
@@ -222,16 +223,22 @@ $effect(() => {
 })
 
 onMount(() => {
+  const updateVisibility = () => {
+    documentVisible = document.visibilityState === 'visible'
+  }
   const updatePage = () => {
     page = getPage(window.location.pathname)
     profileId = getProfileId(window.location.pathname)
   }
 
   window.addEventListener('popstate', updatePage)
+  document.addEventListener('visibilitychange', updateVisibility)
+  updateVisibility()
   const markAbsorptionComplete = () => (absorptionComplete = true)
   document.addEventListener('absorption-complete', markAbsorptionComplete)
   return () => {
     window.removeEventListener('popstate', updatePage)
+    document.removeEventListener('visibilitychange', updateVisibility)
     document.removeEventListener('absorption-complete', markAbsorptionComplete)
   }
 })
@@ -319,6 +326,7 @@ function changeLocale(nextLocale: string) {
   data-locale={locale}
   data-profile={profile.id}
   data-theme={theme}
+  class:page-visible={documentVisible}
 >
   <SiteHeader
     brand={profile.header.brand}

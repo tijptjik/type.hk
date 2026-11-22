@@ -179,7 +179,7 @@ html {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .site-shell {
+  .site-shell.page-visible {
     animation: page-reveal 600ms ease-out;
   }
 
