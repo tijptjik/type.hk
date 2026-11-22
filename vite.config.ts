@@ -7,6 +7,10 @@ import { defineConfig } from 'vite'
 import { assetKey } from './src/lib/r2-assets.ts'
 
 export default defineConfig({
+  build: {
+    // The Three.js contact-card scene is lazy-loaded and ships at 141 KB gzip.
+    chunkSizeWarningLimit: 600,
+  },
   server: {
     host: '127.0.0.1',
     port: 5176,
