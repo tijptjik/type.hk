@@ -9,6 +9,7 @@ const navigationOrder = ['bartjik', 'notjik', 'tjikup', 'runtjik']
 let navigationTools = $derived(
   navigationOrder.flatMap(id => tools.filter(tool => tool.id === id)),
 )
+let videoControlsVisible = $state<Record<string, boolean>>({})
 </script>
 
 <main
@@ -75,12 +76,15 @@ let navigationTools = $derived(
               <video
                 aria-label={`${tool.name} — ${tool.media.title()}`}
                 class="block size-full object-contain"
-                controls
+                controls={videoControlsVisible[tool.id] ?? true}
                 muted={!tool.media.hasAudio}
                 playsinline
                 poster={tool.media.src}
                 preload="metadata"
                 src={tool.media.videoSrc}
+                onclick={() => (videoControlsVisible[tool.id] = true)}
+                onplay={() => (videoControlsVisible[tool.id] = false)}
+                onpause={() => (videoControlsVisible[tool.id] = true)}
               ></video>
             {:else}
               <img
