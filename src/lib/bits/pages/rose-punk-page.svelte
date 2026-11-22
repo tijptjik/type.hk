@@ -92,7 +92,7 @@ function downloadThemeJson() {
           {title}
         </h1>
         <p
-          class="mt-[1.1rem] text-[clamp(1.05rem,2.5vw,1.3rem)] text-[#eb6f92] whitespace-nowrap max-[560px]:mt-[10px] max-[560px]:text-center max-[560px]:text-[#f6c177] max-[560px]:whitespace-normal"
+          class="mt-[1.1rem] text-[clamp(1.05rem,2.5vw,1.3rem)] text-[#eb6f92] whitespace-nowrap max-[560px]:mt-[10px] max-[560px]:text-center max-[560px]:whitespace-normal"
         >
           {tagline}
         </p>
