@@ -1,4 +1,5 @@
 <script lang="ts">
+import { preloadImage, revealImage } from '$lib/bits/image-loading'
 import { onMount, tick } from 'svelte'
 import { Maximize2, X } from '@lucide/svelte'
 import FaviconLinkIcon from '$lib/bits/components/favicon-link-icon.svelte'
@@ -176,12 +177,16 @@ function handleKeydown(event: KeyboardEvent) {
             <a
               class="map-preview border-border bg-surface block aspect-[1200/720] overflow-hidden rounded-[.55rem] border"
               href={showcase.href}
+              onfocus={() => preloadImage(showcase.imageSrc)}
+              onpointerenter={() => preloadImage(showcase.imageSrc)}
               rel="noopener noreferrer"
               target="_blank"
             >
               <img
+                use:revealImage
                 alt={`Preview of ${showcase.title}`}
-                class="block size-full object-cover"
+                class="image-fade-in block size-full object-cover"
+                loading="lazy"
                 src={showcase.imageSrc}
               >
             </a>
@@ -193,6 +198,8 @@ function handleKeydown(event: KeyboardEvent) {
               <a
                 class="text-project-copy hover:text-project-accent inline-flex items-center gap-2.5 no-underline"
                 href={showcase.href}
+                onfocus={() => preloadImage(showcase.imageSrc)}
+                onpointerenter={() => preloadImage(showcase.imageSrc)}
                 rel="noopener noreferrer"
                 target="_blank"
               >

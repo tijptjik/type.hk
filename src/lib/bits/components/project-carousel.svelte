@@ -1,5 +1,6 @@
 <script lang="ts">
 import { onMount } from 'svelte'
+import { preloadImage, revealImage } from '$lib/bits/image-loading'
 import { ChevronLeft, ChevronRight } from '@lucide/svelte'
 import type { ProjectPreview } from '$lib/content/site'
 
@@ -231,13 +232,17 @@ onMount(() => {
           <a
             class="text-foreground relative block size-full"
             href={slide.href}
+            onfocus={() => preloadImage(slide.src)}
+            onpointerenter={() => preloadImage(slide.src)}
             rel="noopener noreferrer"
             target="_blank"
           >
             <img
+              use:revealImage
               alt={slide.alt}
-              class="block size-full object-cover select-none"
+              class="image-fade-in block size-full object-cover select-none"
               draggable="false"
+              loading="lazy"
               src={slide.src}
             >
           </a>
