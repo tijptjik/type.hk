@@ -16,14 +16,15 @@ let {
   showcases: MapShowcase[]
 } = $props()
 
-let activeShowcase = $state<MapShowcase | null>(null)
-let transitioningShowcase = $state<MapShowcase | null>(null)
+// Compare stable keys: $state proxies objects, so record identity is not preserved.
+let activeShowcaseHref = $state<string | null>(null)
+let transitioningShowcaseHref = $state<string | null>(null)
 let opener = $state<HTMLButtonElement | null>(null)
 let closeButton = $state<HTMLButtonElement | null>(null)
 let viewportResizeFrame: number | null = null
 
 function syncExpandedMapViewport() {
-  if (!activeShowcase) return
+  if (!activeShowcaseHref) return
 
   const viewport = window.visualViewport
   const mapViewportWidth = `${viewport?.width ?? window.innerWidth}px`
@@ -45,7 +46,7 @@ function scheduleExpandedMapViewportSync() {
 }
 
 $effect(() => {
-  if (!activeShowcase) return
+  if (!activeShowcaseHref) return
 
   // Sync when the dialog is first rendered, then let the viewport events keep
   // the iframe's containing block current while the device rotates.
@@ -72,7 +73,7 @@ onMount(() => {
 async function setActiveShowcase(showcase: MapShowcase | null) {
   const transitionDocument = document as ViewTransitionDocument
   const update = async () => {
-    activeShowcase = showcase
+    activeShowcaseHref = showcase?.href ?? null
     await tick()
   }
 
@@ -83,11 +84,11 @@ async function setActiveShowcase(showcase: MapShowcase | null) {
 
   // A single named element exists on either side of the update, allowing the
   // platform to interpolate the preview into the two-column map stage.
-  transitioningShowcase = showcase ?? activeShowcase
+  transitioningShowcaseHref = showcase?.href ?? activeShowcaseHref
   await tick()
   const transition = transitionDocument.startViewTransition(update)
   void transition.finished.finally(() => {
-    transitioningShowcase = null
+    transitioningShowcaseHref = null
   })
   await transition.ready.catch(() => {})
 }
@@ -99,7 +100,7 @@ async function openShowcase(showcase: MapShowcase, event: MouseEvent) {
 }
 
 async function closeShowcase() {
-  if (!activeShowcase) return
+  if (!activeShowcaseHref) return
 
   await setActiveShowcase(null)
   opener?.focus()
@@ -116,7 +117,7 @@ function handleKeydown(event: KeyboardEvent) {
   class="grid mx-auto w-[calc(100%-clamp(2rem,7vw,6rem))] max-w-[1920px] place-items-center py-20 pt-6 pb-10 max-[560px]:w-full max-[560px]:py-0"
 >
   <section aria-label={heading} class="map-showcase w-full">
-    {#if activeShowcase}<div aria-hidden="true" class="map-expanded__scrim"></div>{/if}
+    {#if activeShowcaseHref}<div aria-hidden="true" class="map-expanded__scrim"></div>{/if}
     <div
       class="grid grid-cols-2 gap-[clamp(1.5rem,3vw,4rem)] max-[1024px]:grid-cols-1 max-[1024px]:gap-12"
     >
@@ -124,25 +125,25 @@ function handleKeydown(event: KeyboardEvent) {
           <article class="min-w-0 px-[var(--map-card-gutter)] [&>*]:min-w-0">
             {#if showcase.embedUrl}
               <div
-                aria-label={activeShowcase === showcase ? showcase.title : undefined}
-                aria-modal={activeShowcase === showcase ? 'true' : undefined}
-                class:map-preview--expanded={activeShowcase === showcase}
+                aria-label={activeShowcaseHref === showcase.href ? showcase.title : undefined}
+                aria-modal={activeShowcaseHref === showcase.href ? 'true' : undefined}
+                class:map-preview--expanded={activeShowcaseHref === showcase.href}
                 class="map-preview group relative aspect-[1200/720] overflow-hidden rounded-[.55rem] border border-border bg-surface"
-                role={activeShowcase === showcase ? 'dialog' : undefined}
-                style={transitioningShowcase === showcase
+                role={activeShowcaseHref === showcase.href ? 'dialog' : undefined}
+                style={transitioningShowcaseHref === showcase.href
                   ? 'view-transition-name: map-showcase-stage'
                   : undefined}
               >
                 <iframe
                   allow="fullscreen"
-                  aria-hidden={activeShowcase !== showcase}
-                  class={`block size-full border-0 ${activeShowcase === showcase ? '' : 'pointer-events-none'}`}
+                  aria-hidden={activeShowcaseHref !== showcase.href}
+                  class={`block size-full border-0 ${activeShowcaseHref === showcase.href ? '' : 'pointer-events-none'}`}
                   loading="lazy"
                   src={showcase.embedUrl}
-                  tabindex={activeShowcase === showcase ? undefined : -1}
+                  tabindex={activeShowcaseHref === showcase.href ? undefined : -1}
                   title={`${showcase.title} preview`}
                 ></iframe>
-                {#if activeShowcase === showcase}
+                {#if activeShowcaseHref === showcase.href}
                   <button
                     aria-label={`Close ${showcase.title}`}
                     bind:this={closeButton}
