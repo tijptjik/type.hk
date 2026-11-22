@@ -42,6 +42,8 @@ let dragPointerId: number | undefined
 let dragStartScrollLeft = 0
 let dragStartSlide = 0
 let dragStartX = 0
+let dragMoved = false
+let suppressClick = false
 
 function showSlide(index: number) {
   if (!carousel || slides.length === 0) return
@@ -106,6 +108,7 @@ function startDrag(event: PointerEvent) {
   if (!carousel || (event.pointerType === 'mouse' && event.button !== 0)) return
 
   dragPointerId = event.pointerId
+  dragMoved = false
   dragStartScrollLeft = carousel.scrollLeft
   dragStartSlide = activeSlide
   dragStartX = event.clientX
@@ -116,6 +119,7 @@ function startDrag(event: PointerEvent) {
 function moveDrag(event: PointerEvent) {
   if (!carousel || dragPointerId !== event.pointerId) return
 
+  if (Math.abs(event.clientX - dragStartX) >= 8) dragMoved = true
   carousel.scrollLeft = dragStartScrollLeft - (event.clientX - dragStartX)
 }
 
@@ -131,12 +135,25 @@ function finishDrag(event: PointerEvent) {
     showSlide(dragStartSlide)
   }
 
+  if (dragMoved) {
+    suppressClick = true
+    window.setTimeout(() => (suppressClick = false), 400)
+  }
+
   if (carousel.hasPointerCapture(event.pointerId)) {
     carousel.releasePointerCapture(event.pointerId)
   }
 
   dragPointerId = undefined
   resumeAutoplay()
+}
+
+function preventClickAfterDrag(event: MouseEvent) {
+  if (!suppressClick) return
+
+  event.preventDefault()
+  event.stopPropagation()
+  suppressClick = false
 }
 
 function cancelDrag(event: PointerEvent) {
@@ -200,6 +217,7 @@ onMount(() => {
       onpointermove={moveDrag}
       onpointerup={finishDrag}
       onscroll={updateActiveSlide}
+      onclick={preventClickAfterDrag}
     >
       {#each slides as slide, index}
         <article
