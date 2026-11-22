@@ -139,6 +139,7 @@ function handleKeydown(event: KeyboardEvent) {
                 ? 'view-transition-name: map-showcase-stage'
                 : undefined}
             >
+              <!-- svelte-ignore a11y_no_noninteractive_tabindex -- Inactive previews are removed from keyboard navigation; the expanded preview keeps its native iframe focus behavior. -->
               <iframe
                 allow="fullscreen"
                 aria-hidden={activeShowcaseHref !== showcase.href}

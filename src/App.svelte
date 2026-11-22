@@ -312,12 +312,13 @@ function changeLocale(nextLocale: string) {
   <meta name="description" content={profile.meta.description}>
 </svelte:head>
 
+<svelte:window onpointerdown={resetAbsorbedHome} />
+
 <div
   class="site-shell bg-background text-foreground grid min-h-dvh grid-rows-[auto_1fr_auto] font-sans transition-[background-color,color] duration-180 motion-reduce:transition-none"
   data-locale={locale}
   data-profile={profile.id}
   data-theme={theme}
-  onpointerdown={resetAbsorbedHome}
 >
   <SiteHeader
     brand={profile.header.brand}
