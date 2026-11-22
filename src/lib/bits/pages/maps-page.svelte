@@ -20,21 +20,19 @@ let activeShowcase = $state<MapShowcase | null>(null)
 let transitioningShowcase = $state<MapShowcase | null>(null)
 let opener = $state<HTMLButtonElement | null>(null)
 let closeButton = $state<HTMLButtonElement | null>(null)
-let expandedMap = $state<HTMLDialogElement | null>(null)
 let viewportResizeFrame: number | null = null
 
 function syncExpandedMapViewport() {
-  if (!expandedMap) return
+  if (!activeShowcase) return
 
   const viewport = window.visualViewport
-  expandedMap.style.setProperty(
-    '--map-viewport-width',
-    `${viewport?.width ?? window.innerWidth}px`,
-  )
-  expandedMap.style.setProperty(
-    '--map-viewport-height',
-    `${viewport?.height ?? window.innerHeight}px`,
-  )
+  const mapViewportWidth = `${viewport?.width ?? window.innerWidth}px`
+  const mapViewportHeight = `${viewport?.height ?? window.innerHeight}px`
+
+  document.querySelectorAll<HTMLElement>('.map-preview--expanded').forEach(preview => {
+    preview.style.setProperty('--map-viewport-width', mapViewportWidth)
+    preview.style.setProperty('--map-viewport-height', mapViewportHeight)
+  })
 }
 
 function scheduleExpandedMapViewportSync() {
@@ -47,7 +45,7 @@ function scheduleExpandedMapViewportSync() {
 }
 
 $effect(() => {
-  if (!expandedMap) return
+  if (!activeShowcase) return
 
   // Sync when the dialog is first rendered, then let the viewport events keep
   // the iframe's containing block current while the device rotates.
@@ -118,64 +116,54 @@ function handleKeydown(event: KeyboardEvent) {
   class="grid mx-auto w-[calc(100%-clamp(2rem,7vw,6rem))] max-w-[1920px] place-items-center py-20 pt-6 pb-10 max-[560px]:w-full max-[560px]:py-0"
 >
   <section aria-label={heading} class="map-showcase w-full">
-    {#if activeShowcase?.embedUrl}
-      <div aria-hidden="true" class="map-expanded__scrim"></div>
-      <dialog
-        aria-label={activeShowcase.title}
-        aria-modal="true"
-        bind:this={expandedMap}
-        class="map-expanded"
-        open
-        style="view-transition-name: map-showcase-stage"
-      >
-        <iframe
-          allow="fullscreen"
-          class="block size-full border-0"
-          src={activeShowcase.href}
-          title={activeShowcase.title}
-        ></iframe>
-        <button
-          aria-label={`Close ${activeShowcase.title}`}
-          bind:this={closeButton}
-          class="map-expanded__close grid size-11 place-items-center rounded-full"
-          onclick={closeShowcase}
-          type="button"
-        >
-          <X aria-hidden="true" size={24} />
-        </button>
-      </dialog>
-    {:else}
-      <div
-        class="grid grid-cols-2 gap-[clamp(1.5rem,3vw,4rem)] max-[1024px]:grid-cols-1 max-[1024px]:gap-12"
-      >
+    {#if activeShowcase}<div aria-hidden="true" class="map-expanded__scrim"></div>{/if}
+    <div
+      class="grid grid-cols-2 gap-[clamp(1.5rem,3vw,4rem)] max-[1024px]:grid-cols-1 max-[1024px]:gap-12"
+    >
         {#each showcases as showcase}
           <article class="min-w-0 px-[var(--map-card-gutter)] [&>*]:min-w-0">
             {#if showcase.embedUrl}
               <div
+                aria-label={activeShowcase === showcase ? showcase.title : undefined}
+                aria-modal={activeShowcase === showcase ? 'true' : undefined}
+                class:map-preview--expanded={activeShowcase === showcase}
                 class="map-preview group relative aspect-[1200/720] overflow-hidden rounded-[.55rem] border border-border bg-surface"
+                role={activeShowcase === showcase ? 'dialog' : undefined}
                 style={transitioningShowcase === showcase
                   ? 'view-transition-name: map-showcase-stage'
                   : undefined}
               >
                 <iframe
                   allow="fullscreen"
-                  aria-hidden="true"
-                  class="pointer-events-none block size-full border-0"
+                  aria-hidden={activeShowcase !== showcase}
+                  class={`block size-full border-0 ${activeShowcase === showcase ? '' : 'pointer-events-none'}`}
                   loading="lazy"
                   src={showcase.embedUrl}
-                  tabindex="-1"
+                  tabindex={activeShowcase === showcase ? undefined : -1}
                   title={`${showcase.title} preview`}
                 ></iframe>
-                <button
-                  aria-label={`Expand ${showcase.title}`}
-                  class="map-preview__expand absolute inset-0 cursor-zoom-in max-[1024px]:hidden"
-                  onclick={event => void openShowcase(showcase, event)}
-                  type="button"
-                >
-                  <span class="map-preview__expand-icon">
-                    <Maximize2 aria-hidden="true" size={18} />
-                  </span>
-                </button>
+                {#if activeShowcase === showcase}
+                  <button
+                    aria-label={`Close ${showcase.title}`}
+                    bind:this={closeButton}
+                    class="map-expanded__close grid size-11 place-items-center rounded-full"
+                    onclick={closeShowcase}
+                    type="button"
+                  >
+                    <X aria-hidden="true" size={24} />
+                  </button>
+                {:else}
+                  <button
+                    aria-label={`Expand ${showcase.title}`}
+                    class="map-preview__expand absolute inset-0 cursor-zoom-in max-[1024px]:hidden"
+                    onclick={event => void openShowcase(showcase, event)}
+                    type="button"
+                  >
+                    <span class="map-preview__expand-icon">
+                      <Maximize2 aria-hidden="true" size={18} />
+                    </span>
+                  </button>
+                {/if}
               </div>
             {:else}
               <a
@@ -220,8 +208,7 @@ function handleKeydown(event: KeyboardEvent) {
             </div>
           </article>
         {/each}
-      </div>
-    {/if}
+    </div>
   </section>
 </main>
 
@@ -235,11 +222,14 @@ function handleKeydown(event: KeyboardEvent) {
 }
 
 @media (max-width: 560px) {
+  .map-showcase {
+    --map-card-gutter: 12px;
+  }
+
   .map-preview {
-    width: calc(100% + var(--map-card-gutter) + var(--map-card-gutter));
-    margin-inline: calc(0px - var(--map-card-gutter));
-    border-radius: 0;
-    border: 0;
+    height: min(55svh, 32rem);
+    min-height: 13rem;
+    aspect-ratio: auto;
   }
 }
 
@@ -279,7 +269,7 @@ function handleKeydown(event: KeyboardEvent) {
   color: var(--project-accent);
 }
 
-.map-expanded {
+.map-preview--expanded {
   --map-viewport-width: 100vw;
   --map-viewport-height: 100dvh;
   position: fixed;
@@ -306,6 +296,14 @@ function handleKeydown(event: KeyboardEvent) {
   z-index: 20;
   inset: 0;
   background: var(--background);
+}
+
+@media (max-width: 560px) {
+  .map-preview--expanded {
+    width: calc(var(--map-viewport-width) - 2rem);
+    height: calc(var(--map-viewport-height) - 2rem);
+    aspect-ratio: auto;
+  }
 }
 
 .map-expanded__close {
