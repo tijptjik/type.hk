@@ -1,5 +1,6 @@
 <script lang="ts">
 import { formatMapDate } from '$lib/content/maps'
+import { lazyLoadVideo, preloadImage, revealImage } from '$lib/bits/image-loading'
 import { osReadme, type OsTool } from '$lib/content/os'
 import * as m from '../../../paraglide/messages.js'
 
@@ -25,6 +26,8 @@ let videoControlsVisible = $state<Record<string, boolean>>({})
             aria-label={tool.name}
             class="focus-visible:outline-link block rounded-[.45rem] transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none"
             href={`#${tool.id}`}
+            onfocus={() => preloadImage(tool.media.src)}
+            onpointerenter={() => preloadImage(tool.media.src)}
             title={tool.name}
           >
             <img
@@ -48,6 +51,8 @@ let videoControlsVisible = $state<Record<string, boolean>>({})
             aria-label={tool.name}
             class="focus-visible:outline-link block rounded-[.45rem] transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 motion-reduce:transition-none"
             href={`#${tool.id}`}
+            onfocus={() => preloadImage(tool.media.src)}
+            onpointerenter={() => preloadImage(tool.media.src)}
             title={tool.name}
           >
             <img
@@ -74,22 +79,22 @@ let videoControlsVisible = $state<Record<string, boolean>>({})
           >
             {#if tool.media.videoSrc}
               <video
+                use:lazyLoadVideo={{ poster: tool.media.src, src: tool.media.videoSrc }}
                 aria-label={`${tool.name} — ${tool.media.title()}`}
-                class="block size-full object-contain"
+                class="image-fade-in block size-full object-contain"
                 controls={videoControlsVisible[tool.id] ?? true}
                 muted={!tool.media.hasAudio}
                 playsinline
-                poster={tool.media.src}
-                preload="metadata"
-                src={tool.media.videoSrc}
+                preload="none"
                 onclick={() => (videoControlsVisible[tool.id] = true)}
                 onplay={() => (videoControlsVisible[tool.id] = false)}
                 onpause={() => (videoControlsVisible[tool.id] = true)}
               ></video>
             {:else}
               <img
+                use:revealImage
                 alt={`${tool.name} — ${tool.media.title()}`}
-                class="block size-full object-contain"
+                class="image-fade-in block size-full object-contain"
                 loading="lazy"
                 src={tool.media.src}
               >

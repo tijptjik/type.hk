@@ -19,6 +19,14 @@ export const grandHotelEuropaEntry: WritingEntry = {
 export const writingEntries: WritingEntry[] = [
   grandHotelEuropaEntry,
   {
+    title: 'Artist Statement for the Romantic’s Atlas',
+    href: 'https://romanticatlas.hype.hk/#artist-statement',
+    publishedAt: '2026-08-03',
+    tags: ['Art', 'Cartography'],
+    excerpt:
+      'An atlas can hold more than what is measurable. By placing impossible sites within familiar Hong Kong settings, this project reintroduces uncertainty into a world rendered in exhaustive detail, and asks how imagination can keep the mapped city open to surprise and possibility.',
+  },
+  {
     title: 'Map Making Guide',
     href: 'https://saanseoi.hk/guides/create-a-map/',
     publishedAt: '2026-08-08',
