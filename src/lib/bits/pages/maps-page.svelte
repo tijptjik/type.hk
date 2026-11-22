@@ -277,13 +277,10 @@ function handleKeydown(event: KeyboardEvent) {
   z-index: 21;
   top: 50%;
   left: 50%;
-  width: auto;
-  height: min(
-    calc(var(--map-viewport-height) - 6rem),
-    calc((var(--map-viewport-width) - clamp(2rem, 5.5vw, 5.5rem)) * 0.6)
-  );
+  width: calc(var(--map-viewport-width) - 2rem);
+  height: calc(var(--map-viewport-height) - 2rem);
   margin: 0;
-  aspect-ratio: 1200 / 720;
+  aspect-ratio: auto;
   overflow: hidden;
   border: 1px solid var(--border);
   border-radius: 0.55rem;
@@ -297,14 +294,6 @@ function handleKeydown(event: KeyboardEvent) {
   z-index: 20;
   inset: 0;
   background: var(--background);
-}
-
-@media (max-width: 560px) {
-  .map-preview--expanded {
-    width: calc(var(--map-viewport-width) - 2rem);
-    height: calc(var(--map-viewport-height) - 2rem);
-    aspect-ratio: auto;
-  }
 }
 
 .map-expanded__close {

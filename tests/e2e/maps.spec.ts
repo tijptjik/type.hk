@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-for (const viewport of [{ width: 1280, height: 900 }, { width: 390, height: 844 }]) {
+for (const viewport of [{ width: 1280, height: 900 }, { width: 590, height: 1068 }, { width: 390, height: 844 }]) {
   test.describe(`map expansion at ${viewport.width}px`, () => {
     test.use({ viewport })
 
@@ -22,6 +22,7 @@ for (const viewport of [{ width: 1280, height: 900 }, { width: 390, height: 844 
       const title = "A Romantic's Atlas of Hong Kong"
       const iframe = page.locator(`iframe[title="${title} preview"]`)
       const state = page.frameLocator(`iframe[title="${title} preview"]`).locator('#state')
+      await expect(iframe).toHaveAttribute('src', 'https://romanticatlas.hype.hk/')
       await expect(state).toHaveText('Fresh map')
       await state.evaluate(element => { element.textContent = 'Initialized map state' })
       const originalIframe = await iframe.elementHandle()
@@ -34,13 +35,11 @@ for (const viewport of [{ width: 1280, height: 900 }, { width: 390, height: 844 
       expect(await iframe.evaluate((element, original) => element === original, originalIframe)).toBe(true)
       expect(documentLoads).toBe(1)
 
-      if (viewport.width < 560) {
-        const bounds = await dialog.boundingBox()
-        expect(bounds).not.toBeNull()
-        expect(bounds!.height).toBeGreaterThan(viewport.height * 0.9)
-        expect(Math.abs(bounds!.x - bounds!.y)).toBeLessThan(2)
-        expect(Math.abs(viewport.height - bounds!.y - bounds!.height - bounds!.x)).toBeLessThan(2)
-      }
+      const bounds = await dialog.boundingBox()
+      expect(bounds).not.toBeNull()
+      expect(bounds!.height).toBeGreaterThan(viewport.height * 0.9)
+      expect(Math.abs(bounds!.x - bounds!.y)).toBeLessThan(2)
+      expect(Math.abs(viewport.height - bounds!.y - bounds!.height - bounds!.x)).toBeLessThan(2)
 
       await page.getByRole('button', { name: `Close ${title}`, exact: true }).click()
       await expect(dialog).toHaveCount(0)
