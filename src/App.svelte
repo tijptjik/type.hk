@@ -176,6 +176,8 @@ let locale = $state<Locale>(getSavedLocale())
 let page = $state<Page>(getPage(window.location.pathname))
 let profileId = $state<ProfileId>(getProfileId(window.location.pathname))
 let absorptionOrigin = $state<{ x: number; y: number }>()
+let absorptionComplete = $state(false)
+let homeResetKey = $state(0)
 
 const profile = $derived(profiles[profileId])
 const navigationItems = $derived([
@@ -226,8 +228,20 @@ onMount(() => {
   }
 
   window.addEventListener('popstate', updatePage)
-  return () => window.removeEventListener('popstate', updatePage)
+  const markAbsorptionComplete = () => (absorptionComplete = true)
+  document.addEventListener('absorption-complete', markAbsorptionComplete)
+  return () => {
+    window.removeEventListener('popstate', updatePage)
+    document.removeEventListener('absorption-complete', markAbsorptionComplete)
+  }
 })
+
+function resetAbsorbedHome() {
+  if (!absorptionComplete) return
+
+  absorptionComplete = false
+  homeResetKey += 1
+}
 
 function normalizePath(pathname: string): string {
   return pathname.replace(/\/+$/, '') || '/'
@@ -302,6 +316,7 @@ function changeLocale(nextLocale: string) {
   data-locale={locale}
   data-profile={profile.id}
   data-theme={theme}
+  onpointerdown={resetAbsorbedHome}
 >
   <SiteHeader
     brand={profile.header.brand}
@@ -344,7 +359,7 @@ function changeLocale(nextLocale: string) {
       resourcesHeading={m.rose_punk_resources_heading()}
     />
   {:else}
-    <HomePage
+    {#key homeResetKey}<HomePage
       avatarUrl={profile.home.avatarUrl}
       contactCardQrData={profile.home.contactCardQrData}
       contactCardUrl={profile.home.contactCardUrl}
@@ -358,7 +373,7 @@ function changeLocale(nextLocale: string) {
       socialsHeading={profile.home.socialsHeading}
       subtitle={profile.home.subtitle}
       onAbsorb={origin => (absorptionOrigin = origin)}
-    />
+    />{/key}
   {/if}
 
   {#if profile.footer.type === 'custom'}

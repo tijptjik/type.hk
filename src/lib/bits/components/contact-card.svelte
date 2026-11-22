@@ -51,33 +51,7 @@ function toggleCard() {
   else openCard()
 }
 
-function closeCardOutsideQr(event: PointerEvent) {
-  if (!isFlipped || !(event.target instanceof Element)) return
-  if (event.target.closest('.contact-card-qr-link')) return
-
-  closeCard()
-}
-
-function closeCardWithEscape(event: KeyboardEvent) {
-  if (isFlipped && event.key === 'Escape') {
-    closeCard()
-  }
-}
-
-function revealAnimation(event: MouseEvent) {
-  if (!event.altKey) return
-
-  event.preventDefault()
-  isQrCodeVisible = false
-}
-
-function resetFromQr(event: MouseEvent) {
-  revealAnimation(event)
-  if (!event.defaultPrevented) closeCard()
-}
 </script>
-
-<svelte:window onkeydown={closeCardWithEscape} onpointerdown={closeCardOutsideQr} />
 
 <div class="contact-card">
   <div class:flipped={isFlipped} class="contact-card-button">
@@ -104,7 +78,7 @@ function resetFromQr(event: MouseEvent) {
             aria-label={`Download ${name}'s contact card`}
             class="contact-card-qr-link"
             href={contactCardUrl}
-            onclick={resetFromQr}
+            download
           >
             <img alt="" class="contact-card-qr" src={qrCodeUrl}>
           </a>

@@ -766,6 +766,7 @@ function absorbPage(portalOrigin: Origin) {
       absorptionCleanupTimer = 0
       absorptionLayer.replaceChildren()
       document.documentElement.classList.remove('absorption-gathering')
+      document.dispatchEvent(new Event('absorption-complete'))
     }, 340)
   }
 
