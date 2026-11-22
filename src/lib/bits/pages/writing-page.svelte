@@ -42,7 +42,7 @@ function formatPublicationDate(publishedAt: string) {
           <h2 class="font-display mt-2 text-xl leading-[1.15] font-semibold">
             {#if entry.href}
               <a
-                class="text-foreground hover:text-link inline-flex max-w-full flex-wrap items-center gap-[.35rem] no-underline [&_svg]:shrink-0"
+                class="text-foreground hover:text-link no-underline [&_svg]:ml-[.2em] [&_svg]:inline [&_svg]:align-[-.12em]"
                 href={entry.href}
                 rel="noopener noreferrer"
                 target="_blank"
@@ -60,10 +60,17 @@ function formatPublicationDate(publishedAt: string) {
               {entry.title}
             {/if}
           </h2>
-          <ul class="mt-2 flex flex-wrap gap-1.5" aria-label="Topics">
+          <ul class="mt-2 flex flex-wrap gap-1.5" aria-label="Topics and source">
+            {#if entry.source === 'third-party'}
+              <li
+                class="inline-flex h-[1.125rem] items-center rounded-[.2rem] border border-[#ef4444]/60 bg-[#ef4444]/10 px-[.4rem] py-[.12rem] text-[.68rem] leading-none font-semibold tracking-[.06em] uppercase"
+              >
+                <span class="relative top-px text-[#f87171]">Coverage</span>
+              </li>
+            {/if}
             {#each entry.tags as tag}
               <li
-                class="border-border text-muted inline-flex items-center rounded-[.2rem] border px-[.4rem] py-[.12rem] text-[.68rem] leading-none font-semibold tracking-[.06em] uppercase"
+                class="border-border text-muted inline-flex h-[1.125rem] items-center rounded-[.2rem] border px-[.4rem] py-[.12rem] text-[.68rem] leading-none font-semibold tracking-[.06em] uppercase"
               >
                 <span class="relative top-px">{tag}</span>
               </li>
