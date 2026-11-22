@@ -1,5 +1,8 @@
 <script lang="ts">
 import { onMount } from 'svelte'
+import argonRegularUrl from '@fontsource/monaspace-argon/files/monaspace-argon-latin-400-normal.woff2?url'
+import kryptonMediumUrl from '@fontsource/monaspace-krypton/files/monaspace-krypton-latin-500-normal.woff2?url'
+import xenonSemiboldUrl from '@fontsource/monaspace-xenon/files/monaspace-xenon-latin-600-normal.woff2?url'
 import HomePage from '$lib/bits/pages/home-page.svelte'
 import MapsPage from '$lib/bits/pages/maps-page.svelte'
 import ProjectsPage from '$lib/bits/pages/projects-page.svelte'
@@ -313,6 +316,27 @@ function changeLocale(nextLocale: string) {
 </script>
 
 <svelte:head>
+  <link
+    rel="preload"
+    as="font"
+    href={argonRegularUrl}
+    type="font/woff2"
+    crossorigin="anonymous"
+  >
+  <link
+    rel="preload"
+    as="font"
+    href={kryptonMediumUrl}
+    type="font/woff2"
+    crossorigin="anonymous"
+  >
+  <link
+    rel="preload"
+    as="font"
+    href={xenonSemiboldUrl}
+    type="font/woff2"
+    crossorigin="anonymous"
+  >
   <title>
     {page === 'home' ? profile.meta.homeTitle : `${pageTitle} · ${profile.home.name}`}
   </title>

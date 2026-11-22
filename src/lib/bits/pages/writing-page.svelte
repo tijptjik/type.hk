@@ -42,7 +42,7 @@ function formatPublicationDate(publishedAt: string) {
           <h2 class="font-display mt-2 text-xl leading-[1.15] font-semibold">
             {#if entry.href}
               <a
-                class="text-foreground hover:text-link inline-flex items-center gap-[.35rem] no-underline [&_svg]:shrink-0"
+                class="text-foreground hover:text-link inline-flex max-w-full flex-wrap items-center gap-[.35rem] no-underline [&_svg]:shrink-0"
                 href={entry.href}
                 rel="noopener noreferrer"
                 target="_blank"
