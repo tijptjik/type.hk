@@ -155,8 +155,21 @@ html {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .site-shell {
+    animation: page-reveal 600ms ease-out;
+  }
+
   html:has(.os-tools) {
     scroll-behavior: smooth;
+  }
+}
+
+@keyframes page-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 

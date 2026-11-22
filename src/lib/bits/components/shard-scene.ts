@@ -94,6 +94,7 @@ export function createShardScene(
             attribute float aPhase;
             uniform float uPointScale;
             uniform float uTime;
+            uniform float uAbsorb;
 
             void main() {
               float angle = uTime * 0.08 + aPhase * 0.16;
@@ -306,8 +307,9 @@ export function createShardScene(
         renderer.dispose()
       }
     })
-    .catch(() => {
+    .catch(error => {
       // The QR code remains usable when WebGL is unavailable.
+      console.warn('Unable to initialize the contact-card 3D scene', error)
     })
 
   return () => {

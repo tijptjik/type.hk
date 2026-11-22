@@ -24,6 +24,7 @@ let {
 let isFlipped = $state(false)
 let qrCodeUrl = $state('')
 let isQrCodeVisible = $state(true)
+let avatarReady = $state(false)
 
 onMount(() => {
   void QRCode.toDataURL(contactCardQrData, {
@@ -50,6 +51,25 @@ function toggleCard() {
   if (isFlipped) closeCard()
   else openCard()
 }
+
+function revealAvatar(image: HTMLImageElement) {
+  avatarReady = false
+
+  function reveal() {
+    // A loaded image can be displayed without waiting for decode(), which can
+    // reject or remain pending for animated images in some browsers.
+    avatarReady = image.complete && image.naturalWidth > 0
+  }
+
+  image.addEventListener('load', reveal)
+  if (image.complete) reveal()
+
+  return {
+    destroy() {
+      image.removeEventListener('load', reveal)
+    },
+  }
+}
 </script>
 
 <div class="contact-card">
@@ -62,13 +82,17 @@ function toggleCard() {
         onclick={toggleCard}
         type="button"
       >
-        <img
-          alt={name}
-          class="contact-card-avatar"
-          height="704"
-          src={avatarUrl}
-          width="704"
-        >
+        {#key avatarUrl}
+          <img
+            use:revealAvatar
+            alt={name}
+            class="contact-card-avatar"
+            data-ready={avatarReady}
+            height="704"
+            src={avatarUrl}
+            width="704"
+          >
+        {/key}
       </button>
       <span class="contact-card-face contact-card-back">
         <ContactCardAbsorption active={isFlipped} {onAbsorb} />
@@ -185,6 +209,21 @@ function toggleCard() {
   height: 100%;
   object-fit: cover;
 }
+.contact-card-avatar {
+  opacity: 0;
+}
+.contact-card-avatar[data-ready="true"] {
+  opacity: 1;
+  animation: avatar-reveal 700ms ease-out;
+}
+@keyframes avatar-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .contact-card-qr-link {
   position: relative;
   z-index: 2;
@@ -207,6 +246,9 @@ function toggleCard() {
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .contact-card-avatar[data-ready="true"] {
+    animation: none;
+  }
   .contact-card-inner {
     transition-duration: 1ms;
   }
