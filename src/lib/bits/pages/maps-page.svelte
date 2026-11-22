@@ -146,7 +146,9 @@ function handleKeydown(event: KeyboardEvent) {
                 aria-hidden={activeShowcaseHref !== showcase.href}
                 class={`block size-full border-0 ${activeShowcaseHref === showcase.href ? '' : 'pointer-events-none'}`}
                 loading="lazy"
-                src={showcase.embedUrl}
+                src={activeShowcaseHref === showcase.href
+                  ? (showcase.expandedUrl ?? showcase.embedUrl)
+                  : showcase.embedUrl}
                 tabindex={activeShowcaseHref === showcase.href ? undefined : -1}
                 title={`${showcase.title} preview`}
               ></iframe>

@@ -1,6 +1,7 @@
 export type MapShowcase = {
   dateTime: string
   embedUrl: string | null
+  expandedUrl?: string
   href: string
   imageSrc?: string
   title: string
@@ -29,6 +30,7 @@ export const mapShowcases: MapShowcase[] = [
     dateTime: '2025-12',
     href: 'https://hype.hk?project=hkghostsigns',
     embedUrl: 'https://hype.hk/screensaver?project=hkghostsigns',
+    expandedUrl: 'https://hype.hk?project=hkghostsigns',
   },
   {
     title: 'Hong Kong Tramways',
