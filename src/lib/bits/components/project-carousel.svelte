@@ -206,7 +206,9 @@ onMount(() => {
       {/if}
     </div>
 
-    <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -- The click handler only cancels pointer clicks after dragging; child links and navigation buttons remain keyboard-operable. -->
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+    <!-- biome-ignore lint/a11y/useKeyWithClickEvents: The click handler only cancels pointer clicks after dragging; child links and navigation buttons support keyboard activation. -->
     <section
       aria-labelledby={carouselId}
       aria-roledescription={roleDescription}

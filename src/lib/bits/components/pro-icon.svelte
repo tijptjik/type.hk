@@ -1,5 +1,5 @@
 <script module lang="ts">
-import { icons as proicons } from '@iconify-json/proicons'
+import proicons from '$lib/content/proicons-ui-icons.json'
 import { addCollection } from '@iconify/svelte/dist/offline-functions'
 
 // Bundle Proicons with the site rather than fetching them at runtime.

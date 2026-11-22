@@ -1,0 +1,74 @@
+vite v8.3.8 building client environment for production...
+✔ [paraglide-js] Compilation complete (virtual-modules)
+transforming...
+✓ 5408 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                     1.91 kB │ gzip:     0.77 kB
+dist/assets/monaspace-krypton-latin-500-normal-BeRSFSSe.woff2      42.76 kB
+dist/assets/monaspace-krypton-latin-400-normal-DsuVXUab.woff2      42.86 kB
+dist/assets/monaspace-argon-latin-500-normal-B1gMZwrU.woff2        45.48 kB
+dist/assets/monaspace-argon-latin-400-normal-RS-2TGNg.woff2        45.60 kB
+dist/assets/monaspace-argon-latin-600-normal-PYusZXE_.woff2        46.42 kB
+dist/assets/monaspace-krypton-latin-500-normal-B8UC0MuO.woff       47.22 kB
+dist/assets/monaspace-xenon-latin-500-normal-Dqqg-cnL.woff2        47.44 kB
+dist/assets/monaspace-krypton-latin-400-normal-D9XlxC9R.woff       47.56 kB
+dist/assets/monaspace-xenon-latin-600-normal-DNjPl3uE.woff2        48.01 kB
+dist/assets/monaspace-xenon-latin-700-normal-KacFhGOf.woff2        48.20 kB
+dist/assets/monaspace-argon-latin-500-normal-BAyaYOhd.woff         49.95 kB
+dist/assets/monaspace-argon-latin-400-normal-DZUN4ACH.woff         50.26 kB
+dist/assets/monaspace-argon-latin-600-normal-B6Hl2BcQ.woff         51.28 kB
+dist/assets/monaspace-xenon-latin-500-normal-DJQebXG7.woff         52.27 kB
+dist/assets/monaspace-xenon-latin-700-normal-Ci8jGOPB.woff         53.07 kB
+dist/assets/monaspace-xenon-latin-600-normal-prdOLR9y.woff         53.08 kB
+dist/assets/index-CZzn34WW.css                                     55.24 kB │ gzip:    11.55 kB
+dist/assets/three.module-RiJVrPuf.js                              539.01 kB │ gzip:   133.74 kB
+dist/assets/index-C_Oh8qRI.js                                  19,413.30 kB │ gzip: 4,991.47 kB
+
+✓ built in 3.49s
+
+ ⛅️ wrangler 4.166.0
+────────────────────
+Generating project types...
+
+interface __BaseEnv_Env {
+	MEDIA: R2Bucket;
+	ASSETS: Fetcher;
+}
+declare namespace Cloudflare {
+	interface GlobalProps {
+		mainModule: typeof import("./src/worker");
+	}
+	interface Env extends __BaseEnv_Env {}
+}
+interface Env extends __BaseEnv_Env {}
+
+Generating runtime types...
+
+Runtime types generated.
+
+
+✨ Types written to worker-configuration.d.ts
+
+📖 Read about runtime types
+https://developers.cloudflare.com/workers/languages/typescript/#generate-types
+📣 Remember to rerun 'wrangler types' after you change your wrangler.jsonc file.
+
+
+ ⛅️ wrangler 4.166.0
+────────────────────
+🌀 Building list of assets...
+✨ Read 28 files from the assets directory /home/io/code/type.hk/dist
+🌀 Starting asset upload...
+No updated asset files to upload. Proceeding with deployment...
+Total Upload: 5.43 KiB / gzip: 2.12 KiB
+Worker Startup Time: 4 ms
+Your Worker has access to the following bindings:
+Binding                         Resource       
+env.MEDIA (tjikos-assets)       R2 Bucket      
+env.ASSETS                      Assets         
+
+Uploaded type-hk (3.61 sec)
+Deployed type-hk triggers (1.50 sec)
+  type.hk/* (zone id: bd5c5900001411ea1036620c4bb3d754)
+Current Version ID: ab3450d6-a87d-42ba-9fa9-0d2a0c6db29a

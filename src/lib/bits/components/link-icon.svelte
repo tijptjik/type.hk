@@ -1,12 +1,10 @@
 <script module lang="ts">
-import { icons as proicons } from '@iconify-json/proicons'
-import { icons as selfhst } from '@iconify-json/selfhst'
-import { icons as simpleIcons } from '@iconify-json/simple-icons'
+import proicons from '$lib/content/proicons-ui-icons.json'
+import simpleIcons from '$lib/content/simple-icons-ui-icons.json'
 import { addCollection } from '@iconify/svelte/dist/offline-functions'
 
 // Bundle link icons so brand marks never need a runtime network request.
 addCollection(proicons)
-addCollection(selfhst)
 addCollection(simpleIcons)
 </script>
 
