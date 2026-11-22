@@ -147,7 +147,7 @@ onMount(() => {
 </div>
 
 <header
-  class={`bg-background sticky top-0 w-full transition-transform duration-180 motion-reduce:transition-none ${menuOpen ? 'z-[60]' : 'z-10'} ${isHidden ? '-translate-y-full' : ''}`}
+  class={`bg-background sticky top-0 w-full transition-transform duration-180 select-none motion-reduce:transition-none ${menuOpen ? 'z-[60]' : 'z-10'} ${isHidden ? '-translate-y-full' : ''}`}
 >
   <div
     bind:this={header}
